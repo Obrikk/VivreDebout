@@ -16,35 +16,25 @@ function Actus() {
     const [prenom, setPrenom] = useState('')
     
 
-    async function handleSubmit(e){
+    function handleSubmit(e){
         e.preventDefault();
         const user = {
-            nom : nom,
-            prenom: prenom
+            nom : {nom},
+            prenom: {prenom}
 
         }
         console.log(user)
 
         try{
-            const response = await fetch('http://localhost:3000/adduser',{
+            const response = await fetch('http://localhost:3000/adduser'),{
                 method: 'POST',
                 headers: {
-                    'Content-type' : 'application/json'
-                },
-                body: JSON.stringify({nom, prenom})
-            });
-
-            if (!response.ok) {
-                throw new Error('Erreur lors de l\'ajout de l\'utilisateur');
-              }
-
-            const data = await response.json();
-            console.log('Utilisateur ajouté avec succès:', data);
-
-        } catch (error) {
-            console.error('Erreur lors de l\'ajout de l\'utilisateur:', error.message);
-            // Afficher un message d'erreur à l'utilisateur
-          }
+                    ''
+                }
+            }
+        } catch{
+            
+        }
     }
 
 

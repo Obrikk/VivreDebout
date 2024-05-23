@@ -16,35 +16,8 @@ function Actus() {
     const [prenom, setPrenom] = useState('')
     
 
-    async function handleSubmit(e){
-        e.preventDefault();
-        const user = {
-            nom : nom,
-            prenom: prenom
-
-        }
-        console.log(user)
-
-        try{
-            const response = await fetch('http://localhost:3000/adduser',{
-                method: 'POST',
-                headers: {
-                    'Content-type' : 'application/json'
-                },
-                body: JSON.stringify({nom, prenom})
-            });
-
-            if (!response.ok) {
-                throw new Error('Erreur lors de l\'ajout de l\'utilisateur');
-              }
-
-            const data = await response.json();
-            console.log('Utilisateur ajouté avec succès:', data);
-
-        } catch (error) {
-            console.error('Erreur lors de l\'ajout de l\'utilisateur:', error.message);
-            // Afficher un message d'erreur à l'utilisateur
-          }
+    function handleSubmit(){
+        
     }
 
 
@@ -56,19 +29,19 @@ function Actus() {
                 <FormControl isRequired>
                     <FormLabel>Nom</FormLabel>
                     <Input
-                    type="text"
-                    placeholder="name..."
+                    type="email"
+                    placeholder="test@test.com"
                     size="lg"
-                    onChange={event => setNom(event.currentTarget.value)}
+                    onChange={event => setEmail(event.currentTarget.value)}
                     />
                 </FormControl>
                 <FormControl isRequired mt={6}>
                     <FormLabel>Password</FormLabel>
                     <Input
-                    type="text"
-                    placeholder="Prenom..."
+                    type="password"
+                    placeholder="*******"
                     size="lg"
-                    onChange={event => setPrenom(event.currentTarget.value)}
+                    onChange={event => setPassword(event.currentTarget.value)}
                     />
                 </FormControl>
                 <Button

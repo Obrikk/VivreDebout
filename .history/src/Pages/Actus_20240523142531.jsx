@@ -16,11 +16,11 @@ function Actus() {
     const [prenom, setPrenom] = useState('')
     
 
-    async function handleSubmit(e){
+    function handleSubmit(e){
         e.preventDefault();
         const user = {
-            nom : nom,
-            prenom: prenom
+            nom : {nom},
+            prenom: {prenom}
 
         }
         console.log(user)
@@ -31,7 +31,7 @@ function Actus() {
                 headers: {
                     'Content-type' : 'application/json'
                 },
-                body: JSON.stringify({nom, prenom})
+                body: JSON.stringify({prenom, nom})
             });
 
             if (!response.ok) {
@@ -39,12 +39,11 @@ function Actus() {
               }
 
             const data = await response.json();
-            console.log('Utilisateur ajouté avec succès:', data);
+      console.log('Utilisateur ajouté avec succès:', data);
 
-        } catch (error) {
-            console.error('Erreur lors de l\'ajout de l\'utilisateur:', error.message);
-            // Afficher un message d'erreur à l'utilisateur
-          }
+        } catch{
+            
+        }
     }
 
 

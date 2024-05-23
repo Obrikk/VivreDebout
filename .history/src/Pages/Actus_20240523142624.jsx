@@ -19,8 +19,8 @@ function Actus() {
     async function handleSubmit(e){
         e.preventDefault();
         const user = {
-            nom : nom,
-            prenom: prenom
+            nom : {nom},
+            prenom: {prenom}
 
         }
         console.log(user)
@@ -31,7 +31,7 @@ function Actus() {
                 headers: {
                     'Content-type' : 'application/json'
                 },
-                body: JSON.stringify({nom, prenom})
+                body: JSON.stringify({prenom, nom})
             });
 
             if (!response.ok) {

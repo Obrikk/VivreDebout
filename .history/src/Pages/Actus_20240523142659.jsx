@@ -19,8 +19,8 @@ function Actus() {
     async function handleSubmit(e){
         e.preventDefault();
         const user = {
-            nom : nom,
-            prenom: prenom
+            nom : {nom},
+            prenom: {prenom
 
         }
         console.log(user)
