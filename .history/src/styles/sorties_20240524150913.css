@@ -1,0 +1,18 @@
+.sorties {
+    overflow: scroll;
+}
+
+.liste-sorties{
+    
+    background-color: salmon;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.liste-sorties ul{
+
+}
+.liste-sorties ul{
+
+}

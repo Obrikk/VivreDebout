@@ -1,0 +1,23 @@
+.sorties {
+    overflow: scroll;
+}
+
+.liste-sorties{
+    
+    background-color: salmon;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.liste-sorties ul{
+}
+
+
+.liste-sorties li{
+    height: 15rem;
+    border: solid black 2px;
+    display: flex;
+    
+}
