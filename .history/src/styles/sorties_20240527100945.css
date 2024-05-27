@@ -1,0 +1,7 @@
+.sorties {
+    overflow: scroll;
+}
+
+.sorties-container{
+    background-color: red;
+}
