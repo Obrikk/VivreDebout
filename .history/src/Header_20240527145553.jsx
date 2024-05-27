@@ -1,0 +1,21 @@
+
+import './styles/header.css'
+import Navbar from './components/Navbar.jsx'
+import { Heading, Box } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
+
+
+function Header() {
+    return ( 
+        <>
+            <motion.div className="header">
+                <Navbar>
+                </Navbar>
+                    
+            </div>
+
+        </>
+     );
+}
+
+export default Header;
