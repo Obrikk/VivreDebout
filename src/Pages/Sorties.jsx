@@ -1,9 +1,10 @@
 import Header from '../Header'
-import '../styles/sorties.css'
+import  '../styles/sorties.css'
 import React, {useState, useEffect} from 'react';
-import {Button, useDisclosure, Input, Menu, MenuList, MenuButton, MenuItem} from '@chakra-ui/react'
+import {Button, useDisclosure, Input, Menu, MenuList, MenuButton, MenuItem, Heading, Grid, Flex, GridItem, Card, Text, Box} from '@chakra-ui/react'
 import { ChevronDownIcon} from '@chakra-ui/icons'
 import DatePicker from "react-datepicker";
+import {motion} from 'framer-motion'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -39,6 +40,13 @@ function Sorties() {
         'CoutTotal': ''
 
     })
+
+    useEffect(() => {
+        document.getElementById('root').style.backgroundColor = '#B4E1FF';
+        return () => {
+          document.getElementById('root').style.backgroundColor = ''; // Reset color on unmount
+        };
+      }, []);
 
     useEffect(() => {
         const fetchSorties = async () => {
@@ -141,63 +149,108 @@ function Sorties() {
         
         <>
             <Header></Header>
-            <div className="sorties">
-                <h1>Sorties</h1>
-                <section className='sorties-container'>
-                    {sorties.map((sortie)=> (
-                        <li key={sortie.id}>
-                            <p>{sortie.Nom}</p>
-                            <p>{sortie.Type}</p>
-                            <p>{sortie.Date}</p>
-                            <p>{sortie.Lieu}</p>
-                            <p>{sortie.Horaires}</p>
-                            <Button onClick={()=>handleDelete(sortie.id)}>Supprimer</Button>
-                        </li>
-                    ))}
-                </section>
-                {/* Bouton ajouter une sortie, ouvre un drawer */}
+            <div className={'sorties'}>
+                <Heading size={{lg:'4xl'}} marginTop={{lg:'2rem'}}>Sorties</Heading>
+                <Grid gridTemplateColumns={{lg:'repeat(3,1fr)'}}  width={{lg:'80%'}} marginTop={{lg:'5rem'}} >
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' cursor='pointer' as={motion.div} whileHover={{scale:1.1}} > 
+                        
+                        <Text pos='rel'>Sortie ennuyante</Text>
+                        <Text>Sportif</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                    <Flex bg='transparent'  borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{lg: '30rem'}}  direction='column' justify={'center'} alignItems='center' > 
+                        
+                        <Text>Nom de la sortie</Text>
+                        <Text>Type de la sortie</Text>
+                        <Text>Date de la sortie</Text>
+                        <Text>20h-22h</Text>
+                        <Text>Maurepas</Text>
+                    </Flex>
+                </Grid> 
                 
-      <Button onClick={onOpen}>Ajouter</Button>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+                
+    {/* <Button onClick={onOpen}>Ajouter</Button>
+    <Drawer isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
-          <h1>Ajouter</h1>
+        <DrawerCloseButton />
+        <h1>Ajouter</h1>
 
-          <DrawerBody  >
+        <DrawerBody  >
             <form
-              id='my-form'
-              
-              onSubmit={(e) => {
+            id='my-form'
+            
+            onSubmit={(e) => {
                 e.preventDefault()
                 handleSubmit()
-              }}
+            }}
             >
                 <p>Nom de la sortie</p>  
                 <Input name='Nom' placeholder='Ex : Sortie à Carrefour ...' onChange={handleInputChange} />
 
                 <p>Type de sortie</p>  
                 <Menu>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                     {formData.Type || 'Types de sorties'}
-                  </MenuButton>
-                  <MenuList>
+                </MenuButton>
+                <MenuList>
                     <MenuItem onClick={() => handleMenuSelect('Extérieures')}>Extérieures</MenuItem>
                     <MenuItem onClick={() => handleMenuSelect('Musique')}>Musique</MenuItem>
                     <MenuItem onClick={() => handleMenuSelect('Théâtre')}>Théâtre</MenuItem>
                     <MenuItem onClick={() => handleMenuSelect('Expos')}>Expos</MenuItem>
                     <MenuItem onClick={() => handleMenuSelect('Touristique')}>Touristique</MenuItem>
                     <MenuItem onClick={() => handleMenuSelect('Intra VivreDebout')}>Intra VivreDebout</MenuItem>
-                  </MenuList>
+                </MenuList>
                 </Menu>
 
                 <p>Date de la sortie</p>  
-                {/* <Input name='Date' placeholder='Ex : 2024-06-22...'  onChange={handleInputChange}/> */}
                 
                 <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
-                dateFormat="yyyy-MM-dd" // Format de la date affichée
+                dateFormat="yyyy-MM-dd" 
             />
 
                 <p>Horaires de la sortie</p>  
@@ -215,15 +268,15 @@ function Sorties() {
                 <p>Cout pour l'adhérent de la sortie</p>  
                 <Input name='CoutTotal' placeholder='Ex : 10' onChange={handleInputChange}/>
             </form>
-          </DrawerBody>
+        </DrawerBody>
 
-          <DrawerFooter>
+        <DrawerFooter>
             <Button type='submit' form='my-form' onClick={()=>onClose()}>
-              Ajouter
+            Ajouter
             </Button>
-          </DrawerFooter>
+        </DrawerFooter>
         </DrawerContent>
-      </Drawer>
+    </Drawer> */}
 
             </div>
         </>

@@ -29,16 +29,18 @@ function Home() {
                 animate={{x:0}}
                 >
                     <Heading 
-                        size={'4xl'} pos={'relative'} right='5rem' bottom='3rem' 
+                        fontSize={{md:'80px',xl: '105px'}} pos={'relative'} right={{md:'5rem', xl:'5rem'}} bottom={{md:'5rem', lg:'13rem'}} 
                     >Vivre</Heading>
-                    <Heading size={'4xl'} pos='relative' left='5rem' bottom='3rem' >Debout</Heading>
+
+                    <Heading fontSize={{md:'80px', xl:'90px'}} pos='relative' left={{md:'5rem', lg:'11rem'}} bottom={{md:'3rem', lg:'14rem'}} >Debout</Heading>
+                    
                     {/* <img src={Trait1} alt="trait-illustration" className='trait1' /> */}
-                    <Img src={Pen} pos='absolute' width={'5rem'} left='33rem' top='164px' ></Img>
+                    <Img src={Pen} pos='absolute' width={{md:'5rem', lg:'5rem'}} left={{md:'33rem', lg:'52rem'}} top={{md:'164px', lg:'155px'}} ></Img>
                     <Text>VivreDebout est une association </Text>
                     
                 </motion.div>
                 <right>
-                    <img src={FamilyDisabled} alt="" />
+                    <motion.img src={FamilyDisabled} alt="" initial={{x:'50rem'}} animate={{x:'0'}} />
                     <div className="light"></div>
                 </right>
                 

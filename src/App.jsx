@@ -11,8 +11,8 @@ import NousConnaitre from './Pages/NousConnaitre'
 import Admin from './Pages/Admin'
 import Conseil from './Pages/Conseil'
 import Sorties from './Pages/Sorties'
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import PrisEnContes from './Pages/PrisEnContes'
+import Solidarite from './Pages/Solidarite'
 
 
 const router = createBrowserRouter([
@@ -55,17 +55,25 @@ const router = createBrowserRouter([
     element: <Admin/>
     
   },
+  {
+    path : '/pris-en-contes',
+    element: <PrisEnContes/>
+    
+  },
+  {
+    path : '/solidarite',
+    element: <Solidarite/>
+    
+  },
 ])
 
 function App() {
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <RouterProvider router={router}>
 
       </RouterProvider>
 
-    </LocalizationProvider>
   )
 }
 

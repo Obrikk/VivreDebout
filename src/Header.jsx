@@ -10,9 +10,9 @@ function Header() {
         <>
             <motion.div 
             className="header"
-            initial={{y:'-20rem'}}
+            initial={{y:'-40rem'}}
             animate={{y:0}}
-            transition={{duration:0.3}}
+            transition={{duration:0.4}}
 
             >
                 <Navbar>

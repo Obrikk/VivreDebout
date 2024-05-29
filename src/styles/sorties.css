@@ -1,5 +1,18 @@
+
+
+
+
+
+
 .sorties {
-    overflow: scroll;
+    overflow-y: scroll;
+    background-color: #B4E1FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sorties * {
+    overflow: visible;
 }
 
 .sorties-container{
