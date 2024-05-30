@@ -9,7 +9,7 @@ function Navbar() {
             
             >
             <ul>
-                <li><Image src={LogoVD}  w={{md:'3rem'}}></Image></li>
+                <li><Image src={LogoVD}  w></Image></li>
                 <li><a href="/actualites">Actualités</a></li>
                 <li><a href="/contact">Solidarité</a></li>
                 <li><a href="/liens">Pris en conte</a></li>

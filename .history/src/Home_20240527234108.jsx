@@ -29,7 +29,7 @@ function Home() {
                 animate={{x:0}}
                 >
                     <Heading 
-                       fontSize={{md:'80px'}} pos={'relative'} right={{md:'5rem'}} bottom='3rem' 
+                       fontSize={} pos={'relative'} right={{md:'5rem'}} bottom='3rem' 
                     >Vivre</Heading>
                     <Heading size={'4xl'} pos='relative' left='5rem' bottom='3rem' >Debout</Heading>
                     {/* <img src={Trait1} alt="trait-illustration" className='trait1' /> */}

@@ -1,5 +1,5 @@
 import '../styles/navbar.css'
-import { Heading, Image } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import { motion } from 'framer-motion'
 import LogoVD from '../../public/LogoVD.svg'
 
@@ -9,7 +9,7 @@ function Navbar() {
             
             >
             <ul>
-                <li><Image src={LogoVD}  w={{md:'3rem'}}></Image></li>
+                Logo
                 <li><a href="/actualites">Actualités</a></li>
                 <li><a href="/contact">Solidarité</a></li>
                 <li><a href="/liens">Pris en conte</a></li>
