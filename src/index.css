@@ -1,0 +1,20 @@
+
+
+
+*{
+  overflow: visible !important;
+}
+.contes-image:hover {
+transform: scale(4.1); /* Augmente la taille de l'image au survol */
+}
+.home{
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.homePageImg{
+  width: 60%;
+  
+}
