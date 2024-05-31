@@ -1,0 +1,14 @@
+.header{
+    background-color: aliceblue;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header ul{
+    display: flex;
+    width: 100vw;
+    list-style-type: none;
+    justify-content: space;
+}

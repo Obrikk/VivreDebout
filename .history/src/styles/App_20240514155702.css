@@ -1,0 +1,16 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 15% 78% 7%;
+  background-color: #cce3de;
+  
+  
+}
+
+*{
+  overflow: hidden;
+  
+}
+/* e8d6b0 */

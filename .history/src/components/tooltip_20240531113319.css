@@ -1,0 +1,7 @@
+.tippy-box[data-theme~='retro'] {
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    height: 30rem;
+    padding: 10px; /* Adjust the padding as needed */
+  }
