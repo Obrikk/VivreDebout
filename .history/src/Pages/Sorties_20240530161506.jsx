@@ -1,0 +1,215 @@
+import React, { useState, useEffect } from 'react';
+import { Button, useDisclosure, Input, Menu, MenuList, MenuButton, MenuItem, Heading, Grid, Flex, Text } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import DatePicker from "react-datepicker";
+import { motion } from 'framer-motion';
+import "react-datepicker/dist/react-datepicker.css";
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton } from '@chakra-ui/react';
+import Header from '../Header';
+import '../styles/sorties.css';
+
+function Sorties() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [sorties, setSorties] = useState([]);
+    const [formData, setFormData] = useState({
+        'nom': '',
+        'type': '',
+        'date': '',
+        'horaires': '',
+        'lieu': '',
+        'coutBrut': '',
+        'priseCharge': '',
+        'coutTotal': ''
+    });
+
+    useEffect(() => {
+        document.getElementById('root').style.backgroundColor = '#B4E1FF';
+        return () => {
+            document.getElementById('root').style.backgroundColor = '';
+        };
+    }, []);
+
+    useEffect(() => {
+        const fetchSorties = async () => {
+            try {
+                const response = await fetch('http://localhost:8888/sorties');
+                if (!response.ok) {
+                    throw new Error('Erreur lors de la récupération des données');
+                }
+                const data = await response.json();
+                setSorties(data.data); // Assuming the API response is { data: [] }
+                console.log('Les sorties ont été mises à jour :', data);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des sorties :', error.message);
+            }
+        };
+
+        fetchSorties();
+    }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        console.log(formData);
+    };
+
+    const handleMenuSelect = (value) => {
+        setFormData({ ...formData, Type: value });
+        console.log(formData);
+    };
+
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+        const formattedDate = date.toISOString().split('T')[0];
+        setFormData({ ...formData, Date: formattedDate });
+        console.log(formData);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            const formDataWithIntegers = {
+                ...formData,
+                CoutBrut: parseInt(formData.CoutBrut) || 0,
+                PriseCharge: parseInt(formData.PriseCharge) || 0,
+                CoutTotal: parseInt(formData.CoutTotal) || 0,
+            };
+
+            for (const key in formDataWithIntegers) {
+                if (formDataWithIntegers[key] === undefined) {
+                    throw new Error(`Field ${key} is missing or invalid`);
+                }
+            }
+
+            console.log('Sending data to the server:', formDataWithIntegers);
+
+            const response = await fetch('http://localhost:8888/sorties/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formDataWithIntegers),
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Erreur lors de l'envoi des données : ${errorText}`);
+            }
+
+            const newSortie = await response.json();
+            setSorties([...sorties, newSortie]);
+            console.log('Sortie ajoutée :', newSortie);
+        } catch (error) {
+            console.error('Erreur lors de l\'envoi des données :', error.message);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8888/sorties/${id}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                throw new Error('Erreur lors de la suppression de la sortie');
+            }
+
+            const updatedSorties = sorties.filter(sortie => sortie.id !== id);
+            setSorties(updatedSorties);
+            console.log(`Sortie ${id} supprimée`);
+        } catch (error) {
+            console.error('Erreur lors de la suppression de la sortie :', error.message);
+        }
+    };
+
+    return (
+        <>
+            <Header />
+            <Button onClick={onOpen} position={'absolute'} top={{ xl: '10rem' }} left={{ xl: '10rem' }}>Ajouter</Button>
+            <div className={'sorties'}>
+                <Heading size={{ xl: '3xl' }} marginTop={{ xl: '2rem' }}>Sorties</Heading>
+
+                <Grid gridTemplateColumns={{ xl: 'repeat(3,1fr)' }} width={{ xl: '80%' }} marginTop={{ xl: '5rem' }} gap={{ xl: '4rem' }} fontFamily={'Helvetica'}>
+                    {sorties.length > 0 ? sorties.map((sortie) => (
+                        <Flex key={sortie.id} bg='#cfede7' borderRadius={'20px'} boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'} height={{ xl: '24rem' }} direction='column' justify={'center'} alignItems='center' cursor='pointer' as={motion.div} whileHover={{ scale: 1.1 }} initial={{ x: '-20rem' }} animate={{ x: '0rem' }} whileTap={{ scale: 0.9 }}>
+                            <Text>{sortie.nom}</Text>
+                            <Text>{sortie.type}</Text>
+                            <Text>{sortie.date}</Text>
+                            <Text>{sortie.horaires}</Text>
+                            <Text>{sortie.lieu}</Text>
+                            <Button onClick={() => handleDelete(sortie.id)}>Supprimer</Button>
+                        </Flex>
+                    )) : (
+                        <Text>il n'y a pas de sorties prévues</Text>
+                    )}
+                </Grid>
+
+                <Drawer isOpen={isOpen} onClose={onClose}>
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerHeader>Ajouter</DrawerHeader>
+
+                        <DrawerBody>
+                            <form
+                                id='my-form'
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    handleSubmit();
+                                }}
+                            >
+                                <p>Nom de la sortie</p>
+                                <Input name='nom' placeholder='Ex : Sortie à Carrefour ...' onChange={handleInputChange} />
+
+                                <p>Type de sortie</p>
+                                <Menu>
+                                    <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                                        {formData.Type || 'Types de sorties'}
+                                    </MenuButton>
+                                    <MenuList>
+                                        <MenuItem onClick={() => handleMenuSelect('Extérieures')}>Extérieures</MenuItem>
+                                        <MenuItem onClick={() => handleMenuSelect('Musique')}>Musique</MenuItem>
+                                        <MenuItem onClick={() => handleMenuSelect('Théâtre')}>Théâtre</MenuItem>
+                                        <MenuItem onClick={() => handleMenuSelect('Expos')}>Expos</MenuItem>
+                                        <MenuItem onClick={() => handleMenuSelect('Touristique')}>Touristique</MenuItem>
+                                        <MenuItem onClick={() => handleMenuSelect('Intra VivreDebout')}>Intra VivreDebout</MenuItem>
+                                    </MenuList>
+                                </Menu>
+
+                                <p>Date de la sortie</p>
+                                <DatePicker
+                                    selected={selectedDate}
+                                    onChange={handleDateChange}
+                                    dateFormat="yyyy-MM-dd"
+                                />
+
+                                <p>Horaires de la sortie</p>
+                                <Input name='horaires' placeholder='Ex : 11h-19h...' onChange={handleInputChange} />
+
+                                <p>Lieu de la sortie</p>
+                                <Input name='lieu' placeholder='Ex : Carrefour de Maurepas...' onChange={handleInputChange} />
+
+                                <p>Cout brut de la sortie</p>
+                                <Input name='coutBrut' placeholder='Ex : 30' onChange={handleInputChange} />
+
+                                <p>Prise en charge de la sortie</p>
+                                <Input name='priseCharge' placeholder='Ex : 20' onChange={handleInputChange} />
+
+                                <p>Cout pour l'adhérent de la sortie</p>
+                                <Input name='coutTotal' placeholder='Ex : 10' onChange={handleInputChange} />
+                            </form>
+                        </DrawerBody>
+
+                        <DrawerFooter>
+                            <Button type='submit' form='my-form' onClick={onClose}>
+                                Ajouter
+                            </Button>
+                        </DrawerFooter>
+                    </DrawerContent>
+                </Drawer>
+            </div>
+        </>
+    );
+}
+
+export default Sorties;
