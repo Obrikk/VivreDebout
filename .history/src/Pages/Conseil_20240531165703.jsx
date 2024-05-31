@@ -15,7 +15,7 @@ function Conseil() {
     return ( 
         <>
             <Header></Header>
-            <Grid gridTemplateColumns={{lg:'50px 1fr 1fr 1fr 50px'}} gridTemplateRows={{lg:'100px 1fr 1fr 1fr 50px'}}>
+            <Grid gridTemplateColumns={{lg:'50px 1fr 1fr 1fr 50px'}} gridTemplateRows={{lg:'1fr 1fr 1fr 1fr 50px'}}>
                 <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'2 / 2 / 2 / 2'}}>
                     
                     <Flex as={motion.div}

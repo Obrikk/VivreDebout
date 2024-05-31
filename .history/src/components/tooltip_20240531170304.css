@@ -2,5 +2,6 @@
     width: 15rem;
     display: flex;
     justify-content: center;
+    color: black;
     border: solid black 2px;
   }

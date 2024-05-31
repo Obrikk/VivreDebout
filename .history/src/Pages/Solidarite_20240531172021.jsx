@@ -124,7 +124,7 @@ function Solidarite() {
                                     <ListItem ><Link href='https://www.capemploi.info/'>CAP Emploi</Link></ListItem>
                                     
                                 </UnorderedList>    
-                                {/* <Img src={LienGif} backgroundColor={'transparent'}></Img> */}
+                                <Img src={LienGif} back></Img>
 
                         </Flex>
                     </GridItem>

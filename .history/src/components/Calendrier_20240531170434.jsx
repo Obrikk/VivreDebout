@@ -19,7 +19,6 @@ function Calendrier() {
         {
             title:"Venez pas c'est nul",
             start:'2024-06-27',
-            desc:'On sait pas encore',
             end:'2024-05-29'
         },
     ]
@@ -36,11 +35,11 @@ function Calendrier() {
                     end:'dayGridMonth, timeGridWeek'
                 }}
                 events={events}
-                height={'50vh'}
+                height={'80vh'}
                 fixedWeekCount= {false}
                 eventDidMount={(info)=>{
                     tippy(info.el, {
-                        content: `${info.event.title} <br> ${info.event.desc}`,
+                        content: `${info.event.title} <br> `,
                         trigger:'click',
                         allowHTML: true,
                         theme: 'retro', // Optional: You can choose different themes or customize your own

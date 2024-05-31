@@ -15,8 +15,8 @@ function Conseil() {
     return ( 
         <>
             <Header></Header>
-            <Grid gridTemplateColumns={{lg:'50px 1fr 1fr 1fr 50px'}} gridTemplateRows={{lg:'100px 1fr 1fr 1fr 50px'}}>
-                <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'2 / 2 / 2 / 2'}}>
+            <Grid gridTemplateColumns={{lg:'1fr 1fr 1fr 1fr 1fr'}} gridTemplateRows={{lg:'1fr 1fr 1fr 1fr 1fr'}}>
+                <GridItem gridArea={{lg:'2 / 2 / 2 / 2'}}>
                     
                     <Flex as={motion.div}
                                 width={'80%'} 
@@ -32,11 +32,11 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil 1
+                                > oui
                     </Flex>
                 </GridItem>
 
-                <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'4 / 2 / 4 / 2'}}>
+                <GridItem gridArea={{lg:'4 / 2 / 4 / 2'}}>
                     <Flex as={motion.div}
                                 width={'80%'} 
                                 height={{lg:'60%'}}    
@@ -51,11 +51,11 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                 </GridItem>
 
-                <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'3 / 3 / 3 / 3'}}>
+                <GridItem gridArea={{lg:'3 / 3 / 3 / 3'}}>
                     <Flex as={motion.div}
                                 width={'80%'} 
                                 height={{lg:'60%'}}    
@@ -70,14 +70,14 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                     
                 </GridItem>
 
                 
 
-                <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'2 / 4 / 2 / 4'}}>
+                <GridItem gridArea={{lg:'2 / 4 / 2 / 4'}}>
                 <Flex as={motion.div}
                             width={'80%'} 
                             height={{lg:'60%'}}    
@@ -92,12 +92,12 @@ function Conseil() {
                             bg='#fdf8e1'
                             alignItems={{lg:'center'}}
                             justifyContent={{lg:'center'}} 
-                             > Conseil
+                             > oui
                 </Flex>
                     
                 </GridItem>
 
-                <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'4 / 4 / 4 /4'}}>
+                <GridItem gridArea={{lg:'4 / 4 / 4 /4'}}>
 
                     <Flex as={motion.div}
                                 width={'80%'} 
@@ -113,7 +113,7 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                 </GridItem>
 

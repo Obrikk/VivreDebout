@@ -36,7 +36,7 @@ function Calendrier() {
                     end:'dayGridMonth, timeGridWeek'
                 }}
                 events={events}
-                height={'50vh'}
+                height={'70'}
                 fixedWeekCount= {false}
                 eventDidMount={(info)=>{
                     tippy(info.el, {

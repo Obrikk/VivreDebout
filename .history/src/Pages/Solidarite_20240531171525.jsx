@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { Flex, Box, Grid, Img, GridItem, Heading, Text, Button, UnorderedList, ListItem, Link, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter } from '@chakra-ui/react'
 import {motion} from 'framer-motion'
 import SolidariteImg from '../../public/solidariteP.png'
-import LienGif from '../../public/info.gif'
 
 
 function Solidarite() {
@@ -124,7 +123,7 @@ function Solidarite() {
                                     <ListItem ><Link href='https://www.capemploi.info/'>CAP Emploi</Link></ListItem>
                                     
                                 </UnorderedList>    
-                                {/* <Img src={LienGif} backgroundColor={'transparent'}></Img> */}
+                                <Img src={}></Img>
 
                         </Flex>
                     </GridItem>

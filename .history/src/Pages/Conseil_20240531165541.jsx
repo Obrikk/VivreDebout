@@ -15,7 +15,7 @@ function Conseil() {
     return ( 
         <>
             <Header></Header>
-            <Grid gridTemplateColumns={{lg:'50px 1fr 1fr 1fr 50px'}} gridTemplateRows={{lg:'100px 1fr 1fr 1fr 50px'}}>
+            <Grid gridTemplateColumns={{lg:'1fr 1fr 1fr 1fr 1fr'}} gridTemplateRows={{lg:'1fr 1fr 1fr 1fr 1fr'}}>
                 <GridItem display={'flex'} flexDir='column' justifyContent={'center'} alignItems={'center'}  gridArea={{lg:'2 / 2 / 2 / 2'}}>
                     
                     <Flex as={motion.div}
@@ -32,7 +32,7 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil 1
+                                > oui
                     </Flex>
                 </GridItem>
 
@@ -51,7 +51,7 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                 </GridItem>
 
@@ -70,7 +70,7 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                     
                 </GridItem>
@@ -92,7 +92,7 @@ function Conseil() {
                             bg='#fdf8e1'
                             alignItems={{lg:'center'}}
                             justifyContent={{lg:'center'}} 
-                             > Conseil
+                             > oui
                 </Flex>
                     
                 </GridItem>
@@ -113,7 +113,7 @@ function Conseil() {
                                 bg='#fdf8e1'
                                 alignItems={{lg:'center'}}
                                 justifyContent={{lg:'center'}} 
-                                > Conseil
+                                > oui
                     </Flex>
                 </GridItem>
 

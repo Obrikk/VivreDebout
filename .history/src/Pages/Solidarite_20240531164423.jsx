@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { Flex, Box, Grid, Img, GridItem, Heading, Text, Button, UnorderedList, ListItem, Link, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter } from '@chakra-ui/react'
 import {motion} from 'framer-motion'
 import SolidariteImg from '../../public/solidariteP.png'
-import LienGif from '../../public/info.gif'
 
 
 function Solidarite() {
@@ -28,7 +27,7 @@ function Solidarite() {
             <Box  w='100%' height='100%' display={'flex'} flexDirection={'column'} alignItems={'center'} >
                 <Img src={SolidariteImg} w={'5rem'} pos='absolute' top={{lg:'8rem'}}></Img>
 
-                <Grid  templateColumns={{md:'1fr 1fr',lg:'1fr 1fr 1fr', xl:'1fr 1fr 1fr'}} height='100%' templateRows={{lg:'auto', xl:'auto'}} overflow={{lg:'visible',xl:'hidden'}} >
+                <Grid templateColumns={{md:'1fr 1fr',lg:'1fr 1fr 1fr', xl:'1fr 1fr 1fr'}} height='100%' templateRows={{lg:'auto', xl:'auto'}} overflow={{lg:'visible',xl:'hidden'}} >
                     <GridItem  width='100%'  height='100%' display={'flex'} justifyContent={'center'} alignItems='center' >
                         <Flex  
                             as={motion.div}
@@ -58,8 +57,7 @@ function Solidarite() {
                         <Flex  
                             as={motion.div}
                             width={'80%'} 
-                            height={{lg:'50%'}}    
-                            marginBottom="10px"
+                            height={{lg:'60%'}}    
                             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
                             borderRadius={'0.75rem'}
                             padding={'1rem'}
@@ -124,7 +122,6 @@ function Solidarite() {
                                     <ListItem ><Link href='https://www.capemploi.info/'>CAP Emploi</Link></ListItem>
                                     
                                 </UnorderedList>    
-                                {/* <Img src={LienGif} backgroundColor={'transparent'}></Img> */}
 
                         </Flex>
                     </GridItem>
