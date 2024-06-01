@@ -26,14 +26,14 @@ function Solidarite() {
         
             <Header></Header>
             <Box  w='100%' height='100%' display={'flex'} flexDirection={'column'} alignItems={'center'} >
-                <Img src={SolidariteImg} w={'5rem'} pos='absolute' top={{lg:'8rem'}}></Img>
+                <Img src={SolidariteImg} w={'5rem'} pos='absolute' top={{lg:'8rem','2xl':'17rem'}}></Img>
 
                 <Grid  templateColumns={{md:'1fr 1fr',lg:'1fr 1fr 1fr', xl:'1fr 1fr 1fr'}} height='100%' templateRows={{lg:'auto', xl:'auto'}} overflow={{lg:'visible',xl:'hidden'}} >
                     <GridItem  width='100%'  height='100%' display={'flex'} justifyContent={'center'} alignItems='center' >
                         <Flex  
                             as={motion.div}
-                            width={'80%'} 
-                            height={{lg:'85%',xl:'80%'}}    
+                            width={{lg:'80%' , '2xl':'70%'}} 
+                            height={{lg:'85%',xl:'80%', '2xl':'70%'}}    
                             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
                             borderRadius={'0.75rem'}
                             padding={'1rem'}
@@ -57,7 +57,8 @@ function Solidarite() {
                     <GridItem width='100%' height='100%' display={'flex'} justifyContent={'center'} alignItems={'flex-end'}>
                         <Flex  
                             as={motion.div}
-                            width={'80%'} 
+                            width={{lg:'80%' , '2xl':'70%'}} 
+
                             height={{lg:'50%'}}    
                             marginBottom="10px"
                             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
@@ -73,8 +74,9 @@ function Solidarite() {
                             justifyContent={{lg:'space-between'}}
 
                             >
-                                <Heading>Actions <br></br>Solidaires</Heading>
-                                <Button mb={{lg:'1rem'}} onClick={onOpen} w={{lg:'60%'}} h={{lg:'30%'}}>
+                                <Heading >Actions <br></br>Solidaires</Heading>
+                            
+                                <Button mb={{lg:'1rem','2xl':'1rem'}} onClick={onOpen} w={{lg:'60%','2xl':'50%'}} h={{lg:'30%','2xl':'25%'}} >
                                     Open Modal
                                 </Button>
                                 <Modal isOpen={isOpen} onClose={onClose}>

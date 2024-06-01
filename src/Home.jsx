@@ -29,18 +29,18 @@ function Home() {
                 animate={{x:0}}
                 >
                     <Heading 
-                        fontSize={{xl:'70px'}} pos={'relative'} right={{ xl:'5rem'}} bottom={{ xl:'5rem' }} 
+                        fontSize={{xl:'70px', '2xl':'90px'}} pos={'relative'} right={{ xl:'5rem'}} bottom={{ xl:'10rem' }  }  textShadow={' 9px 3px 25px rgba(0, 0, 0, 0.19)'}
                     >Vivre</Heading>
 
-                    <Heading fontSize={{ xl:'75px'}} pos='relative' left={{ xl:'8rem'}} bottom={{xl:'7rem'}} >Debout</Heading>
+                    <Heading fontSize={{ xl:'75px'}} pos='relative' left={{ xl:'8rem'}} bottom={{xl:'7rem', '2xl':'11rem'}}  textShadow={' 9px 3px 25px rgba(0, 0, 0, 0.19)'}>Debout</Heading>
                     
                     {/* <img src={Traitd alt="trait-illustration" className='trait1' /> */}
-                    <Img src={Pen} pos='absolute' width={{xl:'5rem'}} left={{xl:'39rem'}} top={{md:'164px', lg:'164px'}} ></Img>
+                    <Img src={Pen} pos='absolute' width={{xl:'5rem'}} left={{xl:'39rem', '2xl':'46rem'}} top={{md:'164px', lg:'164px', '2xl':'205px'}} ></Img>
                     <Text>VivreDebout est une association </Text>
                     
                 </motion.div>
                 <right>
-                    <motion.img src={FamilyDisabled} alt="" initial={{x:'50rem'}} animate={{x:'0'}} />
+                    <motion.img src={FamilyDisabled} alt="" initial={{x:'50rem'}} animate={{x:'0'}}    />
                     <div className="light"></div>
                 </right>
                 

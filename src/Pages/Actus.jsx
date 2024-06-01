@@ -2,7 +2,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 
 import '../styles/actus.css'
-import Calendrier from '../components/Calendrier'
+// import Calendrier from '../components/Calendrier'
 
 
 function Actus() {
@@ -13,7 +13,7 @@ function Actus() {
         <>
             <Header></Header>
             <div className="actus">
-                <Calendrier></Calendrier>
+                {/* <Calendrier></Calendrier> */}
 
             </div>
         </>

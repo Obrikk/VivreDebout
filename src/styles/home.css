@@ -191,3 +191,15 @@ right img{
 @media (min-width: 48em) {
   
 }
+
+@media screen and (min-width: 96em){
+  .light{
+    top:17.5rem;
+    right:40.2rem;
+  }
+
+  right img{
+    height: 70%;
+    margin-top: 5rem;
+  }
+}
