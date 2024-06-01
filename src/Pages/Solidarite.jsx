@@ -60,7 +60,7 @@ function Solidarite() {
                             width={{lg:'80%' , '2xl':'70%'}} 
 
                             height={{lg:'50%'}}    
-                            marginBottom="10px"
+                            marginBottom="2rem"
                             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
                             borderRadius={'0.75rem'}
                             padding={'1rem'}
@@ -103,8 +103,10 @@ function Solidarite() {
                             gridColumnEnd={{md:'3',lg:'3',xl:'3'}} >
                         <Flex  
                             as={motion.div}
-                            width={'80%'} 
-                            height={{lg:'85%'}}    
+                            width={{lg:'80%' , '2xl':'70%'}} 
+
+                            height={{lg:'85%',xl:'80%', '2xl':'70%'}}    
+   
                             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
                             borderRadius={'0.75rem'}
                             padding={'1rem'}

@@ -36,7 +36,7 @@ function Home() {
                     
                     {/* <img src={Traitd alt="trait-illustration" className='trait1' /> */}
                     <Img src={Pen} pos='absolute' width={{xl:'5rem'}} left={{xl:'39rem', '2xl':'46rem'}} top={{md:'164px', lg:'164px', '2xl':'205px'}} ></Img>
-                    <Text>VivreDebout est une association </Text>
+                    <Text>VivreDebout est une association de sgloub </Text>
                     
                 </motion.div>
                 <right>
