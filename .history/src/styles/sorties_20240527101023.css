@@ -1,0 +1,10 @@
+.sorties {
+    overflow: scroll;
+    background-color: salmon;
+}
+
+.sorties-container{
+    background-color: red;
+    height: 200vh;
+    width: 100%;
+}
