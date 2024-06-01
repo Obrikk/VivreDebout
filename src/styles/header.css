@@ -1,7 +1,11 @@
 .header{
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     width: 93.5vw;
+=======
+    width: 90vw;
+>>>>>>> 011946995d7c458f4d33888d86f5130ff4d4615e
     
     margin: 0 auto;
     margin-top: 1.5rem;
