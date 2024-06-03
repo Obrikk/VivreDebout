@@ -12,7 +12,6 @@ import {
   Button,
   UnorderedList,
   ListItem,
-  Link,
   useDisclosure,
   Modal,
   ModalOverlay,
@@ -29,10 +28,18 @@ import Masks from "../../public/theatre.png";
 
 function PrisEnContes() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [sqy, fondation];
 
   useEffect(() => {
     document.getElementById("root").style.backgroundColor = "#D2C4F3";
-  });
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>

@@ -19,7 +19,11 @@ backdrop-filter: blur(5.7px);
     
 }
 
-
+@media (max-width: em6) {
+  .header{
+    display: none;
+  }
+  }
 
 @media screen and (min-width: 96em) {
 

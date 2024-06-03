@@ -11,8 +11,8 @@ import NousConnaitre from './Pages/NousConnaitre'
 import Admin from './Pages/Admin'
 import Conseil from './Pages/Conseil'
 import Sorties from './Pages/Sorties'
-import PrisEnContes from './Pages/PrisEnContes'
-import Solidarite from './Pages/Solidarite'
+import PrisEnContes from '../Pages/PrisEnContes'
+import Solidarite from '../Pages/Solidarite'
 
 
 const router = createBrowserRouter([
