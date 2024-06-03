@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Tahoma, Calibri, Helvetica, Arial, Verdana, Times New Roman;
+      }
+      p {
+        font-size: 30px;
+      }
+
+      body {
+        padding: 0 25px;
+      }
+
+      h1 {
+        font-size: 72px;
+        text-align: center;
+        margin-bottom: 0.5em;
+        margin-top: 40px;
+      }
+      h3 {
+        text-align: center;
+        font-size: 48px;
+        margin-bottom: 1.9em;
+      }
+      header p {
+        margin-bottom: 150px;
+        text-align: center;
+      }
+      /* .box0{
+    position: relative;
+   }
+        .box0 p{
+        font-size: 24px;
+         bottom: 1em;
+        position: absolute;
+        } */
+
+      .grid-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .grid-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .grid-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
+      .grid-item {
+        padding: 20px;
+        position: relative;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 2px 2px 4px black;
+        height: 65vh;
+        /* Changed height */
+        margin-bottom: 90px;
+      }
+      .box0 p,
+      .grid-item p {
+        position: absolute;
+        padding: 10px;
+        bottom: 0.5em;
+        font-size: 21px;
+        text-align: justify;
+      }
+      .box0 p {
+        font-size: 23px;
+        left: 8em  ;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>En savoir plus sur Nous</h1>
+      <p>De petite taille mais unie, soudée, réactive...</p>
+    </header>
+    <h3>Bloc-note de la Présidente</h3>
+
+    <div class="grid-item box0">
+      <p>
+        Etre en mouvement dans l’audace et la créativité est possible. Restons
+        vivants, inventifs et actifs afin de <br> sauvegarder notre citoyenneté
+        légitime, dans le pays berceau des droits de l’homme...
+      </p>
+    </div>
+
+    <div class="grid-container">
+      <div class="grid-item">
+        <p>
+          Vivre Debout fait partie de la Coordination Handicap Autonomie qui
+          regroupe des petites associations qui défendent les mêmes valeurs et
+          droits...
+        </p>
+      </div>
+      <div class="grid-item">
+        <p>
+          Notre équipe dévouée est au cœur de notre réussite. Chaque membre du
+          personnel apporte une expertise unique et une passion inébranlable,
+          assurant ainsi que nos projets se déroulent avec excellence et
+          innovation.
+        </p>
+      </div>
+      <div class="grid-item">
+        <p>
+          L'Autonomie est un vain mot quand d'autres décident pour vous. C'est
+          en prenant les rênes de nos propres choix que nous découvrons la
+          véritable liberté.
+        </p>
+      </div>
+      <div class="grid-item">
+        <p>
+          1979 : une interview télévisée avec Gérard Dorisse, un des fondateurs
+          de Vivre Debout est regardée par un groupe de 5 mauriciens vivant en
+          hospice...
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

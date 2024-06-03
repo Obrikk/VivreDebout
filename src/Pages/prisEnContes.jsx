@@ -1,8 +1,6 @@
 import Header from "../Header";
 import { useEffect } from "react";
-import sqy from "../../public/sqyTerre.png";
-import fondation from "../../public/fondationDeFrance.jpg";
-
+import '../styles/prisEnConte.css'
 import {
   Flex,
   Box,
@@ -25,9 +23,11 @@ import {
   ModalFooter,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import theatre from "../../public/theatre.png";
+import SolidariteImg from "../../public/solidariteP.png";
+import LienGif from "../../public/info.gif";
+import Masks from "../../public/theatre.png";
 
-function prisEnContes() {
+function PrisEnContes() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
@@ -36,60 +36,50 @@ function prisEnContes() {
 
   return (
     <>
-      <Header></Header>
-
-      
+      <Header ></Header>
       <Box
         w="100%"
         height="100%"
         display={"flex"}
         flexDirection={"column"}
         alignItems={"center"}
-
       >
-        <Box
-    width={"65px"}
-    height={"60px"}
-    border={"1px solid red"}
-    pos={"absolute"}
-    bottom={"2"}
-    right={"5"}
-    borderRadius={"10px"}
-    
-    >
-  {/* <Image
-  src={sqy}
+        <Img
+          src={Masks}
+          w={"7rem"}
+          pos="relative"
+          top={{xl:"3em"}}
+        ></Img>
 
-  ></Image>
-  <Image
-  src={fondation}
-
-  ></Image> */}
-    </Box>
-        
-        <Img src={theatre} w={"5rem"} pos="absolute" top={{ lg: "8rem" }}></Img>
-
-        <Grid
-          templateColumns={{
-            md: "1fr 1fr",
-            lg: "1fr 1fr 1fr",
-            xl: "1fr 1fr 1fr",
-          }}
-          height="100%"
-          templateRows={{ lg: "auto", xl: "auto" }}
-          overflow={{ lg: "visible", xl: "hidden" }}
-        >
+<Grid
+  templateColumns={{
+    base: "1fr",   
+    md: "1fr",     
+    lg: "1fr 1fr 1fr",
+    xl: "1fr 1fr 1fr", 
+  }}
+  
+  height={{lg:"100%", xl:"100%",md:"100%",base:"100%"}}
+  templateRows={{ base: "auto", lg: "auto", xl: "auto" }}
+  overflow={{ base: "visible", lg: "visible", xl: "" }}
+  pos={"relative"}
+  top={{xl:"-3em",md:"5em",lg:"1rem"}}
+  rowGap={{md:"3rem",base:"3rem"}}
+>
           <GridItem
-            width="100%"
-            height="100%"
+  
             display={"flex"}
             justifyContent={"center"}
             alignItems="center"
           >
+            {/* box 1 */}
             <Flex
               as={motion.div}
-              width={"80%"}
-              height={{ lg: "85%", xl: "80%" }}
+              width={{ lg: "90%", "2xl": "70%",md:"80%",base:"80%" }}
+              textAlign={{lg:"justify"}}
+              justifyContent={{md:"space-around",xl:"space-around"}}
+            
+              height={{ lg: "85%", xl: "90%", md:"350px",base:"350px" }}
               boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
               borderRadius={"0.75rem"}
               padding={"1rem"}
@@ -100,84 +90,117 @@ function prisEnContes() {
               direction={"column"}
               bg="#EEE7FF"
             >
-              <Heading>Inclusivité</Heading>
-              <Text marginTop={"5.6rem"}>
-              Montez sur Scène avec "Pris en Contes 2023-2024" <br /> <br />
-                Maison du Voisinage Les Coudrays Rue de Bassigny - 78310
-                Maurepas Parking facile d'accès situé à proximité <br /> <br />
-                Tous les mardis de 17h45 à 19h45
+              <Heading     fontSize={{lg:"2.4em",md:"2.4rem" }}>Inclusivité</Heading>
 
-              </Text>
-             
+              <UnorderedList
+                spacing={3}
+                listStyleType={"circle"}
+                
+                fontSize={{md:"1.3rem",lg:"1rem"}}
+                
+              
+                
+              >
+                <ListItem>
+                  {" "}
+                  Montez sur Scène avec "Pris en Contes 2023-2024"
+                </ListItem>
+                <ListItem>
+                  Maison du Voisinage Les Coudrays Rue de Bassigny - 78310
+                  Maurepas Parking facile d'accès situé à proximité
+                </ListItem>
+                <ListItem> Tous les mardis de 17h45 à 19h45 </ListItem>
+              </UnorderedList>
             </Flex>
           </GridItem>
           <GridItem
             width="100%"
             height="100%"
             display={"flex"}
-            justifyContent={"center"}
+            justifyContent={{lg:"center",md:"space-around"}}
             alignItems={"flex-end"}
+           
+            pos={{xl:'relative'}}
+            top={{xl:"4rem"}}
+           
+      
           >
+            {/* Box 2 */}
             <Flex
               as={motion.div}
-              width={"80%"}
-              height={{ lg: "60%" }}
+              width={{ lg: "90%", "2xl": "70%",md:"80%" }}
+              height={{ lg: "63%",md:"250px" }}
+              marginBottom="2rem"
               boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
               borderRadius={"0.75rem"}
               padding={"1rem"}
               whileHover={{ scale: 1.05 }}
               initial={{ y: "30rem" }}
+              pos={{lg:"relative"}}
+              top={{lg:"1rem"}}
               animate={{ y: "0rem" }}
               direction={"column"}
+              
               cursor="pointer"
               bg="#EEE7FF"
+             
               alignItems={{ lg: "center" }}
-              justifyContent={{ lg: "space-between" }}
+              justifyContent={{md:"space-around",xl:"space-around"}}
             >
-              <Heading>Debout !</Heading>
-              <Text textAlign={"center"}>
+              <Heading  fontSize={{lg: "2.4rem",md:"2.4rem"}}>Debout !</Heading>
+              <Text     
+                     fontSize={{md:"1.3rem",lg:"1rem"}}
+                  textAlign={"center"}>
                 Être en mouvement dans l’audace et la créativité, c’est possible
                 !
               </Text>
+
               <Button
-                mb={{ lg: "1rem" }}
+                mb={{ lg: "1rem", "2xl": "1rem" }}
+             
                 onClick={onOpen}
-                w={{ lg: "60%" }}
-                h={{ lg: "30%" }}
+                w={{ lg: "60%", "2xl": "50%" }}
+                h={{ lg: "30%", "2xl": "25%",md:"30%" }}
               >
-                Rejoignez nous !!
+                Rejoignez-nous !
               </Button>
               <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent
-                
-                  borderRadius={"15px"}
-                  overflowY={"auto"}
+                  borderRadius="15px"
+                  overflowY="auto"
                   display="flex"
                   flexDirection="column"
                   alignItems="center"
                   justifyContent="center"
                   textAlign="center"
-                  
                   position="fixed"
-                  top={"-3em"}
-                  height={"95vh"}
+                  height="85vh"
                 >
-                  <ModalHeader fontWeight={"bold"} fontSize={"2.3em"} overflow="visible">Pourquoi nous rejoindre ?</ModalHeader>
-                  <Text fontSize={"1.07em"} textAlign={"justify"} pl={"15px"} pr={"15px"} pos={"relative"} top={"10px"}>
-                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, maxime inventore! Assumenda totam fugit qui error iusto alias id, corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab, ipsa dolorum!
+                  <ModalHeader
+                    fontWeight="bold"
+                    fontSize={{ base: "1.5em", lg: "2em", xl: "3.5em" }}
+                    overflow="visible"
+                  >
+                    Pourquoi nous rejoindre ?
+                  </ModalHeader>
+                  <Text
+                    fontSize="1.07em"
+                    textAlign="justify"
+                    pl="15px"
+                    pr="15px"
+                    pos="relative"
+                    top="50px"
+                  >
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Eius, maxime inventore! Assumenda totam fugit qui error
+                    iusto alias id, corporis velit veritatis, provident, modi
+                    repellat fugiat ipsam. Ab, ipsa dolorum!
                   </Text>
                   <ModalCloseButton />
                   <ModalBody></ModalBody>
-
-                  <ModalFooter
-                  overflow={"visible"}
-                  >
-                    <Button
-                      backgroundColor={"#FCEFB4"}
-                      mr={3}
-                      onClick={onClose}
-                    >
+                  <ModalFooter overflow="visible">
+                    <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
                       Fermer
                     </Button>
                   </ModalFooter>
@@ -191,47 +214,43 @@ function prisEnContes() {
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
-            gridColumnStart={{ md: "1", lg: "3", xl: "3" }}
-            gridColumnEnd={{ md: "3", lg: "3", xl: "3" }}
+            gridColumnStart={{ md: "auto", lg: "3", xl: "3" }}
+            gridColumnEnd={{ md: "auto", lg: "3", xl: "3" }}
           >
+            {/* Box 3 */}
             <Flex
-              as={motion.div}
-              width={"80%"}
-              height={{ lg: "85%" }}
-              boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
-              borderRadius={"0.75rem"}
-              padding={"1rem"}
-              alignItems={"center"}
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              bg="#EEE7FF"
-              direction="column"
+                  as={motion.div}
+                  width={{ lg: "90%", "2xl": "70%",md:"80%" }}
+                  textAlign={{lg:"justify"}}
+                  justifyContent={{md:"space-around",xl:"space-around"}}
+                
+                  height={{ lg: "85%", xl: "90%", md:"350px" }}
+                  boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
+                  borderRadius={"0.75rem"}
+                  padding={"1rem"}
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ x: "-20rem" }}
+                  animate={{ x: "0rem" }}
+                  cursor="pointer"
+                  direction={"column"}
+                  bg="#EEE7FF"
             >
-              <Heading>
-Nos futures Manifestations 
-</Heading>
+              <Heading  fontSize={{lg: "2.4rem",md:"2.4rem"}}>Futures Manifestations</Heading>
               <UnorderedList
                 spacing={3}
                 listStyleType={"circle"}
-                marginTop={"4.5rem"}
-                pos={"relative"}
-                right={"20px"}
+                fontSize={{md:"1.3rem",lg:"1rem"}}
+                
                 
               >
+                <ListItem>14 juin 15h nuit du handicap</ListItem>
                 <ListItem>
-                - 14 juin 15h nuit du handicap
+                  Novembre 2024, du lundi 18 au dimanche 24, semaine du handicap
+                  en entreprise
                 </ListItem>
-                <ListItem>
-                - Novembre 2024, du lundi 18 au dimanche 24 novembre DEMAINE DU HANDICAP EN ENTREPRISE 
-                </ListItem>
-              
-              
-                <ListItem>
-                -25 janvier 2025 50 ans vivre debout  
-                </ListItem>
+                <ListItem>25 janvier 2025, "50 ans vivre debout" </ListItem>
               </UnorderedList>
+              {/* <Img src={LienGif} backgroundColor={'transparent'}></Img> */}
             </Flex>
           </GridItem>
         </Grid>
@@ -240,4 +259,4 @@ Nos futures Manifestations
   );
 }
 
-export default prisEnContes;
+export default PrisEnContes;

@@ -2,17 +2,23 @@
 import './styles/header.css'
 import Navbar from './components/Navbar.jsx'
 import { Heading, Box } from '@chakra-ui/react'
-
+import { motion } from 'framer-motion'
 
 
 function Header() {
     return ( 
         <>
-            <div className="header">
+            <motion.div 
+            className="header"
+            initial={{y:'-40rem'}}
+            animate={{y:0}}
+            transition={{duration:0.4}}
+
+            >
                 <Navbar>
                 </Navbar>
                     
-            </div>
+            </motion.div>
 
         </>
      );

@@ -10,4 +10,11 @@
 }
 
 
-/* e8d6b0 */
+
+
+@media screen and (min-width: 96em) {
+  #root {
+    grid-template-rows: 10% 80% 10%;
+  }
+}
+

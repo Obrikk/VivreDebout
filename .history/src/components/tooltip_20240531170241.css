@@ -1,0 +1,7 @@
+.tippy-box[data-theme~='retro'] {
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: black;
+  }
