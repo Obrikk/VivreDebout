@@ -11,7 +11,6 @@ import theatre from "../public/theatre.png";
 import sortie from "../public/sortie.jpg";
 import solidarite from "../public/solidariteP.png";
 import sortieP from "../public/sortieP.png";
-import AncienLogo from '../public/LogoAsso.png'
 
 import "../src/styles/home.css";
 
@@ -64,17 +63,20 @@ function Home() {
       <div className="home">
         <div className="left">
           <Box overflow={"visible"}>
-          <Heading size="3xl" pos="relative" bottom={"1rem"} left={{lg:'3rem'}} >
-            Vivre Debout
+          <Heading size="3xl" pos="relative" bottom={"30px"} >
+            Vivre 
             
           </Heading>
-          <Image src={AncienLogo} pos={'absolute'} w={{lg:'4rem'}} left={{lg:'4rem'}} top={{lg:'5.5rem'}} ></Image>
+          <Heading size="3xl" pos="relative" bottom={"30px"} >
+            Debout 
+            
+          </Heading>
           <Image
             src={Pen}
             pos="absolute"
-            width="4rem"
-            left="34.5rem"
-            top="5.7rem"
+            width="5rem"
+            left="28rem"
+            top="5rem"
           />
           <Text
             pos="relative"
@@ -83,8 +85,6 @@ function Home() {
             fontWeight="600"
             margin={"auto"}
             width={"76%"}
-            left={{lg:'3rem'}}
-            top={{lg:'1rem'}}
           >
             Vivre Debout est membre administrateur de la Coordination Handicap
             Autonomie qui regroupe des petites associations qui défendent les

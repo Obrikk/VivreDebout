@@ -83,33 +83,22 @@ function PrisEnContes() {
                                     Rejoignez-nous !
                                 </Button>
                                 <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent
-          borderRadius="15px"
-          overflowY="auto"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          position="fixed"
-          height="85vh"
-        >
-          <ModalHeader fontWeight="bold" fontSize={{ base: "1.5em", lg: "2em", xl: "3.5em" }} overflow="visible">
-            Pourquoi nous rejoindre ?
-          </ModalHeader>
-          <Text fontSize="1.07em" textAlign="justify" pl="15px" pr="15px" pos="relative" top="50px">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, maxime inventore! Assumenda totam fugit qui error iusto alias id, corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab, ipsa dolorum!
-          </Text>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-          <ModalFooter overflow="visible">
-            <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
-              Fermer
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+                                    <ModalOverlay />
+                                    <ModalContent bg='salmon' width={'100vw'} maxWidth={'100vw'}>
+                                    <ModalHeader>Pourquoi nous rejoindre ?</ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody>
+                                        <lorem></lorem>
+                                    </ModalBody>
+
+                                    <ModalFooter>
+                                        <Button backgroundColor={'#FCEFB4'} mr={3} onClick={onClose}>
+                                        Close
+                                        </Button>
+                                        <Button variant='ghost'>Secondary Action</Button>
+                                    </ModalFooter>
+                                    </ModalContent>
+                                </Modal>
                                 
 
                         </Flex>
@@ -130,7 +119,7 @@ function PrisEnContes() {
                             initial={{x:'20rem'}}
                             animate={{x:'0rem'}}
                             cursor='pointer'
-                            bg='#EEE7FF'
+                            bg='#fdf8e1'
                             direction='column'
 
                             >

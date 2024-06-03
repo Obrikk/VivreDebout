@@ -11,7 +11,6 @@ import theatre from "../public/theatre.png";
 import sortie from "../public/sortie.jpg";
 import solidarite from "../public/solidariteP.png";
 import sortieP from "../public/sortieP.png";
-import AncienLogo from '../public/LogoAsso.png'
 
 import "../src/styles/home.css";
 
@@ -68,7 +67,6 @@ function Home() {
             Vivre Debout
             
           </Heading>
-          <Image src={AncienLogo} pos={'absolute'} w={{lg:'4rem'}} left={{lg:'4rem'}} top={{lg:'5.5rem'}} ></Image>
           <Image
             src={Pen}
             pos="absolute"

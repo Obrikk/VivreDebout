@@ -130,7 +130,7 @@ function PrisEnContes() {
                             initial={{x:'20rem'}}
                             animate={{x:'0rem'}}
                             cursor='pointer'
-                            bg='#EEE7FF'
+                            bg='#fdf8e1'
                             direction='column'
 
                             >

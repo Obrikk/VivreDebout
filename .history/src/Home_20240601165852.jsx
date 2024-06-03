@@ -68,7 +68,7 @@ function Home() {
             Vivre Debout
             
           </Heading>
-          <Image src={AncienLogo} pos={'absolute'} w={{lg:'4rem'}} left={{lg:'4rem'}} top={{lg:'5.5rem'}} ></Image>
+          <Image src={AncienLogo} pos></Image>
           <Image
             src={Pen}
             pos="absolute"

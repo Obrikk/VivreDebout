@@ -48,10 +48,9 @@ function PrisEnContes() {
 
                             >
                             
-                                <Heading>Inclusivité</Heading>
-                                <Text marginTop={'2rem'}>- Montez sur Scène avec "Pris en Contes 2023-2024"</Text>
-                                <Text marginTop={'1rem'}>- Maison du Voisinage Les Coudrays Rue de Bassigny - 78310 Maurepas Parking facile d'accès situé à proximité <br /> <br />
-        Tous les mardis de 17h45 à 19h45</Text>
+                                <Heading>Conseils</Heading>
+                                <Text marginTop={'2rem'}>- Nous apportons les conseils pour le respect de l'éthique citoyenne</Text>
+                                <Text marginTop={'1rem'}>- Nous sommes amenés parfois à dénoncer et à critiquer publiquement les entraves et les manquements à la convention de l'ONU</Text>
                                 <Button marginTop={{lg:'1rem'}}><Link href='/solidarite/conseil'>Accéder aux conseils</Link></Button>
 
                         </Flex>
@@ -76,61 +75,34 @@ function PrisEnContes() {
                             justifyContent={{lg:'space-between'}}
 
                             >
-                                <Heading >Debout !</Heading>
-                                <Text>Être en mouvement dans l’audace et la créativité, c’est possible !</Text>
+                                <Heading >Actions <br></br>Solidaires</Heading>
                             
                                 <Button mb={{lg:'1rem','2xl':'1rem'}} onClick={onOpen} w={{lg:'60%','2xl':'50%'}} h={{lg:'30%','2xl':'25%'}} >
-                                    Rejoignez-nous !
+                                    Open Modal
                                 </Button>
                                 <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent
-          borderRadius="15px"
-          overflowY="auto"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          position="fixed"
-          height="85vh"
-        >
-          <ModalHeader fontWeight="bold" fontSize={{ base: "1.5em", lg: "2em", xl: "3.5em" }} overflow="visible">
-            Pourquoi nous rejoindre ?
-          </ModalHeader>
-          <Text fontSize="1.07em" textAlign="justify" pl="15px" pr="15px" pos="relative" top="50px">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, maxime inventore! Assumenda totam fugit qui error iusto alias id, corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab, ipsa dolorum!
-          </Text>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-          <ModalFooter overflow="visible">
-            <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
-              Fermer
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+                                    <ModalOverlay />
+                                    <ModalContent bg='salmon' width={'100vw'} maxWidth={'100vw'}>
+                                    <ModalHeader>Modal Title</ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody>
+                                    </ModalBody>
+
+                                    <ModalFooter>
+                                        <Button backgroundColor={'#FCEFB4'} mr={3} onClick={onClose}>
+                                        Close
+                                        </Button>
+                                        <Button variant='ghost'>Secondary Action</Button>
+                                    </ModalFooter>
+                                    </ModalContent>
+                                </Modal>
                                 
 
                         </Flex>
                     </GridItem>
                     <GridItem width='100%' height='100%' display={'flex'} justifyContent={'center'} alignItems={'center'} gridColumnStart={{md:'1',lg:'3', xl:'3'}}
                             gridColumnEnd={{md:'3',lg:'3',xl:'3'}} >
-                        <Flex  
-                            as={motion.div}
-                            width={{lg:'80%' , '2xl':'70%'}} 
-
-                            height={{lg:'85%',xl:'80%', '2xl':'70%'}}    
-   
-                            boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
-                            borderRadius={'0.75rem'}
-                            padding={'1rem'}
-                            alignItems={'center'}
-                            whileHover={{scale:1.05}}
-                            initial={{x:'20rem'}}
-                            animate={{x:'0rem'}}
-                            cursor='pointer'
-                            bg='#EEE7FF'
+                   Conse'
                             direction='column'
 
                             >

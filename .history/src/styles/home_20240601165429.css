@@ -66,8 +66,8 @@ right img{
     width: 15px;
     background:#fff048d8;
     position: absolute;
-    right: 27.5rem;
-    top: 10rem;
+    right: 28.5rem;
+    top: 11rem;
     opacity: 0.3;
     border-radius: 50%;
     display: inline-block;
@@ -189,6 +189,7 @@ right img{
 
       
 @media (min-width: 48em) {
+    .light{}
 }
 
 @media screen and (min-width: 96em){
