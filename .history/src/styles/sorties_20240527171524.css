@@ -1,0 +1,26 @@
+.sorties {
+    overflow: scroll;
+}
+
+.sorties-container{
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    overflow: visible;
+    padding: 20px;
+}
+
+.sorties-container ul {
+    list-style-type: none;
+}
+
+.sorties-container li {
+    border: solid black 1px;
+    overflow:visible;
+    list-style-type: none;
+    height: 20rem;
+    border-radius: 20px;
+    
+}

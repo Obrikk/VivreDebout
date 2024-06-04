@@ -1,0 +1,37 @@
+
+
+
+.nous-connaitre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: ;
+}
+.nous-connaitre * {
+    overflow: visible;
+}
+
+.nous-connaitre form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.right {
+    height: 100%;
+}
+.nous-connaitre input{
+    border-radius: .75rem;
+    outline: none;
+    border: solid black 2px;
+    background-color: transparent;
+    overflow: visible;
+    transition: 0.3s;
+}
+.nous-connaitre input:focus{
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}

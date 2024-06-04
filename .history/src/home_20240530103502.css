@@ -1,0 +1,15 @@
+.home{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.homePageImg{
+    width: 60%;
+    
+}
+
+.left{
+    overflow-x: visible;
+}

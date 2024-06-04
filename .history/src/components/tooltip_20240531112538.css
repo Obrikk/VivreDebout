@@ -1,0 +1,4 @@
+.tippy-box[data-theme~='retro'] {
+    max-width: 200px; /* Adjust the max-width as needed */
+    padding: 10px; /* Adjust the padding as needed */
+  }
