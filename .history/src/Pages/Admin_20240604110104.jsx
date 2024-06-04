@@ -1,0 +1,28 @@
+import { Flex, Heading, Box, Text, Grid,  } from '@chakra-ui/react'
+import Header from '../Header'
+import {
+    FormControl,
+    FormLabel,
+    FormErrorMessage,
+    FormHelperText,
+  } from '@chakra-ui/react'
+
+
+function Admin() {
+    return ( 
+
+
+        <>
+            <Header></Header>
+            <Flex justify={'center'}>
+                <Heading>Page administration</Heading>
+
+            </Flex>
+        
+        
+        </>
+
+     );
+}
+
+export default Admin;
