@@ -14,7 +14,7 @@ function Admin() {
 
 
 
-    // const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [login, setLogin] = useState({
         email:'',

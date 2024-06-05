@@ -28,7 +28,7 @@ function Admin() {
         console.log(login)
 
         
-            fetch(`http://localhost:8888/login`,{
+            fetch(`51.77.137.87/login`,{
                 method:'POST',
                 credentials:'include',
                 headers:{

@@ -14,6 +14,7 @@ import '../styles/sorties.css';
 import {jwtDecode} from 'jwt-decode'
 
 function Sorties() {
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [token, setToken] = useState(''); // Initialize token state as null
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -55,7 +56,7 @@ function Sorties() {
     useEffect(() => {
         const fetchSorties = async () => {
             try {
-                const response = await fetch(`${apiUrl}/sorties`);
+                const response = await fetch(``);
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des données');
                 }
@@ -108,7 +109,7 @@ function Sorties() {
 
             console.log('Sending data to the server:', formDataWithIntegers);
 
-            const response = await fetch(`${apiUrl}/sorties`, {
+            const response = await fetch('http://localhost:8888/sorties/', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -28,8 +28,8 @@ function Admin() {
         console.log(login)
 
         
-            fetch(`http://localhost:8888/login`,{
-                method:'POST',
+            fetch(`http://51.77.137.87/login`,{
+                method:'POST',np
                 credentials:'include',
                 headers:{
                     'Content-Type': 'application/json'

@@ -14,6 +14,7 @@ import '../styles/sorties.css';
 import {jwtDecode} from 'jwt-decode'
 
 function Sorties() {
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [token, setToken] = useState(''); // Initialize token state as null
     const [selectedDate, setSelectedDate] = useState(new Date());

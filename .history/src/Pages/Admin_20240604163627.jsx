@@ -10,11 +10,9 @@ import {
 import {jwtDecode} from 'jwt-decode'
 
 function Admin() {
-    
 
 
-
-    // const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [login, setLogin] = useState({
         email:'',
@@ -28,7 +26,7 @@ function Admin() {
         console.log(login)
 
         
-            fetch(`http://localhost:8888/login`,{
+            fetch(`${apiUrl}/login`,{
                 method:'POST',
                 credentials:'include',
                 headers:{

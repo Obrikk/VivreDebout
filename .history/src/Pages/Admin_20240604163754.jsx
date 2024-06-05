@@ -8,13 +8,15 @@ import {
   } from '@chakra-ui/react'
   import {useState} from 'react'
 import {jwtDecode} from 'jwt-decode'
+import dotenv from 'dotenv';
 
 function Admin() {
     
 
+dotenv.config();
 
 
-    // const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [login, setLogin] = useState({
         email:'',
@@ -28,7 +30,7 @@ function Admin() {
         console.log(login)
 
         
-            fetch(`http://localhost:8888/login`,{
+            fetch(`${apiUrl}/login`,{
                 method:'POST',
                 credentials:'include',
                 headers:{
