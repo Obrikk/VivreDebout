@@ -74,16 +74,16 @@ function Home() {
   const { isOpen: isSortiesOpen, onOpen: onSortiesOpen, onClose: onSortiesClose } = useDisclosure();
   const { isOpen: isPrisEnContesOpen, onOpen: onPrisEnContesOpen, onClose: onPrisEnContesClose } = useDisclosure();
   const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
-  const [isMobile, setIsMobile] = useState(false);
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener("resize", handleResize);
-    handleResize();
-    document.getElementById("root").style.backgroundColor = "#D2C4F3";
+
+    // Cleanup event listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
