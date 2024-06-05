@@ -1,5 +1,5 @@
 
-import './styles/header.css'
+import './styles/navbar.css'
 import Navbar from './components/Navbar.jsx'
 import { Heading, Box } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
@@ -13,7 +13,7 @@ function Header() {
             initial={{y:'-40rem'}}
             animate={{y:0}}
             transition={{duration:0.4}}
-
+            
             >
                 <Navbar>
                 </Navbar>
