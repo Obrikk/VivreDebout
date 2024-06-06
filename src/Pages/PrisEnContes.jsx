@@ -106,12 +106,13 @@ function PrisEnContes() {
                   Menu
                 </DrawerHeader>
                 <DrawerBody
-                  fontSize={"1.5rem"}
+                     fontSize={" 1.6rem"}
                   display={"flex"}
                   flexDirection={"column"}
                   justifyContent={"center"}
                   fontWeight={"500"}
-                  gap={"40px"}
+                  mt={"25px"}
+                  gap={"50px"}
                 >
                   {[
                        { label: "Accueil", href: "/" },
@@ -209,7 +210,7 @@ function PrisEnContes() {
               cursor="pointer"
               direction="column"
               bg="#EEE7FF"
-              onClick={onOpen}
+           
             >
               <Heading
                 fontSize={{
@@ -230,7 +231,7 @@ function PrisEnContes() {
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
-                  xl: "1.4rem",
+                  xl: "1.5rem",
                   base: "1.1rem",
                   sm: "1.25rem",
                 }}
@@ -281,7 +282,7 @@ function PrisEnContes() {
               bg="#EEE7FF"
               alignItems="center"
               justifyContent={{ base: "space-between", md: "space-around" }}
-              onClick={onOpen}
+       
             >
               <Heading
                 fontSize={{
@@ -298,7 +299,7 @@ function PrisEnContes() {
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
-                  xl: "1.4rem",
+                  xl: "1.5rem",
                   base: "1.1rem",
                   sm: "1.25rem",
                 }}
@@ -351,8 +352,7 @@ function PrisEnContes() {
               cursor="pointer"
               direction="column"
               bg="#EEE7FF"
-              onClick={onOpen}
-            >
+                >
               <Heading
                 fontSize={{
                   lg: "2.3em",
@@ -367,11 +367,12 @@ function PrisEnContes() {
               <UnorderedList
                 spacing={3}
                 listStyleType="circle"
-                mt="25px"
+                
+                
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
-                  xl: "1.3rem",
+                  xl: "1.5rem",
                   sm: "1.25rem",
                   base: "1.05rem",
                 }}

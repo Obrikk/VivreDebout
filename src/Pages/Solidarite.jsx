@@ -134,24 +134,26 @@ function PrisEnContes() {
               isOpen={isDrawerOpen}
               placement="right"
               onClose={onDrawerClose}
+              
             >
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
                 <DrawerCloseButton />
                 <DrawerHeader
                   textAlign={"center"}
-                  fontSize={"2rem"}
+                  fontSize={"3rem"}
                   fontWeight={"700"}
                 >
                   Menu
                 </DrawerHeader>
                 <DrawerBody
-                  fontSize={"1.5rem"}
+                  fontSize={" 1.6rem"}
                   display={"flex"}
                   flexDirection={"column"}
                   justifyContent={"center"}
                   fontWeight={"500"}
-                  gap={"40px"}
+                  mt={"25px"}
+                  gap={"50px"}
                 >
                   {[
                       { label: "Accueil", href: "/" },
@@ -267,7 +269,7 @@ function PrisEnContes() {
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.2rem",
-                  xl: "1.4rem",
+                  xl: "1.5rem",
                   base: "1.1rem",
                   sm: "1.25rem",
                 }}
@@ -343,7 +345,7 @@ function PrisEnContes() {
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
-                  xl: "1.4rem",
+                  xl: "1.5rem",
                   base: "1.1rem",
                   sm: "1.25rem",
                 }}
@@ -412,7 +414,7 @@ function PrisEnContes() {
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
-                  xl: "1.4rem",
+                  xl: "1.5rem",
                   sm: "1.25rem",
                   base: "1.05rem",
                 }}
