@@ -28,8 +28,9 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Link,
+  Image,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import SolidariteImg from "../../public/solidariteP.png";
 import LienGif from "../../public/info.gif";
@@ -41,12 +42,11 @@ const MotionLink = motion(Link);
 
 function PrisEnContes() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    isOpen: isDrawerOpen,
-    onOpen: onDrawerOpen,
-    onClose: onDrawerClose,
-  } = useDisclosure();
+  const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
   const [isMobile, setIsMobile] = useState(false);
+
+  const [isHandicapOpen, setHandicapOpen] = useState(false);
+  const [isVivreDeboutOpen, setVivreDeboutOpen] = useState(false);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
@@ -59,22 +59,90 @@ function PrisEnContes() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleLinkClick = (href) => (e) => {
-    e.preventDefault();
-    setTimeout(() => {
-      window.location.href = href;
-    }, 1500);
+  const customModalStyles = {
+    modalContent: {
+      borderRadius: "15px",
+      overflow: "none",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      position: "fixed",
+      height: "85vh",
+      backgroundColor: "#FFF0F5", // Background color for the modal content
+    },
+    modalHeader: {
+      fontWeight: "bold",
+      fontSize: "2em",
+    },
+    modalBody: {
+      marginTop: "30px",
+      textAlign: "justify",
+      fontSize: "1.1rem",
+    },
+  };
+
+  const CustomImageModal = ({ isOpen, onClose, header, body, images }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const handlePrevImage = () => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    };
+
+    const handleNextImage = () => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    };
+
+    return (
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent style={customModalStyles.modalContent}>
+          <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody style={customModalStyles.modalBody}>
+            {images.length > 1 && (
+              <>
+                <IconButton
+                  icon={<ArrowBackIcon />}
+                  onClick={handlePrevImage}
+                  position="absolute"
+                  left="10px"
+                  top="50%"
+                  transform="translateY(-50%)"
+                  zIndex="10"
+                />
+                <IconButton
+                  icon={<ArrowForwardIcon />}
+                  onClick={handleNextImage}
+                  position="absolute"
+                  right="10px"
+                  top="50%"
+                  transform="translateY(-50%)"
+                  zIndex="10"
+                />
+              </>
+            )}
+            <Image src={images[currentImageIndex]} alt={header} />
+            {body && <Text mt="30px">{body}</Text>}
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+              Fermer
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
   };
 
   return (
     <>
-      <Flex
-        as="header"
-        w="100%"
-        p={4}
-        alignItems="center"
-        justifyContent="space-between"
-      >
+      <Flex as="header" w="100%" p={4} alignItems="center" justifyContent="space-between">
         {isMobile ? (
           <>
             <IconButton
@@ -87,26 +155,17 @@ function PrisEnContes() {
               borderRadius={"15px"}
               color={"white"}
               bg={"black"}
-              _hover={{ bg: "white", color: "black" }}  
+              _hover={{ bg: "white", color: "black" }}
             />
-            <Drawer
-              as={motion.div}
-              isOpen={isDrawerOpen}
-              placement="right"
-              onClose={onDrawerClose}
-            >
+            <Drawer as={motion.div} isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
                 <DrawerCloseButton />
-                <DrawerHeader
-                  textAlign={"center"}
-                  fontSize={"2rem"}
-                  fontWeight={"700"}
-                >
+                <DrawerHeader textAlign={"center"} fontSize={"2rem"} fontWeight={"700"}>
                   Menu
                 </DrawerHeader>
                 <DrawerBody
-                     fontSize={" 1.6rem"}
+                  fontSize={" 1.6rem"}
                   display={"flex"}
                   flexDirection={"column"}
                   justifyContent={"center"}
@@ -115,7 +174,7 @@ function PrisEnContes() {
                   gap={"50px"}
                 >
                   {[
-                       { label: "Accueil", href: "/" },
+                    { label: "Accueil", href: "/" },
                     { label: "Actualités", href: "./actus" },
                     { label: "Solidarité", href: "./solidarite" },
                     { label: "Sorties", href: "./Sorties" },
@@ -134,7 +193,12 @@ function PrisEnContes() {
                         transition: "0.4s all ease",
                       }}
                       whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                      onClick={handleLinkClick(item.href)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setTimeout(() => {
+                          window.location.href = item.href;
+                        }, 1500);
+                      }}
                     >
                       {item.label}
                     </MotionLink>
@@ -154,19 +218,8 @@ function PrisEnContes() {
           </Header>
         )}
       </Flex>
-      <Box
-        w="100%"
-        height="100%"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Img
-          src={Masks}
-          w="8rem"
-          pos="relative"
-          top={{ xl: "3em", lg: "1em", base: "1.5em" }}
-        />
+      <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+        <Img src={Masks} w="8rem" pos="relative" top={{ xl: "3em", lg: "1em", base: "1.5em" }} />
         <Grid
           templateColumns={{
             base: "1fr",
@@ -210,7 +263,6 @@ function PrisEnContes() {
               cursor="pointer"
               direction="column"
               bg="#EEE7FF"
-           
             >
               <Heading
                 fontSize={{
@@ -240,18 +292,13 @@ function PrisEnContes() {
                   Montez sur Scène avec "Pris en Contes 2023-2024"
                 </ListItem>
                 <ListItem>
-                  Maison du Voisinage Les Coudrays Rue de Bassigny - 78310
-                  Maurepas
+                  Maison du Voisinage Les Coudrays Rue de Bassigny - 78310 Maurepas
                 </ListItem>
                 <ListItem> Tous les mardis de 17h45 à 19h45 </ListItem>
               </UnorderedList>
             </Flex>
           </GridItem>
-          <GridItem
-            display="flex"
-            justifyContent="center"
-            alignItems="flex-end"
-          >
+          <GridItem display="flex" justifyContent="center" alignItems="flex-end">
             <Flex
               as={motion.div}
               width={{
@@ -282,7 +329,6 @@ function PrisEnContes() {
               bg="#EEE7FF"
               alignItems="center"
               justifyContent={{ base: "space-between", md: "space-around" }}
-       
             >
               <Heading
                 fontSize={{
@@ -305,20 +351,9 @@ function PrisEnContes() {
                 }}
                 textAlign="center"
               >
-                Être en mouvement dans l’audace et la créativité, c’est possible
-                !
+                Être en mouvement dans l’audace et la créativité, c’est possible !
               </Text>
-              <Button
-                onClick={onOpen}
-                w={{ lg: "60%", "2xl": "50%" }}
-                h={{
-                  lg: "30%",
-                  "2xl": "25%",
-                  md: "30%",
-                  sm: "30%",
-                  base: "30%",
-                }}
-              >
+              <Button onClick={onOpen} w={{ lg: "60%", "2xl": "50%" }} h={{ lg: "30%", "2xl": "25%", md: "30%", sm: "30%", base: "30%" }}>
                 Rejoignez-nous !
               </Button>
             </Flex>
@@ -352,7 +387,7 @@ function PrisEnContes() {
               cursor="pointer"
               direction="column"
               bg="#EEE7FF"
-                >
+            >
               <Heading
                 fontSize={{
                   lg: "2.3em",
@@ -367,8 +402,6 @@ function PrisEnContes() {
               <UnorderedList
                 spacing={3}
                 listStyleType="circle"
-                
-                
                 fontSize={{
                   md: "1.3rem",
                   lg: "1.3rem",
@@ -377,17 +410,34 @@ function PrisEnContes() {
                   base: "1.05rem",
                 }}
               >
-                <ListItem>14 juin 15h nuit du handicap</ListItem>
                 <ListItem>
-                  Novembre 2024, du lundi 18 au dimanche 24, semaine du handicap
-                  en entreprise
+                  <Link onClick={() => setHandicapOpen(true)}>14 juin 15h nuit du handicap</Link>
                 </ListItem>
-                <ListItem>25 janvier 2025, "50 ans vivre debout"</ListItem>
+                <ListItem>
+                  Novembre 2024, du lundi 18 au dimanche 24, semaine du handicap en entreprise
+                </ListItem>
+                <ListItem>
+                  <Link onClick={() => setVivreDeboutOpen(true)}>25 janvier 2025, "50 ans vivre debout"</Link>
+                </ListItem>
               </UnorderedList>
             </Flex>
           </GridItem>
         </Grid>
       </Box>
+
+      <CustomImageModal
+        isOpen={isHandicapOpen}
+        onClose={() => setHandicapOpen(false)}
+
+        images={["../../public/FlyerNuitDuHandicap1.png", "../../public/FlyerNuitDuHandicap2.png"]}
+      />
+
+      <CustomImageModal
+        isOpen={isVivreDeboutOpen}
+        onClose={() => setVivreDeboutOpen(false)}
+        images={["../../public/VivreDebout50Ans.jpg"]}
+      />
+      
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
