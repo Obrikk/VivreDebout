@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import FamilyDisabled from "../public/FamilyDisab.svg";
+import Header from "../src/Header";
+import { useEffect, useState } from "react";
 import Pen from "../public/pen.gif";
 import {
-  Heading,
-  Image,
+  Flex,
   Box,
+  Grid,
+  Img,
+  GridItem,
+  Heading,
   Text,
+  Button,
+  UnorderedList,
+  ListItem,
+  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -14,84 +20,37 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
-  Button,
-  Flex,
-  Grid,
   IconButton,
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerCloseButton,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
+  DrawerCloseButton,
+// CustomModal,
   Link,
+  Image,
 } from "@chakra-ui/react";
-import { useDisclosure } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
+import FamilyDisabled from "../public/FamilyDisab.svg";
 import Solidarite from "../public/solidarite.png";
 import Atelier from "../public/Ateliers.jpg";
 import theatre from "../public/theatre.png";
 import sortie from "../public/sorties.png";
 import solidarite from "../public/solidariteP.png";
 import sortieP from "../public/sortieP.png";
-import Arbre from "../public/arbre.jpg";
+
+
 
 import "../src/styles/home.css";
 import "./styles/navbar.css";
 
-const CustomModal = ({
-  isOpen,
-  onClose,
-  header,
-  body,
-  imageSrc,
-  discoverHandler,
-}) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent
-        borderRadius="15px"
-        overflow="none"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        position="fixed"
-        height="85vh"
-      >
-        <ModalHeader>{header}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Image m={"auto"} h={"15vh"} src={imageSrc} alt={header} />
-          <Text mt={"30px"} textAlign={"justify"} fontSize={"1.1rem"}>
-            {body}
-          </Text>
-        </ModalBody>
-        <ModalFooter gap={"15px"}>
-          <Button
-            onClick={onClose}
-            color={"white"}
-            _hover={{ bg: "#AB87FF" }}
-            backgroundColor="#AB87BF"
-          >
-            Fermer
-          </Button>
-          <Button
-            onClick={discoverHandler}
-            color={"white"}
-            _hover={{ bg: "#AB87FF" }}
-            backgroundColor="#AB87FF"
-          >
-            Découvrir
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
-};
+
+import "./styles/navbar.css";
+
+const MotionLink = motion(Link);
 
 function Home() {
   const {
@@ -146,71 +105,182 @@ function Home() {
     window.open(url, "_blank");
   };
 
+
+
+
+  const CustomImageModal = ({ isOpen, onClose, header, body, images }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const handlePrevImage = () => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    };
+
+    const handleNextImage = () => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    };
+
+    const CustomModal = ({
+  isOpen,
+  onClose,
+  header,
+  body,
+  imageSrc,
+  discoverHandler,
+}) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent
+        borderRadius="15px"
+        overflow="none"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        position="fixed"
+        height="85vh"
+      >
+        <ModalHeader>{header}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Image m={"auto"} h={"15vh"} src={imageSrc} alt={header} />
+          <Text mt={"30px"} textAlign={"justify"} fontSize={"1.1rem"}>
+            {body}
+          </Text>
+        </ModalBody>
+        <ModalFooter gap={"15px"}>
+          <Button
+            onClick={onClose}
+            color={"white"}
+            _hover={{ bg: "#AB87FF" }}
+            backgroundColor="#AB87BF"
+          >
+            Fermer
+          </Button>
+          <Button
+            onClick={discoverHandler}
+            color={"white"}
+            _hover={{ bg: "#AB87FF" }}
+            backgroundColor="#AB87FF"
+          >
+            Découvrir
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+
+    return (
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent style={customModalStyles.modalContent}>
+          <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody style={customModalStyles.modalBody}>
+            {images.length > 1 && (
+              <>
+                <IconButton
+                  icon={<ArrowBackIcon />}
+                  onClick={handlePrevImage}
+                  position="absolute"
+                  left="10px"
+                  top="50%"
+                  transform="translateY(-50%)"
+                  zIndex="10"
+                />
+                <IconButton
+                  icon={<ArrowForwardIcon />}
+                  onClick={handleNextImage}
+                  position="absolute"
+                  right="10px"
+                  top="50%"
+                  transform="translateY(-50%)"
+                  zIndex="10"
+                />
+              </>
+            )}
+            <Image src={images[currentImageIndex]} alt={header} style={customModalStyles.modalImage} />
+            {body && <Text mt="30px">{body}</Text>}
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+              Fermer
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
+  };
+
   return (
     <>
-      <Flex
-        as="header"
-        w="100%"
-        p={4}
-        alignItems="center"
-        justifyContent="space-between"
-      >
+      <Flex as="header" w="100%" p={4} alignItems="center" justifyContent="space-between">
         {isMobile ? (
           <>
             <IconButton
               aria-label="Options"
               icon={<HamburgerIcon />}
+              variant="outline"
+              onClick={onDrawerOpen}
               h={"60px"}
               w={"60px"}
-              onClick={onDrawerOpen}
               borderRadius={"15px"}
               color={"white"}
               bg={"black"}
               _hover={{ bg: "white", color: "black" }}
             />
-            <Drawer
-              isOpen={isDrawerOpen}
-              placement="right"
-              onClose={onDrawerClose}
-            >
+            <Drawer as={motion.div} isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
                 <DrawerCloseButton />
-                <DrawerHeader
-                  textAlign={"center"}
-                  fontSize={"2rem"}
-                  fontWeight={"700"}
-                >
+                <DrawerHeader textAlign={"center"} fontSize={"2rem"} fontWeight={"700"}>
                   Menu
                 </DrawerHeader>
                 <DrawerBody
-                  fontSize={"1.5rem"}
+                  fontSize={" 1.6rem"}
                   display={"flex"}
                   flexDirection={"column"}
                   justifyContent={"center"}
                   fontWeight={"500"}
-                  gap={"40px"}
+                  mt={"25px"}
+                  gap={"50px"}
                 >
                   {[
+                  
                     { label: "Actualités", href: "./actus" },
+                    { label: "Solidarité", href: "./solidarite" },
                     { label: "Sorties", href: "./Sorties" },
                     { label: "Nous Connaître", href: "./nous-connaître" },
                     { label: "Nous Soutenir", href: "./soutien" },
                   ].map((item, index) => (
-                    <Link
+                    <MotionLink
                       key={index}
                       href={item.href}
-                      onClick={handleLinkClick(item.href)}
-                      _hover={{
+                      initial={{ backgroundColor: "transparent" }}
+                      whileHover={{
                         color: "white",
                         backgroundColor: "black",
                         borderRadius: "8px",
                         padding: "8px",
                         transition: "0.4s all ease",
                       }}
+                      whileTap={{ animation: "fillAnimation 1.5s forwards" }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setTimeout(() => {
+                          window.location.href = item.href;
+                        }, 1500);
+                      }}
                     >
                       {item.label}
-                    </Link>
+                    </MotionLink>
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
@@ -222,112 +292,188 @@ function Home() {
             </Drawer>
           </>
         ) : (
-          <Header />
+          <Header>
+            <Flex>{/* Other header content */}</Flex>
+          </Header>
         )}
       </Flex>
-
+   <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+  <Grid
+    templateColumns={{
+      base: "1fr",
+      sm: "1fr",
+      md: "1fr",
+      lg: "3fr 2fr",
+      xl: "2fr 1fr",
+    }}
+    height="100%"
+    templateRows="auto"
+    pos="relative"
+    top={{ base: "10rem", sm: "5rem", md: "4rem", lg: "0", xl: "10" }}
+    rowGap="3rem"
+  >
+    <GridItem 
+      display="flex"  
+      justifyContent="center" 
+      alignItems="center"
+    >
       <Flex
-        pos={"relative"}
-        direction={{ base: "column", lg: "row" }}
-        p={4}
-        alignItems="center"
-        justifyContent="center"
+        flexDirection={"column"}
+        as={motion.div}
+        width={{
+          lg: "97%",
+          "2xl": "80%",
+          md: "95%",
+          sm: "90%",
+          xl: "90%",
+          base: "87%",
+        }}
       >
-        <Box flex="1" >
-          <Heading pos={"relative"} right={"16px"}   size={{base:"3xl"}} >
-            Vivre Debout
-          </Heading>
-          <Image
-            pos={"relative"}
-          left={{base:"19.3rem"}}
-          bottom={{base:"3.2rem"}}
-            src={Pen}
-
-            width="3em"
-            
-          />
-          <Text
-            m={"auto"}
-            w={{base:"90%"}}
-           mt={{base:"3rem"}}
-        
-            textAlign="justify"
-            fontSize={{base:"1.15rem"}}
-            fontWeight="600"
-          >
-            Vivre Debout est membre administrateur de la Coordination Handicap
-            Autonomie qui regroupe des petites associations qui défendent les
-            mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
-            objectif de maintenir l’autonomie et l’indépendance des Personnes à
-            Mobilité Réduite.
-          </Text>
-        </Box>
-        <Box
-          flex="1"
-          p={4}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-      
+        <Image
+          src={Pen}
+          ml={"26rem"}
+          position={"absolute"}
+          width={{ md: "8%" }}
+        />
+        <Heading
+          fontSize={{
+            md: "4rem",
+            sm: "2.4rem",
+            base: "2.4rem",
+          }}
         >
-          <Image
-               pos={"absolute"}
-              top={"30rem"}
-            src={FamilyDisabled}
-            alt="Family Disabled"
-          />
-        </Box>
+          Vivre Debout
+        </Heading>
+        <Text
+          textAlign="justify"
+          fontSize={{
+            md: "1.3rem",
+            lg: "1.4rem",
+            xl: "1.4rem",
+            base: "1.1rem",
+            sm: "1.25rem",
+          }}
+          mt={{ base: 6 }}
+          mb={{ base: 20 }}
+          w={{ xl: "70%" }}
+        >
+          Vivre Debout est membre administrateur de la Coordination Handicap
+          Autonomie qui regroupe des petites associations qui défendent les
+          mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
+          objectif de maintenir l’autonomie et l’indépendance des Personnes à
+          Mobilité Réduite.
+        </Text>
+
+
+
+
+
+        <Flex  gap={6} pos={"relative"} top={{ md: "25rem", lg: "0",sm:"30rem" }} display="flex" flexDirection={{base:"column",md:"row"}} alignItems="center">
+          <Box cursor="pointer" onClick={onSortiesOpen}>
+            <Text fontSize="2xl" fontWeight="bold">
+              Sorties
+            </Text>
+            <Image
+              h={{ lg: "80%",sm:'50vw',md:"80%" }}
+              src={sortie}
+              alt="Sortie"
+              borderRadius="10px"
+            />
+          </Box>
+          <Box cursor="pointer" onClick={onSolidariteOpen}>
+            <Text fontSize="2xl" fontWeight="bold">
+              Solidarité
+            </Text>
+            <Image
+             h={{ lg: "80%",sm:'50vw',md:"80%" }}
+              src={Solidarite}
+              alt="Solidarité"
+              borderRadius="10px"
+            />
+          </Box>
+          <Box cursor="pointer" onClick={onPrisEnContesOpen}>
+            <Text fontSize="2xl" fontWeight="bold">
+              Pris En Contes
+            </Text>
+            <Image
+            h={{ lg: "80%",sm:'50vw',md:"80%" }}
+              src={Atelier}
+              alt="Pris en conte"
+              borderRadius="10px"
+            />
+          </Box>
+        </Flex>
+
+
+
+
+
+
+        
       </Flex>
+    </GridItem>
+
+<GridItem display="flex" justifyContent="center" alignItems="flex-end">
+  <Flex
+    as={motion.div}
+    w={{
+      lg: "45vw",
+      md: "40vw",
+      sm: "55vw",
+      base: "250px",
+      xl: "40vw",
+    }}
+    pos="relative" // Ajout de la position relative pour permettre le positionnement absolu de l'image
+  >
+    <Image
+  pos={{md:"relative",sm:"relative"}}
+  bottom={{md:"25rem",lg:"0",sm:"85rem"}}
+      src={FamilyDisabled}
+      alt="Family Disabled"
+      maxW="100%" // Empêcher l'image de dépasser la largeur du conteneur
+      maxH="100%" // Empêcher l'image de dépasser la hauteur du conteneur
+    />
+  </Flex>
+</GridItem>
 
 
 
 
+          {/* <GridItem display="flex" justifyContent="center" alignItems="center">
+            <Flex
+              as={motion.div}
+              width={{
+                lg: "97%",
+                "2xl": "80%",
+                md: "95%",
+                sm: "90%",
+                xl: "90%",
+                base: "87%",
+              }}
+              textAlign="justify"
+              justifyContent="space-around"
+              height={{
+                lg: "60vh",
+                xl: "65vh",
+                md: "350px",
+                sm: "350px",
+                base: "350px",
+              }}
+
+            >
+
+            </Flex>
+
+            
+          </GridItem> */}
 
 
-      <Grid
-        pos={{ lg: "relative" }}
-        bottom={{ lg: "25rem" }}
-        templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
-        gap={{base:"5rem"}}
-        p={4}
-        mt={{base:"25rem"}}
-      >
-        <Box textAlign="center" cursor="pointer" onClick={onSortiesOpen}>
-          <Text fontSize="2xl" fontWeight="bold" mb={2}>
-            Sorties
-          </Text>
-          <Image
-            w={{ lg: "40%" }}
-            src={sortie}
-            alt="Sortie"
-            borderRadius="10px"
-          />
-        </Box>
-        <Box textAlign="center" cursor="pointer" onClick={onSolidariteOpen}>
-          <Text fontSize="2xl" fontWeight="bold" mb={2}>
-            Solidarité
-          </Text>
-          <Image
-            w={{ lg: "40%" }}
-            src={Solidarite}
-            alt="Solidarité"
-            borderRadius="10px"
-          />
-        </Box>
-        <Box textAlign="center" cursor="pointer" onClick={onPrisEnContesOpen}>
-          <Text fontSize="2xl" fontWeight="bold" mb={2}>
-            Pris En Contes
-          </Text>
-          <Image
-            w={{ lg: "40%" }}
-            src={Atelier}
-            alt="Pris en conte"
-            borderRadius="10px"
-          />
-        </Box>
-      </Grid>
 
-      <CustomModal
+
+ 
+        </Grid>
+      </Box>
+     {/* <CustomModal
         isOpen={isSolidariteOpen}
         onClose={onSolidariteClose}
         header="Solidarité"
@@ -352,7 +498,7 @@ function Home() {
         body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
         imageSrc={theatre}
         discoverHandler={() => handleDiscover("prisEnContes")}
-      />
+      /> */}
     </>
   );
 }
