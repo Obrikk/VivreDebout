@@ -1,4 +1,5 @@
 import Header from "../Header";
+import '../styles/footer.css';
 import { useEffect, useState } from "react";
 import {
   Flex,
@@ -28,7 +29,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Link,
-  background,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
@@ -84,9 +84,21 @@ function CustomModal({ isOpen, onClose, header, body }) {
 }
 
 function PrisEnContes() {
-  const { isOpen: isModal1Open, onOpen: onModal1Open, onClose: onModal1Close } = useDisclosure();
-  const { isOpen: isModal2Open, onOpen: onModal2Open, onClose: onModal2Close } = useDisclosure();
-  const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
+  const {
+    isOpen: isModal1Open,
+    onOpen: onModal1Open,
+    onClose: onModal1Close,
+  } = useDisclosure();
+  const {
+    isOpen: isModal2Open,
+    onOpen: onModal2Open,
+    onClose: onModal2Close,
+  } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
   const [isMobile, setIsMobile] = useState(false);
 
   const handleResize = () => {
@@ -104,7 +116,7 @@ function PrisEnContes() {
     e.preventDefault();
     setTimeout(() => {
       window.location.href = href;
-    }, 1500);
+    });
   };
 
   return (
@@ -127,14 +139,13 @@ function PrisEnContes() {
               borderRadius={"15px"}
               color={"white"}
               bg={"black"}
-              _hover={{ bg: "white", color: "black" }}  
+              _hover={{ bg: "white", color: "black" }}
             />
             <Drawer
               as={motion.div}
               isOpen={isDrawerOpen}
               placement="right"
               onClose={onDrawerClose}
-              
             >
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
@@ -156,10 +167,11 @@ function PrisEnContes() {
                   gap={"50px"}
                 >
                   {[
-                      { label: "Accueil", href: "/" },
+                    { label: "Accueil", href: "/" },
                     { label: "Actualités", href: "./actus" },
                     { label: "Sorties", href: "./Sorties" },
                     { label: "Nous Connaître", href: "./nous-connaître" },
+                    { label: "Pris En Contes", href: "./pris-en-contes" },
                     { label: "Nous Soutenir", href: "./soutien" },
                   ].map((item, index) => (
                     <MotionLink
@@ -189,9 +201,7 @@ function PrisEnContes() {
             </Drawer>
           </>
         ) : (
-          <Header>
-           
-          </Header>
+          <Header></Header>
         )}
       </Flex>
       <Box
@@ -219,6 +229,7 @@ function PrisEnContes() {
           templateRows="auto"
           pos="relative"
           top={{ base: "10rem", sm: "10rem", md: "10rem", lg: "0", xl: "0" }}
+        
           rowGap="3rem"
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
@@ -228,7 +239,7 @@ function PrisEnContes() {
                 lg: "97%",
                 "2xl": "80%",
                 md: "80%",
-                sm: "80%",
+                sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
@@ -304,7 +315,7 @@ function PrisEnContes() {
                 lg: "96%",
                 "2xl": "80%",
                 md: "80%",
-                sm: "80%",
+                sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
@@ -374,7 +385,7 @@ function PrisEnContes() {
                 lg: "97%",
                 "2xl": "80%",
                 md: "80%",
-                sm: "80%",
+                sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
@@ -425,12 +436,18 @@ function PrisEnContes() {
                   </Link>
                 </ListItem>
                 <ListItem>
-                  <Link isExternal href="https://www.yvelines.fr/fiche/pole-autonomie-territorial-st-quentin/">
+                  <Link
+                    isExternal
+                    href="https://www.yvelines.fr/fiche/pole-autonomie-territorial-st-quentin/"
+                  >
                     Pôle autonomie de SQY
                   </Link>
                 </ListItem>
                 <ListItem>
-                  <Link isExternal href="https://www.economie.gouv.fr/recrutement/dgfip-avis-de-recrutement-de-travailleurs-en-situation-de-handicap-par-la-voie">
+                  <Link
+                    isExternal
+                    href="https://www.economie.gouv.fr/recrutement/dgfip-avis-de-recrutement-de-travailleurs-en-situation-de-handicap-par-la-voie"
+                  >
                     DGFIP
                   </Link>
                 </ListItem>
@@ -442,8 +459,11 @@ function PrisEnContes() {
               </UnorderedList>
             </Flex>
           </GridItem>
+
         </Grid>
+    
       </Box>
+   
       <CustomModal
         isOpen={isModal1Open}
         onClose={onModal1Close}

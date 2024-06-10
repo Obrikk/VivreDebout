@@ -16,6 +16,7 @@ import {
   ModalFooter,
   Button,
   Flex,
+  Grid,
   IconButton,
   Drawer,
   DrawerBody,
@@ -39,7 +40,14 @@ import Arbre from "../public/arbre.jpg";
 import "../src/styles/home.css";
 import "./styles/navbar.css";
 
-const CustomModal = ({ isOpen, onClose, header, body, imageSrc, discoverHandler }) => {
+const CustomModal = ({
+  isOpen,
+  onClose,
+  header,
+  body,
+  imageSrc,
+  discoverHandler,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -58,11 +66,27 @@ const CustomModal = ({ isOpen, onClose, header, body, imageSrc, discoverHandler 
         <ModalCloseButton />
         <ModalBody>
           <Image m={"auto"} h={"15vh"} src={imageSrc} alt={header} />
-          <Text mt={"30px"} textAlign={"justify"} fontSize={"1.1rem"}>{body}</Text>
+          <Text mt={"30px"} textAlign={"justify"} fontSize={"1.1rem"}>
+            {body}
+          </Text>
         </ModalBody>
         <ModalFooter gap={"15px"}>
-          <Button onClick={onClose} color={"white"} _hover={{ bg: "#AB87FF" }} backgroundColor='#AB87BF'>Fermer</Button>
-          <Button onClick={discoverHandler} color={"white"} _hover={{ bg: "#AB87FF" }} backgroundColor='#AB87FF'>Découvrir</Button>
+          <Button
+            onClick={onClose}
+            color={"white"}
+            _hover={{ bg: "#AB87FF" }}
+            backgroundColor="#AB87BF"
+          >
+            Fermer
+          </Button>
+          <Button
+            onClick={discoverHandler}
+            color={"white"}
+            _hover={{ bg: "#AB87FF" }}
+            backgroundColor="#AB87FF"
+          >
+            Découvrir
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
@@ -70,10 +94,26 @@ const CustomModal = ({ isOpen, onClose, header, body, imageSrc, discoverHandler 
 };
 
 function Home() {
-  const { isOpen: isSolidariteOpen, onOpen: onSolidariteOpen, onClose: onSolidariteClose } = useDisclosure();
-  const { isOpen: isSortiesOpen, onOpen: onSortiesOpen, onClose: onSortiesClose } = useDisclosure();
-  const { isOpen: isPrisEnContesOpen, onOpen: onPrisEnContesOpen, onClose: onPrisEnContesClose } = useDisclosure();
-  const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
+  const {
+    isOpen: isSolidariteOpen,
+    onOpen: onSolidariteOpen,
+    onClose: onSolidariteClose,
+  } = useDisclosure();
+  const {
+    isOpen: isSortiesOpen,
+    onOpen: onSortiesOpen,
+    onClose: onSortiesClose,
+  } = useDisclosure();
+  const {
+    isOpen: isPrisEnContesOpen,
+    onOpen: onPrisEnContesOpen,
+    onClose: onPrisEnContesClose,
+  } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -108,7 +148,13 @@ function Home() {
 
   return (
     <>
-      <Flex as="header" w="100%" p={4} alignItems="center" justifyContent="space-between">
+      <Flex
+        as="header"
+        w="100%"
+        p={4}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         {isMobile ? (
           <>
             <IconButton
@@ -122,11 +168,19 @@ function Home() {
               bg={"black"}
               _hover={{ bg: "white", color: "black" }}
             />
-            <Drawer isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
+            <Drawer
+              isOpen={isDrawerOpen}
+              placement="right"
+              onClose={onDrawerClose}
+            >
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
                 <DrawerCloseButton />
-                <DrawerHeader textAlign={"center"} fontSize={"2rem"} fontWeight={"700"}>
+                <DrawerHeader
+                  textAlign={"center"}
+                  fontSize={"2rem"}
+                  fontWeight={"700"}
+                >
                   Menu
                 </DrawerHeader>
                 <DrawerBody
@@ -172,84 +226,106 @@ function Home() {
         )}
       </Flex>
 
-      <div className="home">
-        <div className="left">
-          <Box overflow={"visible"}>
-            <Heading size="3xl" pos="relative" bottom={"1rem"} left={{ lg: '3rem' }}>
-              Vivre Debout
-            </Heading>
-            <Image src={Arbre} pos={'absolute'} opacity='0.1' w={{ lg: '70rem' }} top={{ lg: '5rem' }} right={'10rem'} />
-            <Image src={Pen} pos="absolute" width="4rem" left="34.5rem" top="5.7rem" />
-            <Text
-              pos="relative"
-              textAlign={"justify"}
-              fontSize="1rem"
-              fontWeight="600"
-              margin={"auto"}
-              width={"76%"}
-              left={{ lg: '3rem' }}
-              top={{ lg: '1rem' }}
-            >
-              Vivre Debout est membre administrateur de la Coordination Handicap
-              Autonomie qui regroupe des petites associations qui défendent les
-              mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
-              objectif de maintenir l’autonomie et l’indépendance des Personnes à
-              Mobilité Réduite.
-            </Text>
-          </Box>
+      <Flex
+        pos={"relative"}
+        direction={{ base: "column", lg: "row" }}
+        p={4}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box flex="1" >
+          <Heading pos={"relative"} right={"16px"}   size={{base:"3xl"}} >
+            Vivre Debout
+          </Heading>
+          <Image
+            pos={"relative"}
+          left={{base:"19.3rem"}}
+          bottom={{base:"3.2rem"}}
+            src={Pen}
 
-          <Box display={"flex"} gap={"45px"} pos={"relative"} left={"60px"} top={"35px"}>
-            <Box>
-              <Text pos="relative" left={"20px"} fontSize="2rem" fontWeight="bold">
-                Sorties
-              </Text>
-              <Image
-                height={"150px"}
-                borderRadius={"10px"}
-                src={sortie}
-                alt="Sortie"
-                onClick={onSortiesOpen}
-                pos={"relative"}
-                cursor={"pointer"}
-              />
-            </Box>
+            width="3em"
+            
+          />
+          <Text
+            m={"auto"}
+            w={{base:"90%"}}
+           mt={{base:"3rem"}}
+        
+            textAlign="justify"
+            fontSize={{base:"1.15rem"}}
+            fontWeight="600"
+          >
+            Vivre Debout est membre administrateur de la Coordination Handicap
+            Autonomie qui regroupe des petites associations qui défendent les
+            mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
+            objectif de maintenir l’autonomie et l’indépendance des Personnes à
+            Mobilité Réduite.
+          </Text>
+        </Box>
+        <Box
+          flex="1"
+          p={4}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+      
+        >
+          <Image
+               pos={"absolute"}
+              top={"30rem"}
+            src={FamilyDisabled}
+            alt="Family Disabled"
+          />
+        </Box>
+      </Flex>
 
-            <Box>
-              <Text pos="relative" fontSize="2rem" fontWeight="bold">
-                Solidarité
-              </Text>
-              <Image
-                cursor="pointer"
-                height={"150px"}
-                borderRadius={"10px"}
-                src={Solidarite}
-                alt="Solidarité"
-                onClick={onSolidariteOpen}
-                pos={"relative"}
-              />
-            </Box>
 
-            <Box>
-              <Text left={"10px"} pos="relative" fontSize="2rem" fontWeight="bold">
-                Pris En Contes
-              </Text>
-              <Image
-                height={"150px"}
-                cursor="pointer"
-                onClick={onPrisEnContesOpen}
-                src={Atelier}
-                alt="Pris en conte"
-                pos="relative"
-                borderRadius="15px"
-              />
-            </Box>
-          </Box>
-        </div>
-        <div className="right">
-          <Image height={{ lg: '26rem' }} pos="relative" top={{ lg: '2rem' }} src={FamilyDisabled} alt="Family Disabled" />
-          <div className="light"></div>
-        </div>
-      </div>
+
+
+
+
+      <Grid
+        pos={{ lg: "relative" }}
+        bottom={{ lg: "25rem" }}
+        templateColumns={{ base: "1fr", md: "1fr 1fr 1fr" }}
+        gap={{base:"5rem"}}
+        p={4}
+        mt={{base:"25rem"}}
+      >
+        <Box textAlign="center" cursor="pointer" onClick={onSortiesOpen}>
+          <Text fontSize="2xl" fontWeight="bold" mb={2}>
+            Sorties
+          </Text>
+          <Image
+            w={{ lg: "40%" }}
+            src={sortie}
+            alt="Sortie"
+            borderRadius="10px"
+          />
+        </Box>
+        <Box textAlign="center" cursor="pointer" onClick={onSolidariteOpen}>
+          <Text fontSize="2xl" fontWeight="bold" mb={2}>
+            Solidarité
+          </Text>
+          <Image
+            w={{ lg: "40%" }}
+            src={Solidarite}
+            alt="Solidarité"
+            borderRadius="10px"
+          />
+        </Box>
+        <Box textAlign="center" cursor="pointer" onClick={onPrisEnContesOpen}>
+          <Text fontSize="2xl" fontWeight="bold" mb={2}>
+            Pris En Contes
+          </Text>
+          <Image
+            w={{ lg: "40%" }}
+            src={Atelier}
+            alt="Pris en conte"
+            borderRadius="10px"
+          />
+        </Box>
+      </Grid>
 
       <CustomModal
         isOpen={isSolidariteOpen}
@@ -272,7 +348,7 @@ function Home() {
       <CustomModal
         isOpen={isPrisEnContesOpen}
         onClose={onPrisEnContesClose}
-        header="Pris en Contes"
+        header="Pris En Contes"
         body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
         imageSrc={theatre}
         discoverHandler={() => handleDiscover("prisEnContes")}

@@ -70,18 +70,22 @@ function PrisEnContes() {
       textAlign: "center",
       position: "fixed",
       height: "85vh",
-      backgroundColor: "#FFF0F5", // Background color for the modal content
+      backgroundColor: "#FFF0F5",
     },
     modalHeader: {
       fontWeight: "bold",
       fontSize: "2em",
     },
     modalBody: {
-      marginTop: "30px",
+      
       textAlign: "justify",
       fontSize: "1.1rem",
     },
+    modalImage: {
+      width: "350px ", // Ajoutez cette ligne pour que l'image prenne toute la largeur du conteneur
+    },
   };
+  
 
   const CustomImageModal = ({ isOpen, onClose, header, body, images }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -127,7 +131,7 @@ function PrisEnContes() {
                 />
               </>
             )}
-            <Image src={images[currentImageIndex]} alt={header} />
+            <Image src={images[currentImageIndex]} alt={header} style={customModalStyles.modalImage} />
             {body && <Text mt="30px">{body}</Text>}
           </ModalBody>
           <ModalFooter>
@@ -231,8 +235,9 @@ function PrisEnContes() {
           height="100%"
           templateRows="auto"
           pos="relative"
-          top={{ base: "10rem", sm: "10rem", md: "10rem", lg: "0", xl: "0" }}
+          top={{ base: "10rem", sm: "10rem", md: "7rem", lg: "0", xl: "0" }}
           rowGap="3rem"
+          
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
@@ -241,7 +246,7 @@ function PrisEnContes() {
                 lg: "97%",
                 "2xl": "80%",
                 md: "95%",
-                sm: "80%",
+                sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
@@ -365,7 +370,7 @@ function PrisEnContes() {
                 lg: "97%",
                 "2xl": "80%",
                 md: "95%",
-                sm: "80%",
+                sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
@@ -387,6 +392,7 @@ function PrisEnContes() {
               cursor="pointer"
               direction="column"
               bg="#EEE7FF"
+              marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}
             >
               <Heading
                 fontSize={{
@@ -411,7 +417,7 @@ function PrisEnContes() {
                 }}
               >
                 <ListItem>
-                  <Link onClick={() => setHandicapOpen(true)}>14 juin 15h nuit du handicap</Link>
+                  <Link  onClick={() => setHandicapOpen(true)}>14 juin 15h nuit du handicap</Link>
                 </ListItem>
                 <ListItem>
                   Novembre 2024, du lundi 18 au dimanche 24, semaine du handicap en entreprise
@@ -429,7 +435,11 @@ function PrisEnContes() {
         isOpen={isHandicapOpen}
         onClose={() => setHandicapOpen(false)}
 
-        images={["../../public/FlyerNuitDuHandicap1.png", "../../public/FlyerNuitDuHandicap2.png"]}
+        images={["../../public/FlyerNuitDuHandicap1.png", "../../public/FlyerNuitDuHandicap2.png"]
+
+
+        
+        }
       />
 
       <CustomImageModal
