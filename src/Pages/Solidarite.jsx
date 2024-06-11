@@ -40,6 +40,10 @@ import "../styles/navbar.css";
 const MotionLink = motion(Link);
 
 function CustomModal({ isOpen, onClose, header, body }) {
+  const handleRedirect = (url) => {
+    window.location.href = url;
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -72,8 +76,31 @@ function CustomModal({ isOpen, onClose, header, body }) {
           {body}
         </Text>
         <ModalCloseButton />
-        <ModalBody></ModalBody>
+        <ModalBody 
+        display={"flex"}
+        flexDirection={"column"}
+        gap={"4rem"}
+        
+
+        >
+        <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page1')}>
+            Page 1
+          </Button>
+          <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page2')}>
+            Page 2
+          </Button>
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page3')}>
+            Page 3
+          </Button>
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page4')}>
+            Page 4
+          </Button>
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page5')}>
+            Page 5
+          </Button>
+        </ModalBody>
         <ModalFooter overflow="visible">
+       
           <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
             Fermer
           </Button>
@@ -435,7 +462,7 @@ function PrisEnContes() {
                     MPDH en ligne
                   </Link>
                 </ListItem>
-                <ListItem>
+                <ListItem>  
                   <Link
                     isExternal
                     href="https://www.yvelines.fr/fiche/pole-autonomie-territorial-st-quentin/"
@@ -467,8 +494,7 @@ function PrisEnContes() {
       <CustomModal
         isOpen={isModal1Open}
         onClose={onModal1Close}
-        header="Pourquoi nous rejoindre ?"
-        body="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, maxime inventore! Assumenda totam fugit qui error iusto alias id, corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab, ipsa dolorum!"
+        
       />
       <CustomModal
         isOpen={isModal2Open}

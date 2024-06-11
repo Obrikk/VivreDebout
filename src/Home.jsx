@@ -28,7 +28,6 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-// CustomModal,
   Link,
   Image,
 } from "@chakra-ui/react";
@@ -42,12 +41,7 @@ import sortie from "../public/sorties.png";
 import solidarite from "../public/solidariteP.png";
 import sortieP from "../public/sortieP.png";
 
-
-
 import "../src/styles/home.css";
-import "./styles/navbar.css";
-
-
 import "./styles/navbar.css";
 
 const MotionLink = motion(Link);
@@ -105,9 +99,6 @@ function Home() {
     window.open(url, "_blank");
   };
 
-
-
-
   const CustomImageModal = ({ isOpen, onClose, header, body, images }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -123,67 +114,23 @@ function Home() {
       );
     };
 
-    const CustomModal = ({
-  isOpen,
-  onClose,
-  header,
-  body,
-  imageSrc,
-  discoverHandler,
-}) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent
-        borderRadius="15px"
-        overflow="none"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        position="fixed"
-        height="85vh"
-      >
-        <ModalHeader>{header}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Image m={"auto"} h={"15vh"} src={imageSrc} alt={header} />
-          <Text mt={"30px"} textAlign={"justify"} fontSize={"1.1rem"}>
-            {body}
-          </Text>
-        </ModalBody>
-        <ModalFooter gap={"15px"}>
-          <Button
-            onClick={onClose}
-            color={"white"}
-            _hover={{ bg: "#AB87FF" }}
-            backgroundColor="#AB87BF"
-          >
-            Fermer
-          </Button>
-          <Button
-            onClick={discoverHandler}
-            color={"white"}
-            _hover={{ bg: "#AB87FF" }}
-            backgroundColor="#AB87FF"
-          >
-            Découvrir
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
-};
-
-
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent style={customModalStyles.modalContent}>
-          <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+        <ModalContent
+          borderRadius="15px"
+          overflow="hidden"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          position="fixed"
+          height="85vh"
+        >
+          <ModalHeader>{header}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody style={customModalStyles.modalBody}>
+          <ModalBody>
             {images.length > 1 && (
               <>
                 <IconButton
@@ -206,7 +153,7 @@ function Home() {
                 />
               </>
             )}
-            <Image src={images[currentImageIndex]} alt={header} style={customModalStyles.modalImage} />
+            <Image src={images[currentImageIndex]} alt={header} />
             {body && <Text mt="30px">{body}</Text>}
           </ModalBody>
           <ModalFooter>
@@ -253,7 +200,6 @@ function Home() {
                   gap={"50px"}
                 >
                   {[
-                  
                     { label: "Actualités", href: "./actus" },
                     { label: "Solidarité", href: "./solidarite" },
                     { label: "Sorties", href: "./Sorties" },
@@ -297,150 +243,31 @@ function Home() {
           </Header>
         )}
       </Flex>
-   <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
-  <Grid
-    templateColumns={{
-      base: "1fr",
-      sm: "1fr",
-      md: "1fr",
-      lg: "3fr 2fr",
-      xl: "2fr 1fr",
-    }}
-    height="100%"
-    templateRows="auto"
-    pos="relative"
-    top={{ base: "10rem", sm: "5rem", md: "4rem", lg: "0", xl: "10" }}
-    rowGap="3rem"
-  >
-    <GridItem 
-      display="flex"  
-      justifyContent="center" 
-      alignItems="center"
-    >
-      <Flex
-        flexDirection={"column"}
-        as={motion.div}
-        width={{
-          lg: "97%",
-          "2xl": "80%",
-          md: "95%",
-          sm: "90%",
-          xl: "90%",
-          base: "87%",
-        }}
-      >
-        <Image
-          src={Pen}
-          ml={"26rem"}
-          position={"absolute"}
-          width={{ md: "8%" }}
-        />
-        <Heading
-          fontSize={{
-            md: "4rem",
-            sm: "2.4rem",
-            base: "2.4rem",
+      <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center" >
+        <Grid
+          templateColumns={{
+            base: "1fr",
+            sm: "1fr",
+            md: "1fr",
+            lg: "3fr 2fr",
+            xl: "2fr 1fr",
           }}
+          height="100%"
+          templateRows="auto"
+          pos="relative"
+          top={{ base: "2rem", sm: "0rem", md: "4rem", lg: "10", xl: "10" }}
+          rowGap="3rem"
+          ml={{base: "0px", lg: "40px"}} // Ajusté pour éviter les débordements
+          
         >
-          Vivre Debout
-        </Heading>
-        <Text
-          textAlign="justify"
-          fontSize={{
-            md: "1.3rem",
-            lg: "1.4rem",
-            xl: "1.4rem",
-            base: "1.1rem",
-            sm: "1.25rem",
-          }}
-          mt={{ base: 6 }}
-          mb={{ base: 20 }}
-          w={{ xl: "70%" }}
-        >
-          Vivre Debout est membre administrateur de la Coordination Handicap
-          Autonomie qui regroupe des petites associations qui défendent les
-          mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
-          objectif de maintenir l’autonomie et l’indépendance des Personnes à
-          Mobilité Réduite.
-        </Text>
-
-
-
-
-
-        <Flex  gap={6} pos={"relative"} top={{ md: "25rem", lg: "0",sm:"30rem" }} display="flex" flexDirection={{base:"column",md:"row"}} alignItems="center">
-          <Box cursor="pointer" onClick={onSortiesOpen}>
-            <Text fontSize="2xl" fontWeight="bold">
-              Sorties
-            </Text>
-            <Image
-              h={{ lg: "80%",sm:'50vw',md:"80%" }}
-              src={sortie}
-              alt="Sortie"
-              borderRadius="10px"
-            />
-          </Box>
-          <Box cursor="pointer" onClick={onSolidariteOpen}>
-            <Text fontSize="2xl" fontWeight="bold">
-              Solidarité
-            </Text>
-            <Image
-             h={{ lg: "80%",sm:'50vw',md:"80%" }}
-              src={Solidarite}
-              alt="Solidarité"
-              borderRadius="10px"
-            />
-          </Box>
-          <Box cursor="pointer" onClick={onPrisEnContesOpen}>
-            <Text fontSize="2xl" fontWeight="bold">
-              Pris En Contes
-            </Text>
-            <Image
-            h={{ lg: "80%",sm:'50vw',md:"80%" }}
-              src={Atelier}
-              alt="Pris en conte"
-              borderRadius="10px"
-            />
-          </Box>
-        </Flex>
-
-
-
-
-
-
-        
-      </Flex>
-    </GridItem>
-
-<GridItem display="flex" justifyContent="center" alignItems="flex-end">
-  <Flex
-    as={motion.div}
-    w={{
-      lg: "45vw",
-      md: "40vw",
-      sm: "55vw",
-      base: "250px",
-      xl: "40vw",
-    }}
-    pos="relative" // Ajout de la position relative pour permettre le positionnement absolu de l'image
-  >
-    <Image
-  pos={{md:"relative",sm:"relative"}}
-  bottom={{md:"25rem",lg:"0",sm:"85rem"}}
-      src={FamilyDisabled}
-      alt="Family Disabled"
-      maxW="100%" // Empêcher l'image de dépasser la largeur du conteneur
-      maxH="100%" // Empêcher l'image de dépasser la hauteur du conteneur
-    />
-  </Flex>
-</GridItem>
-
-
-
-
-          {/* <GridItem display="flex" justifyContent="center" alignItems="center">
+          <GridItem 
+            display="flex"  
+            justifyContent="center" 
+            alignItems="center"
+            pos={"relative"}
+          >
             <Flex
+              flexDirection={"column"}
               as={motion.div}
               width={{
                 lg: "97%",
@@ -450,55 +277,130 @@ function Home() {
                 xl: "90%",
                 base: "87%",
               }}
-              textAlign="justify"
-              justifyContent="space-around"
-              height={{
-                lg: "60vh",
-                xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
-              }}
-
             >
-
+           
+              <Heading
+                fontSize={{
+                  md: "4rem",
+                  sm: "4rem",
+                  base: "3rem",
+                }}
+                
+             
+              >
+                {/* <Image
+                  className="pen"
+                  src={Pen}
+                  h={"10vh"}
+                  pos={"relative"}
+                  right={{base:"20%"}}
+                  top={{base:"0"}}
+                  display={{ base: "block", sm: "block" }} // Ensure the pen is displayed on all screen sizes
+                /> */}
+                Vivre Debout
+              </Heading>
+              <Text
+                textAlign="justify"
+                fontSize={{
+                  md: "1.3rem",
+                  lg: "1.4rem",
+                  xl: "1.4rem",
+                  base: "1.1rem",
+                  sm: "1.5rem",
+                }}
+                mt={{ base: 6 }}
+                mb={{ base: "8rem",sm:"8rem",md:"1rem" }}
+              >
+                Vivre Debout est membre administrateur de la Coordination Handicap
+                Autonomie qui regroupe des petites associations qui défendent les
+                mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
+                objectif de maintenir l’autonomie et l’indépendance des Personnes à
+                Mobilité Réduite.
+              </Text>
+              <Flex  gap={{lg:"6",base:"5rem"}} pos={"relative"} display="flex" flexDirection={{base:"column",md:"row"}} alignItems="center">
+                <Box  cursor="pointer" onClick={onSortiesOpen}>
+                  <Text mb={"1rem"} textAlign={"center"} fontSize={{base:"5xl",sm:"5xl",md:'4xl'}} fontWeight="bold">
+                    Sorties
+                  </Text>
+                  <Image
+                    h={{ lg: "80%",sm:'60vw',md:"80%" }}
+                    src={sortie}
+                    alt="Sortie"
+                    borderRadius="10px"
+                  />
+                </Box>
+                <Box cursor="pointer" onClick={onSolidariteOpen}>
+                  <Text  mb={"1rem"}  textAlign={"center"} fontSize={{base:"5xl",sm:"5xl",md:'4xl'}}  fontWeight="bold">
+                    Solidarité
+                  </Text>
+                  <Image
+                    h={{ lg: "80%",sm:'60vw',md:"80%" }}
+                    src={Solidarite}
+                    alt="Solidarité"
+                    borderRadius="10px"
+                  />
+                </Box>
+                <Box cursor="pointer" onClick={onPrisEnContesOpen}>
+                  <Text  mb={"1rem"}  textAlign={"center"} fontSize={{base:"5xl",sm:"5xl",md:'4xl'}}  fontWeight="bold">
+                    Pris En Contes
+                  </Text>
+                  <Image
+                    h={{ lg: "80%",sm:'60vw',md:"80%" }}
+                    src={Atelier}
+                    alt="Pris en conte"
+                    borderRadius="10px"
+                  />
+                </Box>
+              </Flex>
             </Flex>
-
-            
-          </GridItem> */}
-
-
-
-
- 
+          </GridItem>
+          <GridItem display="flex" justifyContent="center" alignItems="flex-end">
+            <Flex
+              as={motion.div}
+              w={{
+                lg: "45vw",
+                md: "40vw",
+                sm: "55vw",
+                base: "250px",
+                xl: "40vw",
+              }}
+              pos="relative"
+            >
+              <Image
+                display={{base:"none",lg:"block"}}
+                src={FamilyDisabled}
+                alt="Family Disabled"
+                maxW="100%"
+                maxH="100%"
+              />
+            </Flex>
+          </GridItem>
         </Grid>
       </Box>
-     {/* <CustomModal
+      <CustomImageModal
         isOpen={isSolidariteOpen}
         onClose={onSolidariteClose}
         header="Solidarité"
         body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis temporibus unde ipsam officiis suscipit sunt tempora. Vel doloremque, sint quidem facilis similique perspiciatis, voluptate a temporibus expedita velit aut quae!"
-        imageSrc={solidarite}
+        images={[solidarite]}
         discoverHandler={() => handleDiscover("solidarite")}
       />
-
-      <CustomModal
+      <CustomImageModal
         isOpen={isSortiesOpen}
         onClose={onSortiesClose}
         header="Sorties"
         body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, voluptatibus."
-        imageSrc={sortieP}
+        images={[sortieP]}
         discoverHandler={() => handleDiscover("sorties")}
       />
-
-      <CustomModal
+      <CustomImageModal
         isOpen={isPrisEnContesOpen}
         onClose={onPrisEnContesClose}
         header="Pris En Contes"
         body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
-        imageSrc={theatre}
+        images={[theatre]}
         discoverHandler={() => handleDiscover("prisEnContes")}
-      /> */}
+      />
     </>
   );
 }
