@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "../../Header";
 import { useEffect, useState } from "react";
 import {
   Flex,
@@ -32,15 +32,15 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import SolidariteImg from "../../public/solidariteP.png";
-import LienGif from "../../public/info.gif";
-import Masks from "../../public/theatre.png";
+import SolidariteImg from "../../../public/solidariteP.png";
+import LienGif from "../../../public/info.gif";
 
-import "../styles/navbar.css";
+
+import "../../styles/navbar.css";
 
 const MotionLink = motion(Link);
 
-function PrisEnContes() {
+function Aides() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
   const [isMobile, setIsMobile] = useState(false);
@@ -55,7 +55,7 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#D2C4F3";
+    document.getElementById("root").style.backgroundColor = "#ff006e";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -223,7 +223,7 @@ function PrisEnContes() {
         )}
       </Flex>
       <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
-        <Img src={Masks} w="8rem" pos="relative" top={{ xl: "3em", lg: "1em", base: "1.5em" }} />
+       
         <Grid
           templateColumns={{
             base: "1fr",
@@ -235,9 +235,9 @@ function PrisEnContes() {
           height="100%"
           templateRows="auto"
           pos="relative"
-          top={{ base: "10rem", sm: "10rem", md: "7rem", lg: "0", xl: "0" }}
+          top={{ base: "10rem", sm: "10rem", md: "7rem", lg: "0", xl: "4rem" }}
           rowGap="3rem"
-          
+          margin={"auto"}
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex 
@@ -267,18 +267,18 @@ function PrisEnContes() {
               animate={{ x: "0rem" }}
               cursor="pointer"
               direction="column"
-              bg="#EEE7FF"
+              bg="#FFC9E1"
             >
               <Heading
                 fontSize={{
                   lg: "2.8em",
                   md: "2.4rem",
-                  xl: "3rem",
+                  xl: "2.5rem",
                   sm: "2.4rem",
                   base: "2.4rem",
                 }}
               >
-                Inclusivité
+                Mode Prestataire
               </Heading>
               <UnorderedList
                 spacing={3}
@@ -286,85 +286,34 @@ function PrisEnContes() {
                 pos="relative"
                 mt="30px"
                 fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
+                  md: "1.2rem",
+                  sm: "1.1rem",
+                  lg: "1.2rem",
+                  xl: "1.2rem",
                   base: "1.1rem",
-                  sm: "1.25rem",
                 }}
               >
                 <ListItem>
-                  Montez sur Scène avec "Pris en Contes 2023-2024"
+                  Programmes pour les personnes en situation de handicap
                 </ListItem>
-                <ListItem>
-                  Maison du Voisinage Les Coudrays Rue de Bassigny - 78310 Maurepas
-                </ListItem>
-                <ListItem> Tous les mardis de 17h45 à 19h45 </ListItem>
+                <ListItem>Événements ouverts à tous</ListItem>
+                <ListItem>Sessions de sensibilisation et d'information</ListItem>
               </UnorderedList>
-            </Flex>
-          </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="flex-end">
-            <Flex
-              as={motion.div}
-              width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
-                sm: "90%",
-                xl: "90%",
-                base: "87%",
-              }}
-              height={{
-                lg: "40vh",
-                md: "250px",
-                sm: "250px",
-                base: "250px",
-                xl: "45vh",
-              }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              pl="10px"
-              pr="10px"
-              pb="15px"
-              whileHover={{ scale: 1.05 }}
-              initial={{ y: "30rem" }}
-              animate={{ y: "0rem" }}
-              direction="column"
-              cursor="pointer"
-              bg="#EEE7FF"
-              alignItems="center"
-              justifyContent={{ base: "space-between", md: "space-around" }}
-            >
-              <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "2.8rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
+              <Button
+                width="fit-content"
+                onClick={() => setHandicapOpen(true)}
+                mt="40px"
+                color="white"
+                _hover={{ bg: "#AB87FF" }}
+                backgroundColor="#ff006e"
+                textAlign={"center"}
               >
-                Debout !
-              </Heading>
-              <Text
-                fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
-                  base: "1.1rem",
-                  sm: "1.25rem",
-                }}
-                textAlign="center"
-              >
-                Être en mouvement dans l’audace et la créativité, c’est possible !
-              </Text>
-              <Button onClick={onOpen} w={{ lg: "60%", "2xl": "50%" }} h={{ lg: "30%", "2xl": "25%", md: "30%", sm: "30%", base: "30%" }}>
-                Rejoignez-nous !
+                En savoir plus
               </Button>
             </Flex>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center">
-            <Flex
+            <Flex 
               as={motion.div}
               width={{
                 lg: "97%",
@@ -391,107 +340,145 @@ function PrisEnContes() {
               animate={{ x: "0rem" }}
               cursor="pointer"
               direction="column"
-              bg="#EEE7FF"
-              marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}
+              bg="#FFC9E1"
             >
               <Heading
                 fontSize={{
-                  lg: "2.3em",
+                  lg: "2.8em",
                   md: "2.4rem",
-                  xl: "2.7rem",
+                  xl: "2.5rem",
                   sm: "2.4rem",
-                  base: "2.3rem",
+                  base: "2.4rem",
                 }}
               >
-                Futures Manifestations
+                Mode Mandataire
               </Heading>
               <UnorderedList
                 spacing={3}
                 listStyleType="circle"
+                pos="relative"
+                mt="30px"
                 fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
-                  sm: "1.25rem",
-                  base: "1.05rem",
+                  md: "1.2rem",
+                  sm: "1.1rem",
+                  lg: "1.2rem",
+                  xl: "1.2rem",
+                  base: "1.1rem",
                 }}
               >
-                <ListItem>
-                  <Link  onClick={() => setHandicapOpen(true)}>14 juin 15h nuit du handicap</Link>
-                </ListItem>
-                <ListItem>
-                  Novembre 2024, du lundi 18 au dimanche 24, semaine du handicap en entreprise
-                </ListItem>
-                <ListItem>
-                  <Link onClick={() => setVivreDeboutOpen(true)}>25 janvier 2025, "50 ans vivre debout"</Link>
-                </ListItem>
+                <ListItem>Activités de soutien aux personnes en difficulté</ListItem>
+                <ListItem>Ateliers de développement personnel</ListItem>
+                <ListItem>Groupes de parole et de soutien</ListItem>
               </UnorderedList>
+              <Button
+                width="fit-content"
+                onClick={() => setVivreDeboutOpen(true)}
+                mt="40px"
+                color="white"
+                _hover={{ bg: "#AB87FF" }}
+                backgroundColor="#ff006e"
+              >
+                En savoir plus
+              </Button>
+            </Flex>
+          </GridItem>
+          <GridItem display="flex" justifyContent="center" alignItems="center">
+            <Flex 
+              as={motion.div}
+              width={{
+                lg: "97%",
+                "2xl": "80%",
+                md: "95%",
+                sm: "90%",
+                xl: "90%",
+                base: "87%",
+              }}
+              textAlign="justify"
+              justifyContent="space-around"
+              height={{
+                lg: "60vh",
+                xl: "65vh",
+                md: "350px",
+                sm: "350px",
+                base: "350px",
+              }}
+              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+              borderRadius="0.75rem"
+              padding="1rem"
+              whileHover={{ scale: 1.05 }}
+              initial={{ x: "-20rem" }}
+              animate={{ x: "0rem" }}
+              cursor="pointer"
+              direction="column"
+              bg="#FFC9E1"
+            >
+              <Heading
+                fontSize={{
+                  lg: "2.8em",
+                  md: "2.4rem",
+                  xl: "2.5rem",
+                  sm: "2.4rem",
+                  base: "2.4rem",
+                }}
+              >
+              Mode Direct
+
+              </Heading>
+              <UnorderedList
+                spacing={3}
+                listStyleType="circle"
+                pos="relative"
+                mt="30px"
+                fontSize={{
+                  md: "1.2rem",
+                  sm: "1.1rem",
+                  lg: "1.2rem",
+                  xl: "1.2rem",
+                  base: "1.1rem",
+                }}
+              >
+                <ListItem>Expositions et visites guidées</ListItem>
+                <ListItem>Conférences et débats culturels</ListItem>
+                <ListItem>Ateliers d'art et de création</ListItem>
+              </UnorderedList>
+              <Button
+                width="fit-content"
+                onClick={onOpen}
+                mt="40px"
+                color="white"
+                _hover={{ bg: "#AB87FF" }}
+                backgroundColor="#ff006e"
+              >
+                En savoir plus
+              </Button>
             </Flex>
           </GridItem>
         </Grid>
+        <CustomImageModal
+          isOpen={isHandicapOpen}
+          onClose={() => setHandicapOpen(false)}
+          header="Programmes pour les personnes en situation de handicap"
+          body="Nous proposons divers programmes adaptés pour les personnes en situation de handicap, afin de garantir une participation pleine et entière à nos activités."
+          images={[LienGif]}
+        />
+        <CustomImageModal
+          isOpen={isVivreDeboutOpen}
+          onClose={() => setVivreDeboutOpen(false)}
+          header="Vivre Debout"
+          body="Nos activités de soutien et de développement personnel aident les individus à surmonter les difficultés de la vie quotidienne et à retrouver confiance en eux."
+          images={[SolidariteImg]}
+        />
+        <CustomImageModal
+          isOpen={isOpen}
+          onClose={onClose}
+          header="Culture et Patrimoine"
+          body="Découvrez notre riche programme d'expositions, de visites guidées, de conférences et d'ateliers artistiques, conçu pour enrichir votre connaissance et appréciation du patrimoine culturel."
+          images={[LienGif, SolidariteImg]}
+        />
       </Box>
-
-      <CustomImageModal
-        isOpen={isHandicapOpen}
-        onClose={() => setHandicapOpen(false)}
-
-        images={["../../public/FlyerNuitDuHandicap1.png", "../../public/FlyerNuitDuHandicap2.png"]
-
-
-        
-        }
-      />
-
-      <CustomImageModal
-        isOpen={isVivreDeboutOpen}
-        onClose={() => setVivreDeboutOpen(false)}
-        images={["../../public/VivreDebout50Ans.jpg"]}
-      />
-      
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent
-          borderRadius="15px"
-          overflowY="auto"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          position="fixed"
-          height="85vh"
-        >
-          <ModalHeader
-            fontWeight="bold"
-            fontSize={{ sm: "1.5em", lg: "2em", xl: "3.5em" }}
-            overflow="visible"
-          >
-            Pourquoi nous rejoindre ?
-          </ModalHeader>
-          <Text
-            fontSize="1.07em"
-            textAlign="justify"
-            pl="15px"
-            pr="15px"
-            pos="relative"
-            top="50px"
-          >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-            maxime inventore! Assumenda totam fugit qui error iusto alias id,
-            corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab,
-            ipsa dolorum!
-          </Text>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-          <ModalFooter overflow="visible">
-            <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
-              Fermer
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </>
   );
 }
 
-export default PrisEnContes;
+export default Aides;
+

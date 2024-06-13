@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './styles/App.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Header from './Header'
+import Header from "./Header"
 import Home from './Home'
 import Actus from './Pages/Actus'
 import Soutien from './Pages/Soutien'
@@ -13,6 +13,8 @@ import Conseil from './Pages/Conseil'
 import Sorties from './Pages/Sorties'
 import PrisEnContes from './Pages/PrisEnContes'
 import Solidarite from './Pages/Solidarite'
+import Aides from '../src/Pages/Conseils/Aides'
+import Stagiaires from '../src/Pages/Conseils/Stagiaires'
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
     path : '/',
     element: <Home/>
   },
+  
 
   {
     path : 'Soutien',
@@ -54,6 +57,16 @@ const router = createBrowserRouter([
   {
     path : '/sorties',
     element: <Sorties/>
+    
+  },
+  {
+    path : '/Stagiaires',
+    element: <Stagiaires/>
+    
+  },
+  {
+    path : '/Aides',
+    element: <Aides/>
     
   },
   {

@@ -84,7 +84,7 @@ function CustomModal({ isOpen, onClose, header, body }) {
 
         >
         <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page1')}>
-            Page 1
+            npm run dev
           </Button>
           <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page2')}>
             Page 2
@@ -92,11 +92,11 @@ function CustomModal({ isOpen, onClose, header, body }) {
           <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page3')}>
             Page 3
           </Button>
-          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page4')}>
-            Page 4
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('Aides')}>
+            Aides
           </Button>
-          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page5')}>
-            Page 5
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('Stagiaires')}>
+          Stagiaires
           </Button>
         </ModalBody>
         <ModalFooter overflow="visible">
