@@ -86,11 +86,11 @@ function CustomModal({ isOpen, onClose, header, body }) {
         <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page1')}>
             npm run dev
           </Button>
-          <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/page2')}>
-            Page 2
+          <Button  colorScheme="blue" mr={3} onClick={() => handleRedirect('/Conseils/Instruction')}>
+          Instructions
           </Button>
-          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/page3')}>
-            Page 3
+          <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('/Conseils/Emulation')}>
+            Emulation
           </Button>
           <Button colorScheme="blue" mr={3} onClick={() => handleRedirect('Aides')}>
             Aides

@@ -29,6 +29,7 @@
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-google-calendar-api": "^2.3.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.23.1",
     "react-slick": "^0.30.2",
     "rsuite": "^5.64.0",

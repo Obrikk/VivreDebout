@@ -15,6 +15,10 @@ import PrisEnContes from './Pages/PrisEnContes'
 import Solidarite from './Pages/Solidarite'
 import Aides from '../src/Pages/Conseils/Aides'
 import Stagiaires from '../src/Pages/Conseils/Stagiaires'
+import Instruction from '../src/Pages/Conseils/Instruction'
+import Emulation from '../src/Pages/Conseils/Emulation'
+import Pch from '../src/Pages/Conseils/Pch'
+
 
 
 const router = createBrowserRouter([
@@ -22,7 +26,6 @@ const router = createBrowserRouter([
     path : '/',
     element: <Home/>
   },
-  
 
   {
     path : 'Soutien',
@@ -38,11 +41,25 @@ const router = createBrowserRouter([
     element: <Solidarite/>
     
   },
+    {
+    path : '/Pch',
+    element: <Pch/>
+    
+  },
   
   {
     path : '/solidarite/conseil',
     element: <Conseil/>
     
+  },
+    {
+    path : '/Instruction',
+    element: <Instruction/>
+    
+  },
+  {
+    path :'/Emulation',
+    element: <Emulation/>
   },
   {
     path : '/sorties',
