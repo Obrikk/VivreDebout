@@ -14,6 +14,7 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
+  Grid,
   ModalHeader,
   ModalCloseButton,
   ModalBody,
@@ -32,6 +33,7 @@ import {
 import { ArrowBackIcon, ArrowForwardIcon, HamburgerIcon, ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import "../../styles/navbar.css";
+import Slider from "react-slick";
 
 const MotionLink = motion(Link);
 
@@ -43,7 +45,17 @@ function Instruction() {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
   };
-
+  const settings = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
  
 
   useEffect(() => {
@@ -80,6 +92,9 @@ function Instruction() {
     };
 
     return (
+      <Slider {...settings}>
+
+    
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
@@ -132,6 +147,7 @@ function Instruction() {
           </ModalFooter>
         </ModalContent>
       </Modal>
+        </Slider>
     );
   };
 
@@ -213,36 +229,37 @@ function Instruction() {
           </Header>
         )}
       </Flex>
-      <Box mt={'3.6%'} w="100%" height="100%" display="flex" justifyContent={"center"} flexDirection="column" alignItems="center">
+    <Grid
+           templateColumns={{
+       base: "1fr"
+       
+        }}
+            height="100%"
+          templateRows="auto"
+          gap={{xl:"5rem",lg:"5rem",md:10,base:"5rem"}}
+          pos="relative"
+         
+          top={{ base: "6rem", sm: "4rem", md: "4rem",lg:"4rem" }}
+        >
+         
+    
         <GridItem display="flex" justifyContent="center" alignItems="center">
           <Flex
             as={motion.div}
-            width={{
-              lg: "97%",
-              "2xl": "80%",
-              md: "95%",
-              sm: "90%",
-              xl: "90%",
-              base: "87%",
-            }}
-            textAlign="justify"
-            justifyContent="space-around"
-            height={{
-              lg: "60vh",
-              xl: "75vh",
-              md: "350px",
-              sm: "350px",
-              base: "350px",
-            }}
-            boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-            borderRadius="0.75rem"
-            padding="1rem"
-            whileHover={{ scale: 1.05 }}
-            initial={{ x: "-20rem" }}
-            animate={{ x: "0rem" }}
-            cursor="pointer"
-            direction="column"
-            bg="#EEE7FF"
+        
+               width={{  base: "97.5vw",lg:"89vw"}}
+              textAlign="justify"
+              justifyContent="space-around"
+              height={{ base: "70vh", sm: "70vh", md: "50vh", lg: "50vh", xl: "65vh" }}
+              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+              borderRadius="0.75rem"
+              padding="1rem"
+              whileHover={{ scale: 1.05 }}
+              initial={{ x: "-20rem" }}
+              animate={{ x: "0rem" }}
+              cursor="pointer"
+              direction="column"
+              bg="#EEE7FF"
           >
             <Heading
               textAlign={"center"}
@@ -273,12 +290,12 @@ function Instruction() {
               <ListItem>IME : Institut Médico-Éducatif</ListItem>
               <ListItem>ULIS : Unité Localisée pour l'Inclusion Scolaire (école, collège, lycée général ou professionnel)</ListItem>
             </UnorderedList>
-            <Button onClick={onOpen} w={{ lg: "60%", "2xl": "40%" }} h={{ lg: "30%", "2xl": "15%", md: "30%", sm: "30%", base: "30%" }}>
+            <Button padding={"40px"} onClick={onOpen} >
               En Savoir plus !
             </Button>
           </Flex>
         </GridItem>
-      </Box>
+     </Grid>
       <ModalWithNavigation isOpen={isOpen} onClose={onClose} />
     </>
   );

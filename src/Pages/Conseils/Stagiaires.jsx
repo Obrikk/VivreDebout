@@ -40,18 +40,20 @@ function Stagiaire() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#D2C4F3";
+    document.getElementById("root").style.backgroundColor = "#FDFCD8";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const settings = {
     dots: true,
+    arrows: false,
+    fade: true,
     infinite: true,
+    autoplay: true,
     speed: 500,
+    autoplaySpeed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "0"
   };
 
   return (
@@ -133,60 +135,93 @@ function Stagiaire() {
         )}
       </Flex>
 
-      <Box margin={"auto"} w="100%" p={4}>
+      <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
         <Grid
           templateColumns={{
             base: "1fr",
             sm: "1fr",
-            md: "1fr 1fr",
-            lg: "1fr 1fr",
-            xl: "1fr 1fr"
+            md: "1fr",
+            lg: " 1fr",
+            xl: "1fr 1fr",
           }}
-          gap={6}
-          
+          height="100%"
+          templateRows="auto"
+          gap={{ xl: "5rem", lg: "5rem", md: 10, base: "5rem" }}
+          pos="relative"
+
+          top={{ base: "6rem", sm: "10rem", md: "10rem", lg: "4rem" }}
+
         >
           {/* 1er grid item */}
-          <GridItem w="100%" h={{ base: "40vh", md: "70vh" }} bg="blue.500">
-            <Flex justifyContent="center" alignItems="center" h="100%">
-              <Box display={"flex"} justifyContent={"space-around"} flexDirection={"column"} p={"15px"}  w={{ base: "80%", sm: "55%" }} h={{ base: "80%", sm: "65vh" }} bg="white" boxShadow="md" borderRadius="md">
-            <Heading
-         
-            textAlign={"center"}
-          fontSize={"2.5rem"}
+          <GridItem display="flex" justifyContent="center" alignItems="center">
+            <Flex
+
+              as={motion.div}
+              width={{ base: "97.5vw", lg: "89vw", xl: "40vw" }}
+              textAlign="justify"
+              justifyContent="space-around"
+              height={{ base: "60vh", sm: "50vh", md: "50vh", lg: "50vh", xl: "65vh" }}
+              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+              borderRadius="0.75rem"
+              padding="1rem"
+              whileHover={{ scale: 1.05 }}
+              initial={{ x: "-20rem" }}
+              animate={{ x: "0rem" }}
+              cursor="pointer"
+              direction="column"
+              bg="#EEE7FF"
             >
-              Stagiaires
-            </Heading>
+            
+                <Heading
+                  textAlign={"center"}
+                  fontSize={"2.5rem"}
+                >
+                  Stagiaires
+                </Heading>
 
-          <Text
-
-          textAlign={"justify"}
-          >
-          Vivre Debout accueille des stagiaires en cours de formation quelle que soit la formation.
-En 2024, Vivre Debout a accueilli 2 stagiaires Web développement et 1 stagiaire en Management des organisations. 
-Les stages sont encadrés et ceux-ci se sont déroulés au siège de l’association.
-Dans les années à venir, Vivre Debout étudiera sa politique d’accueil pour pouvoir proposer à plus de stagiaires de mettre en application leur formation dans un environnement audacieux et courageux.
-          </Text>
-
-              </Box>
+                <Text
+                fontSize={{base:"1.1rem",md:"1.2rem"}}
+                  textAlign={"justify"}
+                >
+                  Vivre Debout accueille des stagiaires en cours de formation quelle que soit la formation.
+                  En 2024, Vivre Debout a accueilli 2 stagiaires Web développement et 1 stagiaire en Management des organisations.
+                  Les stages sont encadrés et ceux-ci se sont déroulés au siège de l’association.
+                  Dans les années à venir, Vivre Debout étudiera sa politique d’accueil pour pouvoir proposer à plus de stagiaires de mettre en application leur formation dans un environnement audacieux et courageux.
+                </Text>
             </Flex>
           </GridItem>
 
           {/* 2ieme grid item */}
-          <GridItem w="100%" h={{ base: "40vh", md: "70vh" }} bg="green.500">
-            <Flex justifyContent="center" alignItems="center" h="100%">
-              <Box w={{ base: "100%", md: "80%" }} maxW="600px">
-                <Slider {...settings}>
-                  <Box>
-                    <img src="../../../public/Image1.png" alt="Image 1" style={{ width: "100%" }} />
-                  </Box>
-                  <Box>
-                    <img src="../../../public/image2.png" alt="Image 2" style={{ width: "100%" }} />
-                  </Box>
-                  <Box>
-                    <img src="../../../public/Image3.png" alt="Image 3" style={{ width: "100%" }} />
-                  </Box>
-                </Slider>
-              </Box>
+          <GridItem display="flex" justifyContent="center" alignItems="center">
+            <Flex as={motion.div}
+              width={{  base: "97.5vw",lg:"89vw",xl:"40vw" }}
+              textAlign="justify"
+             display="flex" justifyContent="center" alignItems="center"
+              height={{ base: "60vh", sm: "50vh", md: "50vh", lg: "50vh", xl: "65vh" }}
+              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+              borderRadius="0.75rem"
+              padding="1rem"
+              whileHover={{ scale: 1.05 }}
+              initial={{ x: "20rem" }}
+              animate={{ x: "0rem" }}
+              cursor="pointer"
+            bg={'black'}
+              marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}>
+
+         <Box padding={"10px"} width={{ base: "90vw",sm:"65vw",md:"65vw",lg:"60vw",xl:"40vw"}} display="flex" justifyContent="center">
+      <Slider style={{ width: "100%" }} {...settings}>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <img  src="../public/Image1.png" alt="Image 1" style={{ width: "100%",position:"relative" }} />
+        </Box>
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <img src="../public/Image2.png" alt="Image 2" style={{ width: "100%" }} />
+        </Box>
+        <Box   display="flex" justifyContent="center" alignItems="center">
+          <img src="../public/Image3.png" alt="Image 3" style={{ width: "100%" }} />
+        </Box>
+        
+      </Slider>
+    </Box>
             </Flex>
           </GridItem>
         </Grid>
