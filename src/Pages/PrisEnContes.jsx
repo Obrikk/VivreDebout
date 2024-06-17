@@ -277,8 +277,9 @@ function PrisEnContes() {
                   sm: "2.4rem",
                   base: "2.4rem",
                 }}
+                textAlign={"center"}
               >
-                Inclusivité
+             Articles
               </Heading>
               <UnorderedList
                 spacing={3}
@@ -402,6 +403,7 @@ function PrisEnContes() {
                   sm: "2.4rem",
                   base: "2.3rem",
                 }}
+                textAlign={"center"}
               >
                 Futures Manifestations
               </Heading>
@@ -431,7 +433,9 @@ function PrisEnContes() {
         </Grid>
       </Box>
 
+
       <CustomImageModal
+      
         isOpen={isHandicapOpen}
         onClose={() => setHandicapOpen(false)}
 
@@ -448,22 +452,20 @@ function PrisEnContes() {
         images={["../../public/VivreDebout50Ans.jpg"]}
       />
       
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal  isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
           borderRadius="15px"
           overflowY="auto"
-          display="flex"
+         
+          
           flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
           position="fixed"
           height="85vh"
         >
           <ModalHeader
             fontWeight="bold"
-            fontSize={{ sm: "1.5em", lg: "2em", xl: "3.5em" }}
+            fontSize={{ sm: "1.5em", lg: "2em", xl: "3em" }}
             overflow="visible"
           >
             Pourquoi nous rejoindre ?
