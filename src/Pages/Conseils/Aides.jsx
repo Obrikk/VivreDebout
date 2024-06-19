@@ -27,9 +27,12 @@ import {
   Link,
   position,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, ArrowLeftIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowLeftIcon,ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import "../../styles/navbar.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MotionLink = motion(Link);
 
@@ -55,27 +58,74 @@ function Aides() {
 
   const customModalStyles = {
     modalContent: {
-      borderRadius: "15px",
+   borderRadius: "15px",
       overflow: "none",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
+      alignSelf:"center",
       textAlign: "center",
       position: "fixed",
-      height: "85vh",
+
+      height: "95vh",
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
       fontWeight: "bold",
-      fontSize: "2em",
+      fontSize: "1.8em",
     },
     modalBody: {
       textAlign: "justify",
-      fontSize: "1.1rem",
+      fontSize: "1.2rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
   };
 
+  const NextArrow = ({ onClick }) => (
+    <IconButton
+      icon={<ArrowForwardIcon />}
+      onClick={onClick}
+      position="absolute"
+      top="195%"
+      right="10px"
+      transform="translateY(-50%)"
+      zIndex="1"
+      backgroundColor="#AB87FF"
+      color="white"
+      _hover={{ bg: "#9260CC" }}
+      borderRadius="50%"
+    />
+  );
+  
+  const PrevArrow = ({ onClick }) => (
+    <IconButton
+      icon={<ArrowBackIcon />}
+      onClick={onClick}
+      position="absolute"
+      top="195%"
+      left="10px"
+      transform="translateY(-50%)"
+      zIndex="1"
+      backgroundColor="#AB87FF"
+      color="white"
+      _hover={{ bg: "#9260CC" }}
+      borderRadius="50%"
+    />
+  );
+  const settings = {
+    dots: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 3000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   const CustomTextModal = ({ isOpen, onClose, header, body }) => {
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -84,7 +134,10 @@ function Aides() {
           <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
           <ModalCloseButton />
           <ModalBody style={customModalStyles.modalBody}>
+            <Slider {...settings}>
             <Text mt="30px">{body}</Text>
+            </Slider>
+            
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
@@ -338,7 +391,7 @@ function Aides() {
                 textAlign="center"
                 justifyContent="center"
               >
-                Vous pouvez faire appel à une association ou une entreprise privée mandataire...
+                L'employeur est la personne handicapée mais toutes les formalités administratives sont faites par une agence mandataire, du début à la fin du contrat.
               </Text>
               <Button
                 bg="#AB87FF"

@@ -40,7 +40,7 @@ function Stagiaire() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#FDFCD8";
+    document.getElementById("root").style.backgroundColor = "#edf2f4";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -73,6 +73,8 @@ function Stagiaire() {
               bg={"black"}
               _hover={{ bg: "white", color: "black" }}
             />
+
+
             <Drawer as={motion.div} isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
@@ -169,7 +171,7 @@ function Stagiaire() {
               animate={{ x: "0rem" }}
               cursor="pointer"
               direction="column"
-              bg="#EEE7FF"
+              bg="#edef4"
             >
             
                 <Heading

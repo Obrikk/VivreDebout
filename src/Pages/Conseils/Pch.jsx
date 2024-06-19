@@ -1,5 +1,6 @@
 import Header from "../../Header";
 import { useState, useEffect } from "react";
+  
 import {
   Flex,
   Box,
@@ -29,10 +30,65 @@ import {
 import { HamburgerIcon, ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.css";  
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/navbar.css";
+const NextArrow = ({ onClick }) => (
+  <IconButton
+    icon={<ArrowForwardIcon />}
+    onClick={onClick}
+    position="absolute"
+    top="110%"
+    right="10px"
+    transform="translateY(-50%)"
+    zIndex="1"
+    backgroundColor="#AB87FF" 
+    color="white"
+    _hover={{ bg: "#9260CC" }}
+    borderRadius="50%"
+  />
+);
 
+const PrevArrow = ({ onClick }) => (
+  <IconButton
+    icon={<ArrowBackIcon />}
+    onClick={onClick}
+    position="absolute"
+    top="110%"
+    left="10px"
+    transform="translateY(-50%)"
+    zIndex="1"
+    backgroundColor="#AB87FF"
+    color="white"
+    _hover={{ bg: "#9260CC" }}
+    borderRadius="50%"
+  />
+);
+const settings = {
+  dots: true,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 3000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+
+const settingsImage = {
+  dots: true,
+  nextArrow: false,
+  prevArrow: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 3000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 const MotionLink = motion(Link);
 
 function Pch() {
@@ -87,24 +143,20 @@ function Pch() {
     " Vivre Debout rejoint le collectif des Handignés et l'ENIL* au Parlement Européen pour rappeler aux élus les lois en vigueur.",
   ];
 
-  const CustomTextModal = ({ isOpen, onClose, header, texts, currentIndex, setCurrentIndex }) => (
+  const CustomTextModal = ({ isOpen, onClose, header, texts }) => (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent style={customModalStyles.modalContent}>
-        <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+      <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
+        <ModalHeader fontWeight="bold" fontSize="2em">{header}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody style={customModalStyles.modalBody}>
-          <IconButton
-            icon={<ArrowBackIcon />}
-            onClick={() => setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : texts.length - 1)}
-            mb={2}
-          />
-          <Text mt="30px">{texts[currentIndex]}</Text>
-          <IconButton
-            icon={<ArrowForwardIcon />}
-            onClick={() => setCurrentIndex(currentIndex < texts.length - 1 ? currentIndex + 1 : 0)}
-            mt={8}
-          />
+        <ModalBody textAlign="justify" fontSize="1.1rem" w="100%">
+          <Slider {...settings}>
+            {texts.map((text, index) => (
+              <Box key={index} px={4}>
+                <Text mt="30px">{text}</Text>
+              </Box>
+            ))}
+          </Slider>
         </ModalBody>
         <ModalFooter>
           <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
@@ -115,17 +167,6 @@ function Pch() {
     </Modal>
   );
 
-  const settings = {
-    dots: true,
-    arrows: false,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <>
@@ -262,7 +303,7 @@ function Pch() {
 
 
 
-
+            {/* enleve les felches de ce gridItem */}
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
               as={motion.div}
@@ -282,7 +323,7 @@ function Pch() {
             >
            
               <Box padding={"10px"} width={{ base: "90vw",sm:"65vw",md:"65vw",lg:"60vw",xl:"40vw"}} display="flex" justifyContent="center">
-      <Slider style={{ width: "100%" }} {...settings}>
+      <Slider style={{ width: "100%" }} {...settingsImage}>
         <Box display="flex" justifyContent="center" alignItems="center">
           <img  src="../public/Pch-1.png" alt="Image 1" style={{ width: "100%",position:"relative" }} />
         </Box>

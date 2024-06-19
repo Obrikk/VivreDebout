@@ -380,9 +380,12 @@ function Home() {
       <CustomImageModal
         isOpen={isSolidariteOpen}
         onClose={onSolidariteClose}
-        header="Solidarité"
-        body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis temporibus unde ipsam officiis suscipit sunt tempora. Vel doloremque, sint quidem facilis similique perspiciatis, voluptate a temporibus expedita velit aut quae!"
-        images={[solidarite]}
+      
+        body="La solidarité est l’un des piliers de l’association. Elle se manifeste de bien des façons : Aider l’un ou l’autre à faire des courses, offrir un complément financier permettant de diminuer le reste à charge, trier des papiers, faire une avance de frais, chaque situation est unique et nous  nous adaptons au maximum à chaque besoin, sans jamais décider pour nos bénéficiaires qui restent maîtres de leurs choix."
+        images={[solidarite]
+          
+          
+        }
         discoverHandler={() => handleDiscover("solidarite")}
       />
       <CustomImageModal
@@ -390,7 +393,8 @@ function Home() {
         onClose={onSortiesClose}
         header="Sorties"
         body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, voluptatibus."
-        images={[sortieP]}
+        images={[sortieP ]}
+
         discoverHandler={() => handleDiscover("sorties")}
       />
       <CustomImageModal

@@ -61,28 +61,19 @@ function PrisEnContes() {
 
   const customModalStyles = {
     modalContent: {
-      borderRadius: "15px",
-      overflow: "none",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      textAlign: "center",
-      position: "fixed",
-      height: "85vh",
-      backgroundColor: "#FFF0F5",
+  
+     
+      
     },
     modalHeader: {
-      fontWeight: "bold",
-      fontSize: "2em",
+      
     },
     modalBody: {
       
-      textAlign: "justify",
-      fontSize: "1.1rem",
+   
     },
     modalImage: {
-      width: "350px ", // Ajoutez cette ligne pour que l'image prenne toute la largeur du conteneur
+      
     },
   };
   
@@ -103,12 +94,23 @@ function PrisEnContes() {
     };
 
     return (
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal 
+        
+      isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent style={customModalStyles.modalContent}>
-          <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+        <ModalContent   
+        borderRadius="15px"
+        overflowY="auto"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        position="fixed"
+        height="85vh">
+          <ModalHeader></ModalHeader>
           <ModalCloseButton />
-          <ModalBody style={customModalStyles.modalBody}>
+          <ModalBody >
             {images.length > 1 && (
               <>
                 <IconButton
@@ -465,28 +467,29 @@ function PrisEnContes() {
         >
           <ModalHeader
             fontWeight="bold"
-            fontSize={{ sm: "1.5em", lg: "2em", xl: "3em" }}
+            fontSize={{ base: "1.5em", lg: "2em", xl: "3em" }}
             overflow="visible"
+            textAlign={"center"}
           >
             Pourquoi nous rejoindre ?
           </ModalHeader>
           <Text
-            fontSize="1.07em"
+             fontSize={{ base: "1.3em", lg: "2em", xl: "3em" }} 
             textAlign="justify"
             pl="15px"
             pr="15px"
             pos="relative"
             top="50px"
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius,
-            maxime inventore! Assumenda totam fugit qui error iusto alias id,
-            corporis velit veritatis, provident, modi repellat fugiat ipsam. Ab,
-            ipsa dolorum!
+            Vous avez envie d'aider mais vous ne savez pas comment faire ni ce que vous pourriez faire ?
+Chez Vivre Debout, toutes les bonnes volontés sont appréciées !!
+Du chef de projet, animateur d'activité, aide administrtatif ou bureautique, ou encore chauffeur, tout le monde a sa place chez Vivre Debout et toujours dans le respect absolu de ce qu"il peut donner, jamais plus.
+N'hésitez plus rejoingnez nous
           </Text>
           <ModalCloseButton />
           <ModalBody></ModalBody>
           <ModalFooter overflow="visible">
-            <Button backgroundColor="#EEE7FF" mr={3} onClick={onClose}>
+            <Button backgroundColor="#EEE7FF" pos={"relative"} right={"40%"} onClick={onClose}>
               Fermer
             </Button>
           </ModalFooter>
