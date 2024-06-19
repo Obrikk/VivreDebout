@@ -243,21 +243,29 @@ function Instruction() {
     
         <GridItem display="flex" justifyContent="center" alignItems="center">
           <Flex
-            as={motion.div}
-        
-               width={{  base: "97.5vw",lg:"89vw"}}
+               as={motion.div}
+              width={{
+              lg: "97%",
+             
+                md: "80%",
+                sm: "90%",
+                xl: "90%",
+                base: "87%",
+              }}
               textAlign="justify"
-              justifyContent="space-around"
-              height={{ base: "70vh", sm: "70vh", md: "50vh", lg: "50vh", xl: "65vh" }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-              borderRadius="0.75rem"
-              padding="1rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "-20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#EEE7FF"
+              height={{
+                lg: "60vh",
+                xl: "65vh",
+                base: "65vh",
+              }}
+               background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent={"space-around"}
+             
+              padding={'10px'}
           >
             <Heading
               textAlign={"center"}
@@ -288,7 +296,7 @@ function Instruction() {
               <ListItem>IME : Institut Médico-Éducatif</ListItem>
               <ListItem>ULIS : Unité Localisée pour l'Inclusion Scolaire (école, collège, lycée général ou professionnel)</ListItem>
             </UnorderedList>
-            <Button padding={"40px"} onClick={onOpen} >
+            <Button  colorScheme="blue" padding={"40px"} onClick={onOpen} >
               En Savoir plus !
             </Button>
           </Flex>

@@ -242,6 +242,7 @@ function PrisEnContes() {
   w="100%" height="100%" display="flex" flexDirection="column" alignItems="center"
       >
         <Grid
+        
           templateColumns={{
                    base: "1fr",
             sm: "1fr",
@@ -255,7 +256,7 @@ function PrisEnContes() {
           top={{ base: "10rem", sm: "10rem", lg: "0", xl: "3rem" }}
           rowGap="3rem"
         >
-          <GridItem display="flex" justifyContent="center" alignItems="center">
+          <GridItem    as={motion.div} display="flex" justifyContent="center" alignItems="center">
             <Flex
               as={motion.div}
               width={{

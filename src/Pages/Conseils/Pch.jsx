@@ -304,7 +304,7 @@ function Pch() {
                 }}>
                 La Prestation de Compensation du Handicap (PCH) est une aide personnalisée destinée à financer les besoins liés à la perte d'autonomie des personnes en situation de handicap.
               </Text>
-              <Button   padding={"30px 60px"}
+              <Button   padding={"45px 60px"}
               fontSize={"1.3rem"}
                 color="white"
                   backgroundColor="#AB87FF"
