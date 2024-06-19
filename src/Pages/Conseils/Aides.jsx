@@ -25,12 +25,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Link,
-  position,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, ArrowLeftIcon,ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
+
 import { motion } from "framer-motion";
 import "../../styles/navbar.css";
-import Slider from "react-slick";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -58,15 +57,14 @@ function Aides() {
 
   const customModalStyles = {
     modalContent: {
-   borderRadius: "15px",
+      borderRadius: "15px",
       overflow: "none",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      alignSelf:"center",
+      alignSelf: "center",
       textAlign: "center",
       position: "fixed",
-
       height: "95vh",
       backgroundColor: "#FFF0F5",
     },
@@ -83,69 +81,52 @@ function Aides() {
     },
   };
 
-  const NextArrow = ({ onClick }) => (
-    <IconButton
-      icon={<ArrowForwardIcon />}
-      onClick={onClick}
-      position="absolute"
-      top="195%"
-      right="10px"
-      transform="translateY(-50%)"
-      zIndex="1"
-      backgroundColor="#AB87FF"
-      color="white"
-      _hover={{ bg: "#9260CC" }}
-      borderRadius="50%"
-    />
-  );
-  
-  const PrevArrow = ({ onClick }) => (
-    <IconButton
-      icon={<ArrowBackIcon />}
-      onClick={onClick}
-      position="absolute"
-      top="195%"
-      left="10px"
-      transform="translateY(-50%)"
-      zIndex="1"
-      backgroundColor="#AB87FF"
-      color="white"
-      _hover={{ bg: "#9260CC" }}
-      borderRadius="50%"
-    />
-  );
-  const settings = {
-    dots: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 3000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  const CustomTextModal = ({ isOpen, onClose, header, body }) => {
+  const CustomTextModal = ({ isOpen, onClose, header, contents }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = () => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+    };
+
+    const handlePrev = () => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? contents.length - 1 : prevIndex - 1
+      );
+    };
+
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent style={customModalStyles.modalContent}>
-          <ModalHeader style={customModalStyles.modalHeader}>{header}</ModalHeader>
+        <ModalContent position={"relative"} style={customModalStyles.modalContent}>
+          <ModalHeader style={customModalStyles.modalHeader}>{contents[currentIndex].title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody style={customModalStyles.modalBody}>
-            <Slider {...settings}>
-            <Text mt="30px">{body}</Text>
-            </Slider>
-            
+            <Text mt="30px">{contents[currentIndex].text}</Text>
+         
+            <Text mt="20px" alignSelf="flex-end">{`${currentIndex + 1} / ${contents.length}`}</Text>
           </ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+          <ModalFooter display={'flex'} gap={"10px"}>
+              {currentIndex === 0 && (
+                <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#AB87FF">
+                  Suivant
+                </Button>
+              )}
+               {currentIndex === 1 && (
+                <Button padding={"30px 60px"} onClick={handlePrev
+                } color="white" backgroundColor="#AB87FF">
+                  Précédent
+                </Button>
+              )}
+            <Button padding={"30px 60px"}  onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
               Fermer
             </Button>
+            
           </ModalFooter>
+          
         </ModalContent>
+        
       </Modal>
+      
     );
   };
 
@@ -244,320 +225,250 @@ function Aides() {
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
+         as={motion.div}
               width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
+              lg: "97%",
+             
+                md: "80%",
                 sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
-              textAlign="justify"
-              justifyContent="space-around"
+        
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
+                base: "65vh",
               }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              padding="1.5rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "-20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#FFC9E1"
+               background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
               alignItems="center"
+              justifyContent={"space-around"}
+             
+              padding={'10px'}
             >
               <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "2.5rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
-                textAlign="center"
+       fontSize={{ lg: "3.5rem",  base: "2.5rem",sm:"3.2rem" }}
+                  textTransform="uppercase"
               >
-                Prestataire
+                Prestatire
               </Heading>
               <Text
-                fontSize={{
-                  lg: "1.4rem",
-                  md: "1.4rem",
-                  sm: "1.2rem",
-                  base: "1.1rem",
+                      fontSize={{
+                  sm: "1.6rem",
+                  lg: "1.7rem",
+                  xl: "1.8rem",
+               
+                  base: "1.5rem",
+                  
                 }}
-                textAlign="center"
-                justifyContent="center"
-              >
-                Vous pouvez faire appel à une association ou une entreprise privée prestataire...
+                textAlign={"justify"}
+                padding={"10px"}
+                >
+               
+              
+                Vous êtes l'employeur de l'intervenant, et l'organisme prestataire...
               </Text>
               <Button
-                bg="#AB87FF"
-                _hover={{ bg: "rgba(171, 135, 255, 0.6)" }}
+              padding={"30px 60px"}
+              fontSize={"1.3rem"}
                 color="white"
-                fontSize={{
-                  lg: "1.3rem",
-                  md: "1.1rem",
-                  sm: "1rem",
-                  base: "1rem",
+                backgroundColor="#AB87FF"
+                onClick={() => {
+                  setPrestataireOpen(true);
                 }}
-                padding={{
-                  lg: "1.5rem",
-                  md: "1.5rem",
-                  sm: "1.5rem",
-                  base: "1.4rem",
-                }}
-                height={{
-                  lg: "3rem",
-                  md: "3rem",
-                  sm: "3rem",
-                  base: "3rem",
-                }}
-                width={{
-                  lg: "15rem",
-                  md: "15rem",
-                  sm: "15rem",
-                  base: "15rem",
-                }}
-                mt={{
-                  lg: "2rem",
-                  md: "2rem",
-                  sm: "1rem",
-                  base: "0.5rem",
-                }}
-                onClick={() => setPrestataireOpen(true)}
+                _hover={{ bg: "#9260CC" }}
               >
-                En savoir plus
+                Lire plus
               </Button>
             </Flex>
           </GridItem>
-
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
+             as={motion.div}
+             
               width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
+              lg: "97%",
+             
+                md: "80%",
                 sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
               textAlign="justify"
-              justifyContent="space-around"
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
+                base: "65vh",
               }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              padding="1.5rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ y: "-20rem" }}
-              animate={{ y: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#FFC9E1"
+               background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
               alignItems="center"
+              justifyContent={"space-around"}
+             
+              padding={'10px'}
             >
               <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "2.5rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
+                as="h2"
+                size="lg"
                 textAlign="center"
+              
+                textTransform="uppercase"
+                 fontSize={{ lg: "2.8rem", base: "2.5rem" }}
+      
               >
-                Mandataire
+                 mandataire
               </Heading>
               <Text
+             
                 fontSize={{
-                  lg: "1.4rem",
-                  md: "1.4rem",
-                  sm: "1.2rem",
-                  base: "1.1rem",
+                  sm: "1.6rem",
+                  lg: "1.7rem",
+                  xl: "1.8rem",
+               
+                  base: "1.5rem",
+                  
                 }}
-                textAlign="center"
-                justifyContent="center"
+                padding={"10px"}
               >
-                L'employeur est la personne handicapée mais toutes les formalités administratives sont faites par une agence mandataire, du début à la fin du contrat.
+                L'association ou l'entreprise mandataire s'occupe...
               </Text>
               <Button
-                bg="#AB87FF"
-                _hover={{ bg: "rgba(171, 135, 255, 0.6)" }}
+               fontSize={"1.3rem"}
+                  padding={"30px 60px"}
                 color="white"
-                fontSize={{
-                  lg: "1.3rem",
-                  md: "1.1rem",
-                  sm: "1rem",
-                  base: "1rem",
+                backgroundColor="#AB87FF"
+                onClick={() => {
+                  setMandataireOpen(true);
                 }}
-                padding={{
-                  lg: "1.5rem",
-                  md: "1.5rem",
-                  sm: "1.5rem",
-                  base: "1.4rem",
-                }}
-                height={{
-                  lg: "3rem",
-                  md: "3rem",
-                  sm: "3rem",
-                  base: "3rem",
-                }}
-                width={{
-                  lg: "15rem",
-                  md: "15rem",
-                  sm: "15rem",
-                  base: "15rem",
-                }}
-                mt={{
-                  lg: "2rem",
-                  md: "2rem",
-                  sm: "1rem",
-                  base: "0.5rem",
-                }}
-                onClick={() => setMandataireOpen(true)}
+                _hover={{ bg: "#9260CC" }}
               >
-                En savoir plus
+                Lire plus
               </Button>
             </Flex>
           </GridItem>
-
-          <GridItem display="flex" justifyContent="center" alignItems="center">
+          <GridItem  display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
+         as={motion.div}
               width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
+              lg: "97%",
+             
+                md: "80%",
                 sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
               textAlign="justify"
-              justifyContent="space-around"
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
+                base: "65vh",
               }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              padding="1.5rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#FFC9E1"
+               background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
               alignItems="center"
+              justifyContent={"space-around"}
+             
+              padding={'10px'}
             >
               <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "2.5rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
+                as="h2"
+                size="lg"
                 textAlign="center"
+            
+                textTransform="uppercase"
+                 fontSize={{ lg: "2.8rem", base: "2.5rem" }}
+                width={{ lg: "90%", base: "80%" }}
               >
-                Emploi Direct
+                 emploi direct
               </Heading>
               <Text
+                
                 fontSize={{
-                  lg: "1.4rem",
-                  md: "1.4rem",
-                  sm: "1.2rem",
-                  base: "1.1rem",
+                  sm: "1.6rem",
+                  lg: "1.7rem",
+                  xl: "1.8rem",
+               
+                  base: "1.5rem",
+                  
                 }}
-                textAlign="center"
-                justifyContent="center"
+                padding={'10px'}
+                textAlign={'justify'}
               >
-                Vous pouvez employer directement une personne...
+                Vous êtes l'employeur direct de votre salarié...
               </Text>
               <Button
-                bg="#AB87FF"
-                _hover={{ bg: "rgba(171, 135, 255, 0.6)" }}
+               fontSize={"1.3rem"}
+                  padding={"30px 60px"}
                 color="white"
-                fontSize={{
-                  lg: "1.3rem",
-                  md: "1.1rem",
-                  sm: "1rem",
-                  base: "1rem",
+                backgroundColor="#AB87FF"
+                onClick={() => {
+                  setDirectOpen(true);
                 }}
-                padding={{
-                  lg: "1.5rem",
-                  md: "1.5rem",
-                  sm: "1.5rem",
-                  base: "1.4rem",
-                }}
-                height={{
-                  lg: "3rem",
-                  md: "3rem",
-                  sm: "3rem",
-                  base: "3rem",
-                }}
-                width={{
-                  lg: "15rem",
-                  md: "15rem",
-                  sm: "15rem",
-                  base: "15rem",
-                }}
-                mt={{
-                  lg: "2rem",
-                  md: "2rem",
-                  sm: "1rem",
-                  base: "0.5rem",
-                }}
-                onClick={() => setDirectOpen(true)}
+                _hover={{ bg: "#9260CC" }}
               >
-                En savoir plus
+                Lire plus
               </Button>
             </Flex>
           </GridItem>
         </Grid>
+
+        {/* Modals */}
+        <CustomTextModal
+          isOpen={isPrestataireOpen}
+          onClose={() => setPrestataireOpen(false)}
+          header="Mode prestataire"
+          contents={[
+            {
+              title: "Avantages",
+              text: "Vous n'êtes pas l'employeur et êtes totalement déchargé des démarches administratives. Vous payez la facture des prestations. Présentation d'un personnel qui intervient chez vous, et dont les remplacements en cas de maladie, congés sont assurés. Il s'agit, en général, d'un personnel efficace pour le maintien de l'hygiène du logement, courses de proximité, préparation et aide à la prise du repas.",
+            },
+            {
+              title: "Inconvéniants",
+              text: "Bien que doté d'un agrément qualité, le personnel ne l'est pas pour autant suite à l'expérience des personnes avec handicap (transferts, assistance ventilation respiratoire...).Le changement d’intervenants est fréquent. Et si c'est une obligation qu'il ait suivi une formation de niveau 1 aux premiers secours, il n'est pas autorisé à préparer les médicaments.Proposition d'un planning des interventions qui reste figé : tout projet de dernière minute ou risquant de dépasser les contraintes horaires est irréalisable, à moins de demander une modification suffisamment au préalable afin que la structure puisse organiser l'emploi de son personnel.Les horaires d'intervention oscillent en général entre 8h 00 et 20h 00.C'est le mode le plus onéreux et le Conseil Départemental conseille de l’utiliser...",
+            },
+            // Add more pages as needed
+          ]}
+        />
+        <CustomTextModal
+          isOpen={isMandataireOpen}
+          onClose={() => setMandataireOpen(false)}
+          header="Mode mandataire"
+          contents={[
+            {
+              title: "Avantages",
+              text: "Vous n'êtes qu'en partie l'employeur : l'entreprise ou l'association d'aide à la personne sélectionne votre personnel, assure ses remplacements en cas de maladie, congés, vous décharge de toutes les démarches administratives à votre nom et pour votre compte.Ce mode est moins onéreux que le mode prestataire. Néanmoins vous payez les salaires et en sus les frais de gestion du prestataire de service.Ce mode permet plus de souplesse : vous bénéficiez d'un(e) auxiliaire de vie attitré(e) qui saura mieux s'adapter à vos exigences. Le personnel intervient chez vous aux horaires fixés à votre convenance en accord avec ce dernier, pourvu que vous respectiez le code du travail (durée, majoration de salaire...)",
+            },
+            {
+              title: "Inconvéniants",
+              text: "Vous avez l’entière responsabilité juridique liée à votre qualité d’employeur donc le licenciement vous incombe.",
+            },
+            // Add more pages as needed
+          ]}
+        />
+        <CustomTextModal
+          isOpen={isDirectOpen}
+          onClose={() => setDirectOpen(false)}
+          header="Mode emploi direct"
+          contents={[
+            {
+              title: "Avantages",
+              text: "Vous êtes décisionnaire de recruter et d'embaucher qui vous voulez, agencez votre emploi du temps à votre convenance, pourvu que vous respectiez le code du travail. Votre personnel dépend de la convention collective du particulier-employeur.Votre auxiliaire de vie attitré(e) connait vos exigences et permet plus de souplesse à la réalisation de vos projets (maîtrise des aides techniques, transferts, conduite voiture, ...).C'est le mode le moins onéreux, le plus utilisé par les grands handicapés.",
+            },
+            {
+              title: "Inconvéniants",
+              text: "Vous êtes l'employeur à part entière : vous réalisez toutes les démarches administratives (contrat de travail, déclarations à l’Urssaf, établissement des bulletins de salaires). Rassurez-vous, le CESU* donne moins de fil à retordre en 3 clics sur le site internet.Le remplacement éventuel de l’intervenant pendant ses congés maladie ou vacances vous incombe.La rupture du contrat de travail (ex : hospitalisation de l’employeur, décès) entraîne des indemnités supplémentaires au même titre que le licenciement. Il existe, toutefois, la possibilité de souscrire une garantie facultative liée à la rupture du contrat.",
+            },
+            // Add more pages as needed
+          ]}
+        />
       </Box>
-
-      <CustomTextModal
-        isOpen={isPrestataireOpen}
-        onClose={() => setPrestataireOpen(false)}
-        header="Avantages"
-        body="Vous n'êtes pas l'employeur et êtes totalement déchargé des démarches administratives. Vous payez la facture des prestations.
-Présentation d'un personnel qui intervient chez vous, et dont les remplacements en cas de maladie, congés sont assurés.
-Il s'agit, en général, d'un personnel efficace pour le maintien de l'hygiène du logement, courses de proximité, préparation et aide à la prise du repas."
-      />
-
-      <CustomTextModal
-        isOpen={isMandataireOpen}
-        onClose={() => setMandataireOpen(false)}
-        header="Avantages"
-        body="Vous n'êtes qu'en partie l'employeur : l'entreprise ou l'association d'aide à la personne sélectionne votre personnel, assure ses remplacements en cas de maladie, congés, vous décharge de toutes les démarches administratives à votre nom et pour votre compte.
-Ce mode est moins onéreux que le mode prestataire. Néanmoins vous payez les salaires et en sus les frais de gestion du prestataire de service.
-Ce mode permet plus de souplesse : vous bénéficiez d'un(e) auxiliaire de vie attitré(e) qui saura mieux s'adapter à vos exigences. Le personnel intervient chez vous aux horaires fixés à votre convenance en accord avec ce dernier, pourvu que vous respectiez le code du travail (durée, majoration de salaire...)"
-      />
-
-      <CustomTextModal
-        isOpen={isDirectOpen}
-        onClose={() => setDirectOpen(false)}
-        header="Avantages"
-        body="Vous êtes décisionnaire de recruter et d'embaucher qui vous voulez, agencez votre emploi du temps à votre convenance, pourvu que vous respectiez le code du travail. Votre personnel dépend de la convention collective du particulier-employeur.
-Votre auxiliaire de vie attitré(e) connait vos exigences et permet plus de souplesse à la réalisation de vos projets (maîtrise des aides techniques, transferts, conduite voiture, ...).
-C'est le mode le moins onéreux, le plus utilisé par les grands handicapés."
-      />
     </>
   );
 }

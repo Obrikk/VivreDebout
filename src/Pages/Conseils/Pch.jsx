@@ -266,28 +266,49 @@ function Pch() {
         >
           <GridItem  display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
-                width={{  base: "97.5vw",lg:"89vw",xl:"40vw" }}
+         as={motion.div}
+              width={{
+              lg: "97%",
+             
+                md: "80%",
+                sm: "90%",
+                xl: "90%",
+                base: "87%",
+              }}
               textAlign="justify"
-              justifyContent="space-around"
-              height={{ base: "60vh", sm: "50vh", md: "50vh", lg: "50vh", xl: "65vh" }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-              borderRadius="0.75rem"
-              padding="1rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "-20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#EEE7FF"
+              height={{
+                lg: "60vh",
+                xl: "65vh",
+                base: "65vh",
+              }}
+               background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent={"space-around"}
+             
+              padding={'10px'}
+            
             >
-              <Heading textAlign="center" fontSize="3em" mb={4}>
+              <Heading  fontSize={{ lg: "3.5rem",  base: "2.3rem",sm:"3.2rem" }}>
                 PCH/Convention
               </Heading>
-              <Text fontSize="1.2em" mb={4}>
+              <Text  
+              width={'95%'}          fontSize={{
+                  sm: "1.6rem",
+                  lg: "1.7rem",
+                  xl: "1.8rem",
+               
+                  base: "1.35rem",
+                }}>
                 La Prestation de Compensation du Handicap (PCH) est une aide personnalisée destinée à financer les besoins liés à la perte d'autonomie des personnes en situation de handicap.
               </Text>
-              <Button _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF" color="white" onClick={onOpen}>
+              <Button   padding={"30px 60px"}
+              fontSize={"1.3rem"}
+                color="white"
+                  backgroundColor="#AB87FF"
+                      _hover={{ bg: "#9260CC" }} onClick={onOpen}>
                 En savoir plus
               </Button>
               <CustomTextModal

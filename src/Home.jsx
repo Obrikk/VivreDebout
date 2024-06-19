@@ -311,11 +311,7 @@ function Home() {
                 mt={{ base: 6 }}
                 mb={{ base: "8rem",sm:"8rem",md:"1rem" }}
               >
-                Vivre Debout est membre administrateur de la Coordination Handicap
-                Autonomie qui regroupe des petites associations qui défendent les
-                mêmes valeurs et droits… Vivre Debout existe depuis 50 ans et a pour
-                objectif de maintenir l’autonomie et l’indépendance des Personnes à
-                Mobilité Réduite.
+               Vivre Debout existe depuis 50 ans et a pour objectif de maintenir l’autonomie et l’indépendance des Personnes à Mobilité Réduite. Nous sommes membre administrateur de la Coordination Handicap Autonomie qui regroupe des petites associations qui défendent les mêmes valeurs et droits…
               </Text>
               <Flex  gap={{lg:"6",base:"5rem"}} pos={"relative"} display="flex" flexDirection={{base:"column",md:"row"}} alignItems="center">
                 <Box  cursor="pointer" onClick={onSortiesOpen}>
