@@ -17,6 +17,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
+  Img,
   ModalBody,
   ModalFooter,
   IconButton,
@@ -31,7 +32,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import SolidariteImg from "../../public/solidariteP.png";
+import SolidariteImg from "../../public/handshake.png";
 import LienGif from "../../public/info.gif";
 
 import "../styles/navbar.css";
@@ -95,7 +96,7 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
           ))}
         </ModalBody>
         <ModalFooter overflow="visible">
-          <Button fontSize={"1.2rem"} padding={"30px 60px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
+          <Button fontSize={"1.2rem"} padding={"30px 0px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
             Fermer
           </Button>
         </ModalFooter>
@@ -240,7 +241,14 @@ function PrisEnContes() {
       </Flex>
       <Box
   w="100%" height="100%" display="flex" flexDirection="column" alignItems="center"
-      >
+  
+
+
+
+  
+      > 
+    <Img src={SolidariteImg} w="10rem" pos="relative" top={{ xl: "5em", base: "3em" }} />
+        
         <Grid
         
           templateColumns={{
@@ -253,15 +261,15 @@ function PrisEnContes() {
          height="100%"
           templateRows="auto"
           pos="relative"
-          top={{ base: "10rem", sm: "10rem", lg: "0", xl: "3rem" }}
+          top={{ base: "10rem", sm: "10rem", lg: "-2rem" }}
           rowGap="3rem"
         >
           <GridItem    as={motion.div} display="flex" justifyContent="center" alignItems="center">
             <Flex
               as={motion.div}
               width={{
-              lg: "97%",
-             
+                lg: "97%",
+                "2xl": "80%",
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
@@ -296,11 +304,11 @@ function PrisEnContes() {
                 spacing={7}
                 listStyleType="circle"
                          fontSize={{
-                  sm: "1.7rem",
+                  sm: "2rem",
                   lg: "1.3rem",
-                  xl: "1.6rem",
+                  xl: "1.5rem",
                 
-                  base: "1.35rem",
+                  base: "1.5rem",
                 }}
                 textAlign="justify"
                 width={'90%'}
@@ -315,8 +323,9 @@ function PrisEnContes() {
               </UnorderedList>
               <Flex justifyContent="center">
                 <Button
+                
                   onClick={onModal1Open}
-               padding={"30px 60px"}
+               padding={"35px 45px"}
               fontSize={"1.3rem"}
                 color="white"
                   backgroundColor="#AB87FF"
@@ -327,45 +336,45 @@ function PrisEnContes() {
               </Flex>
             </Flex>
           </GridItem>
-          <GridItem display="flex" justifyContent="center" alignItems="flex-end">
+          <GridItem  display="flex" justifyContent="center" alignItems="flex-end">
             <Flex
-              as={motion.div}
-              width={{
-                lg: "96%",
-                "2xl": "80%",
-                md: "80%",
-                sm: "90%",
-                xl: "90%",
-                base: "87%",
-              }}
-              height={{
-             lg: "45vh",
-                xl: "45vh",
-                md: "350px",
-                sm: "350px",
-                base: "40vh",
-              }}
-              background="white"
-              borderRadius="20px"
-              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="space-around"
-              gap="3"
+                    as={motion.div}
+                    width={{
+                    
+                      
+                      md: "80%",
+                      sm: "90%",
+                      xl: "80%",
+                      base: "87%",
+                    }}
+                    height={{
+                   lg: "45vh",
+                      xl: "45vh",
+                      md: "350px",
+                      sm: "350px",
+                      base: "40vh",
+                    }}
+                    background="white"
+                    borderRadius="20px"
+                    boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="space-around"
+                    gap="3"
             >
               <Heading
                 textAlign="center"
                 marginTop="5%"
                 textTransform="uppercase"
-          fontSize={{ lg: "2.5rem",  base: "2.3rem",sm:"3.5rem" }}
-                width={{ lg: "90%", base: "80%" }}
+          fontSize={{ lg: "2.4rem",  base: "2.3rem",sm:"3.5rem" }}
+                
               >
                 Actions Solidaires
               </Heading>
               {/* Text removed here */}
               <Button
                 onClick={onModal2Open}
-           padding={"30px 60px"}
+           padding={"35px 45px"}
               fontSize={"1.3rem"}
                 color="white"
                 backgroundColor="#AB87FF"
@@ -390,7 +399,7 @@ function PrisEnContes() {
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                base: "65vh",
+                base: "55vh",
               }}
                background="white"
               borderRadius="20px"
@@ -416,7 +425,7 @@ function PrisEnContes() {
                 spacing={3}
                 listStyleType="circle"
                 fontSize={{
-                  sm: "1.8rem",
+                  sm: "2.1rem",
                   lg: "1.3rem",
                   xl: "1.7rem",
                  

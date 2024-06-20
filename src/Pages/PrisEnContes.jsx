@@ -243,58 +243,49 @@ function PrisEnContes() {
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex 
-              as={motion.div}
-              width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
-                sm: "90%",
-                xl: "90%",
-                base: "87%",
-              }}
-              textAlign="justify"
-              justifyContent="space-around"
-              height={{
-                lg: "60vh",
-                xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
-              }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              padding="1rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "-20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#EEE7FF"
+                   as={motion.div}
+                   width={{
+                     lg: "97%",
+                     "2xl": "80%",
+                     md: "80%",
+                     sm: "90%",
+                     xl: "90%",
+                     base: "87%",
+                   }}
+                   textAlign="justify"
+                   height={{
+                     lg: "60vh",
+                     xl: "65vh",
+                     base: "65vh",
+                   }}
+                    background="white"
+                   borderRadius="20px"
+                   boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+                   flexDirection="column"
+                   alignItems="center"
+                   justifyContent={"space-around"}
+                  
+                   
+                   padding={"15px"}
             >
               <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "3rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
+                    fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
                 textAlign={"center"}
               >
              Articles
               </Heading>
               <UnorderedList
-                spacing={3}
-                listStyleType="circle"
-                pos="relative"
-                mt="30px"
+       spacing={3}
+       listStyleType="circle"
                 fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
-                  base: "1.1rem",
-                  sm: "1.25rem",
-                }}
+         sm: "1.7rem",
+         lg: "1.3rem",
+         xl: "1.5rem",
+       
+         base: "1.35rem",
+       }}
+       textAlign="justify"
+       width={'90%'}
               >
                 <ListItem>
                   Montez sur Scène avec "Pris en Contes 2023-2024"
@@ -308,117 +299,104 @@ function PrisEnContes() {
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="flex-end">
             <Flex
-              as={motion.div}
-              width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "95%",
-                sm: "90%",
-                xl: "90%",
-                base: "87%",
-              }}
-              height={{
-                lg: "40vh",
-                md: "250px",
-                sm: "250px",
-                base: "250px",
-                xl: "45vh",
-              }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              pl="10px"
-              pr="10px"
-              pb="15px"
-              whileHover={{ scale: 1.05 }}
-              initial={{ y: "30rem" }}
-              animate={{ y: "0rem" }}
-              direction="column"
-              cursor="pointer"
-              bg="#EEE7FF"
-              alignItems="center"
-              justifyContent={{ base: "space-between", md: "space-around" }}
+                   as={motion.div}
+                   width={{
+                   
+                     
+                     md: "80%",
+                     sm: "90%",
+                     xl: "80%",
+                     base: "87%",
+                   }}
+                   height={{
+                  lg: "45vh",
+                     xl: "45vh",
+                     md: "350px",
+                     sm: "350px",
+                     base: "40vh",
+                   }}
+                   background="white"
+                   borderRadius="20px"
+                   boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+                   flexDirection="column"
+                   alignItems="center"
+                   justifyContent="space-around"
+                   gap="3"
             >
               <Heading
-                fontSize={{
-                  lg: "2.8em",
-                  md: "2.4rem",
-                  xl: "2.8rem",
-                  sm: "2.4rem",
-                  base: "2.4rem",
-                }}
+                  fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
               >
                 Debout !
               </Heading>
               <Text
-                fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
-                  base: "1.1rem",
-                  sm: "1.25rem",
-                }}
-                textAlign="center"
+            
+             listStyleType="circle"
+                      fontSize={{
+               sm: "1.7rem",
+               lg: "1.3rem",
+               xl: "1.5rem",
+             
+               base: "1.35rem",
+             }}
+             textAlign="justify"
+             width={'90%'}
               >
                 Être en mouvement dans l’audace et la créativité, c’est possible !
               </Text>
-              <Button onClick={onOpen} w={{ lg: "60%", "2xl": "50%" }} h={{ lg: "30%", "2xl": "25%", md: "30%", sm: "30%", base: "30%" }}>
+              <Button onClick={onOpen}  padding={"30px 60px"}
+              fontSize={"1.3rem"}
+                color="white"
+                  backgroundColor="#AB87FF"
+                      _hover={{ bg: "#9260CC" }}>
                 Rejoignez-nous !
               </Button>
             </Flex>
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
-              width={{
+               as={motion.div}
+               width={{
                 lg: "97%",
                 "2xl": "80%",
-                md: "95%",
+                md: "80%",
                 sm: "90%",
                 xl: "90%",
                 base: "87%",
               }}
-              textAlign="justify"
-              justifyContent="space-around"
-              height={{
+               textAlign="justify"
+               height={{
                 lg: "60vh",
                 xl: "65vh",
-                md: "350px",
-                sm: "350px",
-                base: "350px",
+                base: "65vh",
               }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-              borderRadius="0.75rem"
-              padding="1rem"
-              whileHover={{ scale: 1.05 }}
-              initial={{ x: "-20rem" }}
-              animate={{ x: "0rem" }}
-              cursor="pointer"
-              direction="column"
-              bg="#EEE7FF"
-              marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}
+                background="white"
+               borderRadius="20px"
+               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+               flexDirection="column"
+               alignItems="center"
+               justifyContent={"space-around"}
+              
+               
+               padding={"15px"}
             >
               <Heading
-                fontSize={{
-                  lg: "2.3em",
-                  md: "2.4rem",
-                  xl: "2.7rem",
-                  sm: "2.4rem",
-                  base: "2.3rem",
-                }}
+                   fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
                 textAlign={"center"}
               >
                 Futures Manifestations
               </Heading>
               <UnorderedList
-                spacing={3}
-                listStyleType="circle"
-                fontSize={{
-                  md: "1.3rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
-                  sm: "1.25rem",
-                  base: "1.05rem",
-                }}
+              spacing={4}
+              listStyleType="circle"
+                       fontSize={{
+                sm: "1.7rem",
+                lg: "1.3rem",
+                xl: "1.5rem",
+              
+                base: "1.35rem",
+              }}
+              textAlign="justify"
+             
               >
                 <ListItem>
                   <Link  onClick={() => setHandicapOpen(true)}>14 juin 15h nuit du handicap</Link>
@@ -467,14 +445,14 @@ function PrisEnContes() {
         >
           <ModalHeader
             fontWeight="bold"
-            fontSize={{ base: "1.5em", lg: "2em", xl: "3em" }}
+            fontSize={{ base: "2.5em", xl: "3em" }}
             overflow="visible"
             textAlign={"center"}
           >
             Pourquoi nous rejoindre ?
           </ModalHeader>
           <Text
-             fontSize={{ base: "1.3em", lg: "2em", xl: "3em" }} 
+             fontSize={{ base: "1.3em", xl: "1.2rem" }} 
             textAlign="justify"
             pl="15px"
             pr="15px"
@@ -488,8 +466,8 @@ N'hésitez plus rejoingnez nous
           </Text>
           <ModalCloseButton />
           <ModalBody></ModalBody>
-          <ModalFooter overflow="visible">
-            <Button backgroundColor="#EEE7FF" pos={"relative"} right={"40%"} onClick={onClose}>
+          <ModalFooter display={"flex"} justifyContent={"center"} overflow="visible">
+            <Button padding={"30px 60px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
               Fermer
             </Button>
           </ModalFooter>

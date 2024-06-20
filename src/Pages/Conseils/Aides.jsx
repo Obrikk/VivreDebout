@@ -65,7 +65,7 @@ function Aides() {
       alignSelf: "center",
       textAlign: "center",
       position: "fixed",
-      height: "95vh",
+      height:'83vh',
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
@@ -73,11 +73,12 @@ function Aides() {
       fontSize: "1.8em",
     },
     modalBody: {
-      textAlign: "justify",
-      fontSize: "1.2rem",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+      
+      fontSize: "1rem",
+      textAlign:"justify"
+      
+      
+     
     },
   };
 
@@ -97,20 +98,20 @@ function Aides() {
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent position={"relative"} style={customModalStyles.modalContent}>
+        <ModalContent  style={customModalStyles.modalContent}>
           <ModalHeader style={customModalStyles.modalHeader}>{contents[currentIndex].title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody style={customModalStyles.modalBody}>
-            <Text mt="30px">{contents[currentIndex].text}</Text>
+            <Text mt={"10px"}>{contents[currentIndex].text}</Text>
          
-            <Text mt="20px" alignSelf="flex-end">{`${currentIndex + 1} / ${contents.length}`}</Text>
+            <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}  >{`${currentIndex + 1} / ${contents.length}`}</Text>
           </ModalBody>
-          <ModalFooter display={'flex'} gap={"10px"}>
+          <ModalFooter bottom={"0"} pos={"absolute"} display={'flex'} gap={"10px"}>
               {currentIndex === 0 && (
                 <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#AB87FF">
                   Suivant
                 </Button>
-              )}
+              )}  
                {currentIndex === 1 && (
                 <Button padding={"30px 60px"} onClick={handlePrev
                 } color="white" backgroundColor="#AB87FF">
@@ -264,8 +265,8 @@ function Aides() {
                   base: "1.5rem",
                   
                 }}
-                textAlign={"justify"}
-                padding={"10px"}
+                textAlign={"center"}
+               
                 >
                
               
@@ -297,7 +298,7 @@ function Aides() {
                 xl: "90%",
                 base: "87%",
               }}
-              textAlign="justify"
+              textAlign="center"
               height={{
                 lg: "60vh",
                 xl: "65vh",
@@ -399,7 +400,7 @@ function Aides() {
                   
                 }}
                 padding={'10px'}
-                textAlign={'justify'}
+                textAlign={'center'}
               >
                 Vous êtes l'employeur direct de votre salarié...
               </Text>

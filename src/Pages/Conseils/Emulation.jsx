@@ -1,6 +1,6 @@
 import Header from "../../Header";
 import { useState, useEffect } from "react";
-import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
+
 import {
   Flex,
   Box,
@@ -10,7 +10,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -28,85 +27,58 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "../../styles/navbar.css";
 
-const NextArrow = ({ onClick }) => (
-  <IconButton
-    icon={<ArrowForwardIcon />}
-    onClick={onClick}
-    position="absolute"
-    top="110%"
-    right="10px"
-    transform="translateY(-50%)"
-    zIndex="1"
-    backgroundColor="#AB87FF"
-    color="white"
-    _hover={{ bg: "#9260CC" }}
-    borderRadius="50%"
-  />
-);
-
-const PrevArrow = ({ onClick }) => (
-  <IconButton
-    icon={<ArrowBackIcon />}
-    onClick={onClick}
-    position="absolute"
-    top="110%"
-    left="10px"
-    transform="translateY(-50%)"
-    zIndex="1"
-    backgroundColor="#AB87FF"
-    color="white"
-    _hover={{ bg: "#9260CC" }}
-    borderRadius="50%"
-  />
-);
 const MotionLink = motion(Link);
 
 const modalTexts = [
-  "Comment devenir autonome lorsque la vie bascule dans la dépendance physique ? Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.","Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ?Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible.Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
+  "Comment devenir autonome lorsque la vie bascule dans la dépendance physique ? Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.",
+  "Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ? Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible. Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
 ];
 
-const settings = {
-  dots: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 3000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? texts.length - 1 : prevIndex - 1
+    );
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
+        <ModalHeader fontWeight="bold" fontSize={{ base: "1.8em", md: "2em", lg: "2.2em" }}>{header}</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody textAlign="justify" fontSize={{ base: "1.2rem", md: "1.1rem", lg: "1.2rem" }} w="100%">
+          <Text>{texts[currentIndex]}</Text>
+          <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
+        </ModalBody>
+        <ModalFooter display={'flex'} gap={"10px"}>
+          {currentIndex == 1 && (
+            <Button padding={"30px 60px"} onClick={handlePrev} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }}>
+              Précédent
+            </Button>
+          )}
+
+{currentIndex == 0 && (
+            <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }}>
+              Suivant
+            </Button>
+          )}
+          <Button padding={"30px 60px"}  onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+              Fermer
+            </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
 };
-
-
-const CustomTextModal = ({ isOpen, onClose, header, texts }) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
-    <ModalOverlay />
-    <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
-      <ModalHeader fontWeight="bold" fontSize="2em">{header}</ModalHeader>
-      <ModalCloseButton />
-      <ModalBody textAlign="justify" fontSize="1.1rem" w="100%">
-        <Slider {...settings}>
-          {texts.map((text, index) => (
-            <Box key={index} px={4}>
-              <Text mt="30px">{text}</Text>
-            </Box>
-          ))}
-        </Slider>
-      </ModalBody>
-      <ModalFooter>
-        <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
-          Fermer
-        </Button>
-      </ModalFooter>
-    </ModalContent>
-  </Modal>
-);
 
 function Aides() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -215,32 +187,24 @@ function Aides() {
         <Flex
           as={motion.div}
           width={{
-            lg: "70%",
-            "2xl": "30%",
-            md: "95%",
+            lg: "97%",
+            md: "80%",
             sm: "90%",
-            xl: "40%",
+            xl: "90%",
             base: "87%",
           }}
-          textAlign="justify"
-          justifyContent="space-around"
           height={{
             lg: "60vh",
             xl: "65vh",
-            md: "350px",
-            sm: "350px",
-            base: "350px",
+            base: "65vh",
           }}
-          boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-          borderRadius="0.75rem"
-          padding="1.5rem"
-          whileHover={{ scale: 1.05 }}
-          initial={{ x: "-20rem" }}
-          animate={{ x: "0rem" }}
-          cursor="pointer"
-          direction="column"
-          bg="#FFC9E1"
+          background="white"
+          borderRadius="20px"
+          boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+          flexDirection="column"
           alignItems="center"
+          justifyContent={"space-around"}
+          padding={'10px'}
         >
           <Heading
             fontSize={{
@@ -255,25 +219,22 @@ function Aides() {
             Pair-Emulation
           </Heading>
 
-          <Text fontSize={"1.5rem"}>
+          <Text
+            fontSize={{
+              sm: "1.6rem",
+              lg: "1.7rem",
+              xl: "1.8rem",
+              base: "1.5rem",
+            }}
+            textAlign={"justify"}
+          >
             Comment devenir autonome lorsque la vie bascule dans la dépendance physique ?
           </Text>
           <Button
-            bg="#AB87FF"
-            _hover={{ bg: "rgba(171, 135, 255, 0.6)" }}
+            padding={"30px 60px"}
+            fontSize={"1.3rem"}
             color="white"
-            fontSize={{
-              lg: "1.3rem",
-              md: "1.1rem",
-              sm: "1rem",
-              base: "1rem",
-            }}
-            padding={{
-              lg: "2rem",
-              md: "1.5rem",
-              sm: "1.5rem",
-              base: "1.4rem",
-            }}
+            backgroundColor="#AB87FF"
             onClick={() => setPrestataireOpen(true)}
           >
             En savoir plus

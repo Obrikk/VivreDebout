@@ -33,18 +33,31 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import FamilyDisabled from "../public/FamilyDisab.svg";
+import FamilyDisabled from "../public/Main Image Home.png";
 import Solidarite from "../public/solidarite.png";
 import Atelier from "../public/Ateliers.jpg";
 import theatre from "../public/theatre.png";
 import sortie from "../public/sorties.png";
-import solidarite from "../public/solidariteP.png";
+import solidarite from "../public/handshake.png";
 import sortieP from "../public/sortieP.png";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import "../src/styles/home.css";
 import "./styles/navbar.css";
 
 const MotionLink = motion(Link);
+const settings = {
+  dots: true,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 function Home() {
   const {
@@ -80,12 +93,7 @@ function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleLinkClick = (href) => (e) => {
-    e.preventDefault();
-    setTimeout(() => {
-      window.location.href = href;
-    }, 1500);
-  };
+
 
   const handleDiscover = (modalContent) => {
     let url = "";
@@ -260,12 +268,16 @@ function Home() {
           ml={{base: "0px", lg: "40px"}} // Ajusté pour éviter les débordements
           
         >
+          
           <GridItem 
             display="flex"  
             justifyContent="center" 
             alignItems="center"
             pos={"relative"}
+           
           >
+  
+           
             <Flex
               flexDirection={"column"}
               as={motion.div}
@@ -277,15 +289,17 @@ function Home() {
                 xl: "90%",
                 base: "87%",
               }}
+              gap={{md:"4rem",lg:'2rem'}}
             >
            
               <Heading
                 fontSize={{
-                  md: "4rem",
-                  sm: "4rem",
-                  base: "3rem",
+                  md: "5rem",
+                  sm: "5rem",
+                  base: "3.3rem",
+                  lg:"5rem"
                 }}
-                
+                textAlign={{base:"center"}}
              
               >
                 {/* <Image
@@ -297,7 +311,7 @@ function Home() {
                   top={{base:"0"}}
                   display={{ base: "block", sm: "block" }} // Ensure the pen is displayed on all screen sizes
                 /> */}
-                Vivre Debout
+           
               </Heading>
               <Text
                 textAlign="justify"
@@ -367,40 +381,137 @@ function Home() {
                 src={FamilyDisabled}
                 alt="Family Disabled"
                 maxW="100%"
-                maxH="100%"
+                
               />
             </Flex>
           </GridItem>
         </Grid>
       </Box>
-      <CustomImageModal
-        isOpen={isSolidariteOpen}
-        onClose={onSolidariteClose}
       
-        body="La solidarité est l’un des piliers de l’association. Elle se manifeste de bien des façons : Aider l’un ou l’autre à faire des courses, offrir un complément financier permettant de diminuer le reste à charge, trier des papiers, faire une avance de frais, chaque situation est unique et nous  nous adaptons au maximum à chaque besoin, sans jamais décider pour nos bénéficiaires qui restent maîtres de leurs choix."
-        images={[solidarite]
-          
-          
-        }
-        discoverHandler={() => handleDiscover("solidarite")}
-      />
-      <CustomImageModal
-        isOpen={isSortiesOpen}
-        onClose={onSortiesClose}
-        header="Sorties"
-        body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, voluptatibus."
-        images={[sortieP ]}
+      {/* Solidarite modal */}
+<CustomImageModal
+  isOpen={isSolidariteOpen}
+  onClose={onSolidariteClose}
+  body="La solidarité est l’un des piliers de l’association. Elle se manifeste de bien des façons : Aider l’un ou l’autre à faire des courses, offrir un complément financier permettant de diminuer le reste à charge, trier des papiers, faire une avance de frais, chaque situation est unique et nous nous adaptons au maximum à chaque besoin, sans jamais décider pour nos bénéficiaires qui restent maîtres de leurs choix."
+  images={[solidarite]}
+  discoverHandler={() => handleDiscover("solidarite")}
+  modalStyle={{
+    backgroundColor: 'white',
+    color: 'black',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+  headerStyle={{
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+  }}
+  bodyStyle={{
+    fontSize: '16px',
+    lineHeight: '1.5',
+  }}
+  imageStyle={{
+    marginTop: '20px',
+    width: '100%',
+    borderRadius: '10px',
+  }}
+/>
 
-        discoverHandler={() => handleDiscover("sorties")}
-      />
-      <CustomImageModal
-        isOpen={isPrisEnContesOpen}
-        onClose={onPrisEnContesClose}
-        header="Pris En Contes"
-        body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
-        images={[theatre]}
-        discoverHandler={() => handleDiscover("prisEnContes")}
-      />
+{/* SortieModal */}
+<CustomImageModal
+  isOpen={isSortiesOpen}
+  onClose={onSortiesClose}
+  header="Sorties"
+  body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, voluptatibus."
+  images={[sortieP]}
+  discoverHandler={() => handleDiscover("sorties")}
+  modalStyle={{
+    backgroundColor: 'white',
+    color: 'black',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+  headerStyle={{
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+  }}
+  bodyStyle={{
+    fontSize: '16px',
+    lineHeight: '1.5',
+  }}
+  imageStyle={{
+    marginTop: '20px',
+    width: '100%',
+    borderRadius: '10px',
+  }}
+/>
+
+{/* prisEncontesModale */}
+<CustomImageModal
+  isOpen={isPrisEnContesOpen}
+  onClose={onPrisEnContesClose}
+  header="Pris En Contes"
+  body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
+  images={[theatre]}
+  discoverHandler={() => handleDiscover("prisEnContes")}
+  modalStyle={{
+    backgroundColor: 'white',
+    color: 'black',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+  headerStyle={{
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+  }}
+  bodyStyle={{
+    fontSize: '16px',
+    lineHeight: '1.5',
+  }}
+  imageStyle={{
+    marginTop: '20px',
+    width: '100%',
+    borderRadius: '10px',
+  }}
+/>
+
+{/* prisEncontesModale */}
+<CustomImageModal
+  isOpen={isPrisEnContesOpen}
+  onClose={onPrisEnContesClose}
+  header="Pris En Contes"
+  body="Nous sommes des Vivants Debout avec nos assises roulantes pour jouer sur les planches ou ailleurs. Le mouvement immobile, la parole silencieuse, transformés, cachés ou visibles sont transfigurés par des comédiens en Devenir, là où on ne les attend pas. Dans nos ateliers Théâtre accessibles à tous, nous créons à chaque instant en bousculant les limites que l’on croit avoir, en apprenant des uns des autres, avec un appétit de vivre hors norme. Oyez, abordez le plaisir par le rire, par le partage ! Osez sans limite d’âge, nous rejoindre pour de nouvelles aventures inédites, pour rebondir encore plus haut, encore plus loin."
+  images={[theatre]}
+  discoverHandler={() => handleDiscover("prisEnContes")}
+  style={{
+    modal: {
+      backgroundColor: 'white',
+      color: 'black',
+      padding: '20px',
+      borderRadius: '10px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    },
+    header: {
+      fontSize: '24px',
+      fontWeight: 'bold',
+      marginBottom: '10px',
+    },
+    body: {
+      fontSize: '16px',
+      lineHeight: '1.5',
+    },
+    image: {
+      marginTop: '20px',
+      width: '100%',
+      borderRadius: '10px',
+    },
+  }}
+/>
     </>
   );
 }
