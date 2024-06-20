@@ -45,6 +45,7 @@ function Sorties() {
     useEffect(() => {
         document.getElementById('root').style.backgroundColor = '#B4E1FF';
         return () => {
+                document.getElementById("root").style.fontFamily = "Tahoma";
             document.getElementById('root').style.backgroundColor = '';
         };
     }, []);

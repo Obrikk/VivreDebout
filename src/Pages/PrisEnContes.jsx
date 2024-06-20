@@ -55,7 +55,8 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#D2C4F3";
+        document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#FF9CC7";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -137,7 +138,7 @@ function PrisEnContes() {
             {body && <Text mt="30px">{body}</Text>}
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+            <Button onClick={onClose}  color="white"backgroundColor="#AB87FF">
               Fermer
             </Button>
           </ModalFooter>
@@ -346,7 +347,7 @@ function PrisEnContes() {
               <Button onClick={onOpen}  padding={"30px 60px"}
               fontSize={"1.3rem"}
                 color="white"
-                  backgroundColor="#AB87FF"
+                  backgroundColor="#FA0871"
                       _hover={{ bg: "#9260CC" }}>
                 Rejoignez-nous !
               </Button>
@@ -467,7 +468,8 @@ N'hésitez plus rejoingnez nous
           <ModalCloseButton />
           <ModalBody></ModalBody>
           <ModalFooter display={"flex"} justifyContent={"center"} overflow="visible">
-            <Button padding={"30px 60px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
+            <Button padding={"30px 60px"}   backgroundColor="#FA0871"
+                      _hover={{ bg: "#9260CC" }} color={'white'}  onClick={onClose}>
               Fermer
             </Button>
           </ModalFooter>

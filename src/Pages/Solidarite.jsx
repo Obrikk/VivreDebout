@@ -96,7 +96,7 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
           ))}
         </ModalBody>
         <ModalFooter overflow="visible">
-          <Button fontSize={"1.2rem"} padding={"30px 0px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
+          <Button fontSize={"1.2rem"} padding={"30px 45px"}  backgroundColor="#F3C90C"  onClick={onClose}>
             Fermer
           </Button>
         </ModalFooter>
@@ -130,6 +130,7 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+        document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#FCEFB4";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -328,7 +329,7 @@ function PrisEnContes() {
                padding={"35px 45px"}
               fontSize={"1.3rem"}
                 color="white"
-                  backgroundColor="#AB87FF"
+                  backgroundColor="#F3C90C"
                       _hover={{ bg: "#9260CC" }}
                 >
                   Accéder aux conseils
@@ -377,7 +378,7 @@ function PrisEnContes() {
            padding={"35px 45px"}
               fontSize={"1.3rem"}
                 color="white"
-                backgroundColor="#AB87FF"
+                backgroundColor="#F3C90C"
                   _hover={{ bg: "#9260CC" }}
               >
                 En savoir plus

@@ -1,6 +1,5 @@
 import Header from "../../Header";
 import { useState, useEffect } from "react";
-  
 import {
   Flex,
   Box,
@@ -33,6 +32,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";  
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/navbar.css";
+
 const NextArrow = ({ onClick }) => (
   <IconButton
     icon={<ArrowForwardIcon />}
@@ -64,6 +64,7 @@ const PrevArrow = ({ onClick }) => (
     borderRadius="50%"
   />
 );
+
 const settings = {
   dots: true,
   nextArrow: <NextArrow />,
@@ -89,6 +90,7 @@ const settingsImage = {
   slidesToShow: 1,
   slidesToScroll: 1,
 };
+
 const MotionLink = motion(Link);
 
 function Pch() {
@@ -105,13 +107,14 @@ function Pch() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+    document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#90e0ef";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const customModalStyles = {
     modalContent: {
-   borderRadius: "15px",
+      borderRadius: "15px",
       overflow: "none",
       display: "flex",
       flexDirection: "column",
@@ -136,37 +139,49 @@ function Pch() {
   };
 
   const modalTexts = [
-"L'État a toujours considéré la personne choisissant la PCH* comme un particulier devant appliquer à son personnel la convention collective du particulier-employeur. Le principe est louable, mais la PCH* devrait au moins prendre en compte les obligations financières liées au droit du travail et à ladite convention. Par exemple, l'ancienneté, les majorations salariales pour les jours fériés, les indemnités en cas de décès de l'employeur ou de licenciement, et la surveillance médicale du salarié sont autant de points qui mettent la personne handicapée en infraction.",
+    "L'État a toujours considéré la personne choisissant la PCH* comme un particulier devant appliquer à son personnel la convention collective du particulier-employeur. Le principe est louable, mais la PCH* devrait au moins prendre en compte les obligations financières liées au droit du travail et à ladite convention. Par exemple, l'ancienneté, les majorations salariales pour les jours fériés, les indemnités en cas de décès de l'employeur ou de licenciement, et la surveillance médicale du salarié sont autant de points qui mettent la personne handicapée en infraction.",
     " Sans préavis ni considération des conséquences, le conseil départemental applique la nouvelle loi de la sécurité sociale, remplaçant la déclaration au forfait par la déclaration au réel. Pour mieux comprendre, il était auparavant possible de calculer ses cotisations patronales sur la base du SMIC, quel que soit le salaire versé. Désormais, les cotisations patronales sont calculées sur l'intégralité du salaire, améliorant ainsi les prestations sociales du salarié.",
     " La personne handicapée n'est pas contre l'amélioration de la couverture sociale de son personnel, bien au contraire. Mais peut-elle le faire ? NON ! Le Conseil Départemental refuse de prendre en compte l'augmentation nécessaire de la PCH* (une augmentation de 3 à 4 € du coût horaire). Résultat ? La personne handicapée reste en infraction : le Conseil Départemental force le bénéficiaire de la PCH* à ne pas respecter la convention, le mettant également en difficulté avec l'URSSAF, organisme qui valide le versement de la PCH*.",
     " Le collectif Les Handignés a dénoncé la politique du handicap en constante régression, exprimant leur ras-le-bol de subir les conséquences de la crise économique, qui a bon dos, et dénonçant la situation qui pousse plusieurs millions de personnes handicapées à vivre en dessous du seuil de pauvreté en France. Les conseils départementaux se protègent en affirmant qu'ils appliquent la loi et qu'il suffit de passer du mode direct au mode prestataire ou mandataire. Dans le contexte de crise économique, il devient difficile de comprendre cette situation en comparant les tarifs des différents modes.",
     " Vivre Debout rejoint le collectif des Handignés et l'ENIL* au Parlement Européen pour rappeler aux élus les lois en vigueur.",
   ];
 
-  const CustomTextModal = ({ isOpen, onClose, header, texts }) => (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
-        <ModalHeader fontWeight="bold" fontSize="2em">{header}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody textAlign="justify" fontSize="1.1rem" w="100%">
-          <Slider {...settings}>
-            {texts.map((text, index) => (
-              <Box key={index} px={4}>
-                <Text mt="30px">{text}</Text>
-              </Box>
-            ))}
-          </Slider>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
-            Fermer
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
+  const CustomTextModal = ({ isOpen, onClose, header, texts, currentIndex, setCurrentIndex }) => {
+    const handleNext = () => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    };
 
+    const handlePrev = () => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + texts.length) % texts.length);
+    };
+
+    return (
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
+          <ModalHeader fontWeight="bold" fontSize="2em">{header}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody textAlign="justify" fontSize="1.1rem" w="100%">
+            <Box px={4}>
+              <Text mt="30px">{texts[currentIndex]}</Text>
+            </Box>
+          </ModalBody>
+          <ModalFooter display="flex" justifyContent="space-between" width="100%">
+            <Button onClick={handlePrev} color="white" _hover={{ bg: "#9260CC" }} backgroundColor="#01C2E4">
+              Précédent
+            </Button>
+            <Text>{currentIndex + 1} / {texts.length}</Text>
+            <Button onClick={handleNext} color="white" _hover={{ bg: "#9260CC" }} backgroundColor="#01C2E4">
+              Suivant
+            </Button>
+            <Button onClick={onClose} color="white" _hover={{ bg: "#9260CC" }} backgroundColor="#01C2E4">
+              Fermer
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
+  };
 
   return (
     <>
@@ -207,7 +222,7 @@ function Pch() {
                     { label: "Solidarité", href: "./solidarite" },
                     { label: "Sorties", href: "./Sorties" },
                     { label: "Nous Connaître", href: "./nous-connaître" },
-                     { label: "Pris En Contes", href: "./pris-en-contes" },
+                    { label: "Pris En Contes", href: "./pris-en-contes" },
                     { label: "Nous Soutenir", href: "./soutien" },
                   ].map((item, index) => (
                     <MotionLink
@@ -259,17 +274,15 @@ function Pch() {
           }}
           height="100%"
           templateRows="auto"
-          gap={{xl:"5rem",lg:"5rem",md:10,base:"5rem"}}
+          gap={{ xl: "5rem", lg: "5rem", md: 10, base: "5rem" }}
           pos="relative"
-         
-          top={{ base: "6rem", sm: "10rem", md: "10rem",lg:"4rem" }}
+          top={{ base: "6rem", sm: "10rem", md: "10rem", lg: "4rem" }}
         >
-          <GridItem  display="flex" justifyContent="center" alignItems="center">
+          <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-         as={motion.div}
+              as={motion.div}
               width={{
-              lg: "97%",
-             
+                lg: "97%",
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
@@ -281,34 +294,32 @@ function Pch() {
                 xl: "65vh",
                 base: "65vh",
               }}
-               background="white"
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
               padding={'10px'}
-            
             >
-              <Heading  fontSize={{ lg: "3.5rem",  base: "2.3rem",sm:"3.2rem" }}>
+              <Heading fontSize={{ lg: "3.5rem", base: "2.3rem", sm: "3.2rem" }}>
                 PCH/Convention
               </Heading>
-              <Text  
-              width={'95%'}          fontSize={{
+              <Text
+                width={'95%'}
+                fontSize={{
                   sm: "1.6rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-               
                   base: "1.35rem",
                 }}>
                 La Prestation de Compensation du Handicap (PCH) est une aide personnalisée destinée à financer les besoins liés à la perte d'autonomie des personnes en situation de handicap.
               </Text>
-              <Button   padding={"45px 60px"}
-              fontSize={"1.3rem"}
+              <Button padding={"45px 60px"}
+                fontSize={"1.3rem"}
                 color="white"
-                  backgroundColor="#AB87FF"
-                      _hover={{ bg: "#9260CC" }} onClick={onOpen}>
+                backgroundColor="#13D3F5"
+                _hover={{ bg: "#9260CC" }} onClick={onOpen}>
                 En savoir plus
               </Button>
               <CustomTextModal
@@ -322,15 +333,12 @@ function Pch() {
             </Flex>
           </GridItem>
 
-
-
-            {/* enleve les felches de ce gridItem */}
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
               as={motion.div}
-              width={{  base: "97.5vw",lg:"89vw",xl:"40vw" }}
+              width={{ base: "97.5vw", lg: "89vw", xl: "40vw" }}
               textAlign="justify"
-             display="flex" justifyContent="center" alignItems="center"
+              display="flex" justifyContent="center" alignItems="center"
               height={{ base: "60vh", sm: "50vh", md: "50vh", lg: "50vh", xl: "65vh" }}
               boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
               borderRadius="0.75rem"
@@ -339,36 +347,34 @@ function Pch() {
               initial={{ x: "20rem" }}
               animate={{ x: "0rem" }}
               cursor="pointer"
-            bg={'black'}
-              marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}
+              bg={'black'}
+              marginBottom={{ base: "3em", sm: "3em", md: "0", lg: "0", xl: "0" }}
             >
-           
-              <Box padding={"10px"} width={{ base: "90vw",sm:"65vw",md:"65vw",lg:"60vw",xl:"40vw"}} display="flex" justifyContent="center">
-      <Slider style={{ width: "100%" }} {...settingsImage}>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img  src="../public/Pch-1.png" alt="Image 1" style={{ width: "100%",position:"relative" }} />
-        </Box>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Pch-2.png" alt="Image 2" style={{ width: "100%" }} />
-        </Box>
-        <Box   display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Pch-3.png" alt="Image 3" style={{ width: "100%" }} />
-        </Box>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Pch-4.png" alt="Image 4" style={{ width: "100%" }} />
-        </Box>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Pch-5.png" alt="Image 5" style={{ width: "100%" }} />
-        </Box>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Pch-6.png" alt="Image 6" style={{ width: "100%" }} />
-        </Box>
-        <Box  display="flex" justifyContent="center" alignItems="center">
-          <img   src="../public/Pch-7.png" alt="Image 7" style={{ width: "100%" }} />
-        </Box>
-      </Slider>
-    </Box>
-              
+              <Box padding={"10px"} width={{ base: "90vw", sm: "65vw", md: "65vw", lg: "60vw", xl: "40vw" }} display="flex" justifyContent="center">
+                <Slider style={{ width: "100%" }} >
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-1.png" alt="Image 1" style={{ width: "100%", position: "relative" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-2.png" alt="Image 2" style={{ width: "100%" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-3.png" alt="Image 3" style={{ width: "100%" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-4.png" alt="Image 4" style={{ width: "100%" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-5.png" alt="Image 5" style={{ width: "100%" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-6.png" alt="Image 6" style={{ width: "100%" }} />
+                  </Box>
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <img src="../public/Pch-7.png" alt="Image 7" style={{ width: "100%" }} />
+                  </Box>
+                </Slider>
+              </Box>
             </Flex>
           </GridItem>
         </Grid>
