@@ -32,12 +32,59 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import SolidariteImg from "../..git/public/handshake.png";
+import SolidariteImg from "../../public/handshake.png";
 import LienGif from "../../public/info.gif";
 
 import "../styles/navbar.css";
 
 const MotionLink = motion(Link);
+
+const customModalStyles = {
+  modalContent: {
+    borderRadius: "15px",
+    overflow: "none",
+   
+    flexDirection: "column",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    position: "fixed",
+
+    backgroundColor: "#FFF0F5",
+  },
+  modalHeader: {
+    fontWeight: "bold",
+    fontSize: "1.8em",
+  },
+  modalBody: {
+    textAlign: "justify",
+    fontSize: "1.2rem",
+    display: "flex",
+    justifyContent:'space-around',
+    flexDirection: "column" , 
+    fontSize: "1.1rem",
+   
+  },
+};
+
+// Example of adjusting font sizes based on screen size
+const screenSize = window.innerWidth; // Get the current window width
+
+if (screenSize < 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.1rem";
+  customModalStyles.modalContent.height = "90vh";
+}
+
+if (screenSize > 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalHeader.fontSize = "2.5rem";
+  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.height = "90vh";
+
+}
 
 function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
   const handleRedirect = (url) => {
@@ -48,21 +95,10 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent
-      borderRadius= "15px"
-      overflow= "none"
-      display= "flex"
-      flexDirection= "column"
-    fontSize={"1.4rem"}
-      alignItems= "center"
-      alignSelf= "center"
-      textAlign= "center"
-      position= "fixed"
-      height= "95vh"
-      backgroundColor= "#FFF0F5"
+ style={customModalStyles.modalContent}
       >
         <ModalHeader
-         fontWeight= "bold"
-      fontSize= "1.8em"
+  style={customModalStyles.modalHeader}
         >
           {header}
         </ModalHeader>
@@ -76,11 +112,8 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
         >
           {body}
         </Text>
-        <ModalBody    textAlign= "justify"
-      fontSize= "1.2rem"
-      display= "flex"
-      justifyContent={'space-around'}
-      flexDirection= "column"
+        <ModalBody    
+        style={customModalStyles.modalBody}
             >
           {additionalButtons && additionalButtons.map((button, index) => (
             <Button
@@ -96,7 +129,12 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
           ))}
         </ModalBody>
         <ModalFooter overflow="visible">
-          <Button fontSize={"1.2rem"} padding={"30px 0px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
+          <Button fontSize={"1.2rem"} padding={"30px 45px"}  
+          backgroundColor="#F3C90C"  onClick={onClose}
+          color={"white"}
+          fontWeight={"bold"}
+          _hover={{bg:"#DAB200"}}
+          >
             Fermer
           </Button>
         </ModalFooter>
@@ -130,6 +168,7 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+        document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#FCEFB4";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -273,13 +312,13 @@ function PrisEnContes() {
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
-                base: "87%",
+                base: "93%",
               }}
               textAlign="justify"
               height={{
-                lg: "60vh",
+                lg: "65vh",
                 xl: "65vh",
-                base: "65vh",
+                base: "70vh",
               }}
                background="white"
               borderRadius="20px"
@@ -292,7 +331,7 @@ function PrisEnContes() {
               padding={"15px"}
             >
               <Heading
-              fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
+              fontSize={{ lg: "3rem",  base: "2.8rem",sm:"3.5rem" }}
                 
                    size="lg"
                   textTransform="uppercase"
@@ -304,14 +343,15 @@ function PrisEnContes() {
                 spacing={7}
                 listStyleType="circle"
                          fontSize={{
-                  sm: "2rem",
+                  sm: "1.7rem",
                   lg: "1.3rem",
-                  xl: "1.5rem",
+                  xl:"1.4rem",
                 
-                  base: "1.5rem",
+                
+                  base: "1.4rem",
                 }}
                 textAlign="justify"
-                width={'90%'}
+                
               >
                 <ListItem>
                   Nous conseillons sur le respect de l'éthique citoyenne.
@@ -325,11 +365,11 @@ function PrisEnContes() {
                 <Button
                 
                   onClick={onModal1Open}
-               padding={"35px 45px"}
+               padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
               fontSize={"1.3rem"}
                 color="white"
-                  backgroundColor="#AB87FF"
-                      _hover={{ bg: "#9260CC" }}
+                  backgroundColor="#F3C90C"
+                  _hover={{bg:"#DAB200"}}
                 >
                   Accéder aux conseils
                 </Button>
@@ -345,14 +385,14 @@ function PrisEnContes() {
                       md: "80%",
                       sm: "90%",
                       xl: "80%",
-                      base: "87%",
+                      base: "93%",
                     }}
                     height={{
-                   lg: "45vh",
+                   lg: "40vh",
                       xl: "45vh",
                       md: "350px",
                       sm: "350px",
-                      base: "40vh",
+                      base: "45vh",
                     }}
                     background="white"
                     borderRadius="20px"
@@ -364,9 +404,9 @@ function PrisEnContes() {
             >
               <Heading
                 textAlign="center"
-                marginTop="5%"
+                
                 textTransform="uppercase"
-          fontSize={{ lg: "2.4rem",  base: "2.3rem",sm:"3.5rem" }}
+          fontSize={{ lg: "2.4rem",  base: "2.5rem",sm:"3.5rem" }}
                 
               >
                 Actions Solidaires
@@ -374,11 +414,11 @@ function PrisEnContes() {
               {/* Text removed here */}
               <Button
                 onClick={onModal2Open}
-           padding={"35px 45px"}
+                padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
               fontSize={"1.3rem"}
                 color="white"
-                backgroundColor="#AB87FF"
-                  _hover={{ bg: "#9260CC" }}
+                backgroundColor="#F3C90C"
+                _hover={{bg:"#DAB200"}}
               >
                 En savoir plus
               </Button>
@@ -393,14 +433,15 @@ function PrisEnContes() {
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
-                base: "87%",
+                base: "93%",
               }}
               textAlign="justify"
               height={{
-                lg: "60vh",
+                lg: "65vh",
                 xl: "65vh",
-                base: "55vh",
+                base: "70vh",
               }}
+              marginBottom={{base:"3rem",sm:"0"}}
                background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
@@ -416,7 +457,7 @@ function PrisEnContes() {
                   textAlign="center"
                 
                 textTransform="uppercase"
-                     fontSize={{ lg: "3rem", base: "2.3rem",sm:"3.5rem" }}
+                     fontSize={{ lg: "3rem", base: "2.5rem",sm:"3.5rem" }}
                 
               >
                 Liens Utiles
@@ -429,7 +470,7 @@ function PrisEnContes() {
                   lg: "1.3rem",
                   xl: "1.7rem",
                  
-                  base: "1.5rem",
+                  base: "1.7rem",
                   
                 }}
                 pos={"relative"}

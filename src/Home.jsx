@@ -85,6 +85,7 @@ function Home() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
+          document.getElementById("root").style.fontFamily = "Tahoma";
     };
 
     window.addEventListener("resize", handleResize);

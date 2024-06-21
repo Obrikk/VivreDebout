@@ -40,6 +40,7 @@ function Stagiaire() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+        document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#edf2f4";
     return () => window.removeEventListener("resize", handleResize);
   }, []);

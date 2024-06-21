@@ -38,6 +38,53 @@ import Masks from "../../public/theatre.png";
 
 import "../styles/navbar.css";
 
+const customModalStyles = {
+  modalContent: {
+    borderRadius: "15px",
+    overflow: "none",
+   
+    flexDirection: "column",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    position: "fixed",
+
+    backgroundColor: "#FFF0F5",
+  },
+  modalHeader: {
+    fontWeight: "bold",
+    fontSize: "1.8em",
+  },
+  modalBody: {
+    textAlign: "justify",
+    fontSize: "1.2rem",
+    display: "flex",
+    justifyContent:'space-around',
+    flexDirection: "column" , 
+    fontSize: "1.1rem",
+   
+  },
+};
+
+// Example of adjusting font sizes based on screen size
+const screenSize = window.innerWidth; // Get the current window width
+
+if (screenSize < 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.1rem";
+  customModalStyles.modalContent.height = "90vh";
+}
+
+if (screenSize > 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalHeader.fontSize = "2.5rem";
+  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.height = "90vh";
+
+}
+
 const MotionLink = motion(Link);
 
 function PrisEnContes() {
@@ -55,27 +102,12 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#D2C4F3";
+        document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#FF9CC7";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const customModalStyles = {
-    modalContent: {
-  
-     
-      
-    },
-    modalHeader: {
-      
-    },
-    modalBody: {
-      
-   
-    },
-    modalImage: {
-      
-    },
-  };
+
   
 
   const CustomImageModal = ({ isOpen, onClose, header, body, images }) => {
@@ -137,7 +169,7 @@ function PrisEnContes() {
             {body && <Text mt="30px">{body}</Text>}
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+            <Button onClick={onClose}  color="white"backgroundColor="#AB87FF">
               Fermer
             </Button>
           </ModalFooter>
@@ -224,8 +256,8 @@ function PrisEnContes() {
           </Header>
         )}
       </Flex>
-      <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
-        <Img src={Masks} w="8rem" pos="relative" top={{ xl: "3em", lg: "1em", base: "1.5em" }} />
+      <Box   w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+      <Img src={Masks} w="10rem" pos="relative" top={{ xl: "5em", base: "3em" }} />
         <Grid
           templateColumns={{
             base: "1fr",
@@ -237,116 +269,128 @@ function PrisEnContes() {
           height="100%"
           templateRows="auto"
           pos="relative"
-          top={{ base: "10rem", sm: "10rem", md: "7rem", lg: "0", xl: "0" }}
+          top={{ base: "10rem", sm: "10rem", lg: "-2rem" }}
           rowGap="3rem"
           
         >
-          <GridItem display="flex" justifyContent="center" alignItems="center">
-            <Flex 
-                   as={motion.div}
-                   width={{
-                     lg: "97%",
-                     "2xl": "80%",
-                     md: "80%",
-                     sm: "90%",
-                     xl: "90%",
-                     base: "87%",
-                   }}
-                   textAlign="justify"
-                   height={{
-                     lg: "60vh",
-                     xl: "65vh",
-                     base: "65vh",
-                   }}
-                    background="white"
-                   borderRadius="20px"
-                   boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
-                   flexDirection="column"
-                   alignItems="center"
-                   justifyContent={"space-around"}
-                  
-                   
-                   padding={"15px"}
+            <GridItem display="flex" justifyContent="center" alignItems="center">
+            <Flex
+                     as={motion.div}
+                     width={{
+                       lg: "97%",
+                       "2xl": "80%",
+                       md: "80%",
+                       sm: "90%",
+                       xl: "90%",
+                       base: "93%",
+                     }}
+                     textAlign="justify"
+                     height={{
+                       lg: "65vh",
+                       xl: "65vh",
+                       base: "70vh",
+                     }}
+                      background="white"
+                     borderRadius="20px"
+                     boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+                     flexDirection="column"
+                     alignItems="center"
+                     justifyContent={"space-around"}
+                    
+                     
+                     padding={"15px"}
             >
               <Heading
-                    fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
-                textAlign={"center"}
+                    fontSize={{ lg: "2.8rem",  base: "2.8rem",sm:"3.5rem" }}
+                
+                    size="lg"
+                   textTransform="uppercase"
+                       textAlign="center"
               >
-             Articles
+                Articles  
               </Heading>
               <UnorderedList
-       spacing={3}
-       listStyleType="circle"
-                fontSize={{
-         sm: "1.7rem",
-         lg: "1.3rem",
-         xl: "1.5rem",
-       
-         base: "1.35rem",
-       }}
-       textAlign="justify"
-       width={'90%'}
+              spacing={4}
+              listStyleType="circle"
+              fontSize={{
+                sm: "1.7rem",
+                lg: "1.3rem",
+                xl: "1.5rem",
+              
+                base: "1.35rem",
+              }}
+              textAlign="justify"
+             
               >
                 <ListItem>
-                  Montez sur Scène avec "Pris en Contes 2023-2024"
+                  <Link>Montez sur Scève avec "Pris En Contes" 2023-2024"</Link>
                 </ListItem>
                 <ListItem>
-                  Maison du Voisinage Les Coudrays Rue de Bassigny - 78310 Maurepas
+                  Maison du Voisinage Les Coudrays
+                  Rue de Bassigny -78310 Maurepas
+                </ListItem> 
+                <ListItem>
+                  <Link >Tous les mardis de 17h45 à 19h45</Link>
                 </ListItem>
-                <ListItem> Tous les mardis de 17h45 à 19h45 </ListItem>
               </UnorderedList>
             </Flex>
-          </GridItem>
+          </GridItem>   
           <GridItem display="flex" justifyContent="center" alignItems="flex-end">
             <Flex
-                   as={motion.div}
-                   width={{
-                   
-                     
-                     md: "80%",
-                     sm: "90%",
-                     xl: "80%",
-                     base: "87%",
-                   }}
-                   height={{
-                  lg: "45vh",
-                     xl: "45vh",
-                     md: "350px",
-                     sm: "350px",
-                     base: "40vh",
-                   }}
-                   background="white"
-                   borderRadius="20px"
-                   boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
-                   flexDirection="column"
-                   alignItems="center"
-                   justifyContent="space-around"
-                   gap="3"
+               as={motion.div}
+               width={{
+               
+                 
+                 md: "80%",
+                 sm: "90%",
+                 xl: "80%",
+                 base: "93%",
+               }}
+               height={{
+              lg: "40vh",
+                 xl: "45vh",
+                 md: "350px",
+                 sm: "350px",
+                 base: "45vh",
+               }}
+               background="white"
+               borderRadius="20px"
+               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+               flexDirection="column"
+               alignItems="center"
+               justifyContent="space-around"
+               gap="3"
             >
-              <Heading
-                  fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
+             <Heading
+                textAlign="center"
+                
+                textTransform="uppercase"
+          fontSize={{ lg: "2.4rem",  base: "2.5rem",sm:"3.5rem" }}
+                
               >
-                Debout !
+                Debout
               </Heading>
               <Text
             
              listStyleType="circle"
-                      fontSize={{
-               sm: "1.7rem",
-               lg: "1.3rem",
-               xl: "1.5rem",
+             fontSize={{
+              sm: "1.7rem",
+              lg: "1.3rem",
+              xl:"1.4rem",
+            
+            
+              base: "1.4rem",
+            }}
+            textAlign="center"
              
-               base: "1.35rem",
-             }}
-             textAlign="justify"
-             width={'90%'}
               >
                 Être en mouvement dans l’audace et la créativité, c’est possible !
               </Text>
-              <Button onClick={onOpen}  padding={"30px 60px"}
+              <Button onClick={onOpen}      
+               padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
               fontSize={"1.3rem"}
                 color="white"
-                  backgroundColor="#AB87FF"
+                  backgroundColor="#FA0871"
                       _hover={{ bg: "#9260CC" }}>
                 Rejoignez-nous !
               </Button>
@@ -354,41 +398,44 @@ function PrisEnContes() {
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-               as={motion.div}
-               width={{
-                lg: "97%",
-                "2xl": "80%",
-                md: "80%",
-                sm: "90%",
-                xl: "90%",
-                base: "87%",
-              }}
-               textAlign="justify"
-               height={{
-                lg: "60vh",
-                xl: "65vh",
-                base: "65vh",
-              }}
-                background="white"
-               borderRadius="20px"
-               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
-               flexDirection="column"
-               alignItems="center"
-               justifyContent={"space-around"}
-              
-               
-               padding={"15px"}
+                     as={motion.div}
+                     width={{
+                       lg: "97%",
+                       "2xl": "80%",
+                       md: "80%",
+                       sm: "90%",
+                       xl: "90%",
+                       base: "93%",
+                     }}
+                     textAlign="justify"
+                     height={{
+                       lg: "65vh",
+                       xl: "65vh",
+                       base: "70vh",
+                     }}
+                      background="white"
+                     borderRadius="20px"
+                     boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+                     flexDirection="column"
+                     alignItems="center"
+                     justifyContent={"space-around"}
+                    
+                     
+                     padding={"15px"}
             >
               <Heading
-                   fontSize={{ lg: "3rem",  base: "2.3rem",sm:"3.5rem" }}
-                textAlign={"center"}
+                    fontSize={{ lg: "2.8rem",  base: "2.8rem",sm:"3.5rem" }}
+                
+                    size="lg"
+                   textTransform="uppercase"
+                       textAlign="center"
               >
-                Futures Manifestations
+                 Manifestations
               </Heading>
               <UnorderedList
               spacing={4}
               listStyleType="circle"
-                       fontSize={{
+              fontSize={{
                 sm: "1.7rem",
                 lg: "1.3rem",
                 xl: "1.5rem",
@@ -435,39 +482,35 @@ function PrisEnContes() {
       <Modal  isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
-          borderRadius="15px"
-          overflowY="auto"
-         
-          
-          flexDirection="column"
-          position="fixed"
-          height="85vh"
+          style={customModalStyles.modalContent}
         >
           <ModalHeader
-            fontWeight="bold"
-            fontSize={{ base: "2.5em", xl: "3em" }}
-            overflow="visible"
-            textAlign={"center"}
+          style={customModalStyles.modalHeader}
           >
             Pourquoi nous rejoindre ?
           </ModalHeader>
           <Text
-             fontSize={{ base: "1.3em", xl: "1.2rem" }} 
-            textAlign="justify"
-            pl="15px"
-            pr="15px"
-            pos="relative"
-            top="50px"
+      fontSize="1.07em"
+      textAlign="justify"
+      pl="15px"
+      pr="15px"
+      pos="relative"
+      top="50px"
           >
             Vous avez envie d'aider mais vous ne savez pas comment faire ni ce que vous pourriez faire ?
 Chez Vivre Debout, toutes les bonnes volontés sont appréciées !!
 Du chef de projet, animateur d'activité, aide administrtatif ou bureautique, ou encore chauffeur, tout le monde a sa place chez Vivre Debout et toujours dans le respect absolu de ce qu"il peut donner, jamais plus.
 N'hésitez plus rejoingnez nous
           </Text>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
+         <ModalBody
+          style={customModalStyles.modalBody}
+         >
+
+         </ModalBody>
+         
           <ModalFooter display={"flex"} justifyContent={"center"} overflow="visible">
-            <Button padding={"30px 60px"}  backgroundColor="#EEE7FF"  onClick={onClose}>
+            <Button padding={"30px 60px"}   backgroundColor="#FA0871"
+                      _hover={{ bg: "#9260CC" }} color={'white'}  onClick={onClose}>
               Fermer
             </Button>
           </ModalFooter>

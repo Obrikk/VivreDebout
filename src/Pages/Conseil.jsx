@@ -9,6 +9,7 @@ import {motion} from 'framer-motion'
 function Conseil() {
 
     useEffect(()=>{
+            document.getElementById("root").style.fontFamily = "Tahoma";
         document.getElementById('root').style.backgroundColor = "#FCEFB4"
     })
     

@@ -55,13 +55,13 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
       <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
         <ModalHeader fontWeight="bold" fontSize={{ base: "1.8em", md: "2em", lg: "2.2em" }}>{header}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody textAlign="justify" fontSize={{ base: "1.2rem", md: "1.1rem", lg: "1.2rem" }} w="100%">
+        <ModalBody textAlign="justify" fontSize={{ base: "1.2rem", md: "1.1rem", lg: "1.5rem" }} w="100%">
           <Text>{texts[currentIndex]}</Text>
           <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
         </ModalBody>
         <ModalFooter display={'flex'} gap={"10px"}>
           {currentIndex == 1 && (
-            <Button padding={"30px 60px"} onClick={handlePrev} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }}>
+            <Button padding={"30px 60px"} onClick={handlePrev} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }} >
               Précédent
             </Button>
           )}
@@ -93,7 +93,8 @@ function Aides() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#ff006e";
+        document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#FF9CC7";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -210,7 +211,7 @@ function Aides() {
             fontSize={{
               lg: "2.8em",
               md: "2.4rem",
-              xl: "2.5rem",
+              xl: "4rem",
               sm: "2.4rem",
               base: "2.4rem",
             }}
@@ -222,16 +223,17 @@ function Aides() {
           <Text
             fontSize={{
               sm: "1.6rem",
-              lg: "1.7rem",
-              xl: "1.8rem",
+              lg: "1.9rem",
+              xl: "2rem",
               base: "1.5rem",
             }}
             textAlign={"justify"}
+            padding={"5px"}
           >
             Comment devenir autonome lorsque la vie bascule dans la dépendance physique ?
           </Text>
           <Button
-            padding={"30px 60px"}
+      padding={"35px 60px"}
             fontSize={"1.3rem"}
             color="white"
             backgroundColor="#AB87FF"

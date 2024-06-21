@@ -27,7 +27,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "../../styles/navbar.css";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import "slick-carousel/slick/slick.css";
@@ -36,8 +36,11 @@ import "slick-carousel/slick/slick-theme.css";
 const MotionLink = motion(Link);
 
 function Aides() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
   const [isMobile, setIsMobile] = useState(false);
 
   const [isPrestataireOpen, setPrestataireOpen] = useState(false);
@@ -51,7 +54,8 @@ function Aides() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-    document.getElementById("root").style.backgroundColor = "#ff006e";
+    document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#FF87BB";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -65,7 +69,7 @@ function Aides() {
       alignSelf: "center",
       textAlign: "center",
       position: "fixed",
-      height:'83vh',
+   
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
@@ -73,14 +77,28 @@ function Aides() {
       fontSize: "1.8em",
     },
     modalBody: {
-      
-      fontSize: "1rem",
-      textAlign:"justify"
-      
-      
-     
+      fontSize: "1.1rem",
+      textAlign: "justify",
+      padding:"7px"
     },
   };
+
+  // Example of adjusting font sizes based on screen size
+const screenSize = window.innerWidth; // Get the current window width
+
+  if (screenSize < 768) { // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.1rem";
+  customModalStyles.modalContent.height="90vh"
+}
+
+
+if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.2rem";
+  customModalStyles.modalContent.height="90vh"
+}
+  const MotionBox = motion(Box);
 
   const CustomTextModal = ({ isOpen, onClose, header, contents }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -98,42 +116,81 @@ function Aides() {
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent  style={customModalStyles.modalContent}>
-          <ModalHeader style={customModalStyles.modalHeader}>{contents[currentIndex].title}</ModalHeader>
+        <ModalContent style={customModalStyles.modalContent}>
+          <ModalHeader style={customModalStyles.modalHeader}>
+            {contents[currentIndex].title}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody style={customModalStyles.modalBody}>
-            <Text mt={"10px"}>{contents[currentIndex].text}</Text>
-         
-            <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}  >{`${currentIndex + 1} / ${contents.length}`}</Text>
+            <AnimatePresence mode="wait">
+              <MotionBox
+                key={currentIndex} // Ensure unique key for re-rendering
+                px={4}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Text>{contents[currentIndex].text}</Text>
+              </MotionBox>
+            </AnimatePresence>
+
+            <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${
+              currentIndex + 1
+            } / ${contents.length}`}</Text>
           </ModalBody>
-          <ModalFooter bottom={"0"} pos={"absolute"} display={'flex'} gap={"10px"}>
-              {currentIndex === 0 && (
-                <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#AB87FF">
-                  Suivant
-                </Button>
-              )}  
-               {currentIndex === 1 && (
-                <Button padding={"30px 60px"} onClick={handlePrev
-                } color="white" backgroundColor="#AB87FF">
-                  Précédent
-                </Button>
-              )}
-            <Button padding={"30px 60px"}  onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
+          <ModalFooter
+            bottom={"0"}
+            pos={"absolute"}
+            display={"flex"}
+            gap={"10px"}
+          >
+            {currentIndex === 0 && (
+              <Button
+                padding={"30px 60px"}
+                onClick={handleNext}
+                color="white"
+                backgroundColor="#FD0873"
+                _hover={{ bg: "#AE004B" }}
+              >
+                Suivant
+              </Button>
+            )}
+            {currentIndex === 1 && (
+              <Button
+                padding={"30px 60px"}
+                onClick={handlePrev}
+                color="white"
+                backgroundColor="#FD0873"
+                _hover={{ bg: "#AE004B" }}
+              >
+                Précédent
+              </Button>
+            )}
+            <Button
+              padding={"30px 60px"}
+              onClick={onClose}
+              color="white"
+              _hover={{ bg: "#AE004B" }}
+              backgroundColor="#FD0873"
+            >
               Fermer
             </Button>
-            
           </ModalFooter>
-          
         </ModalContent>
-        
       </Modal>
-      
     );
   };
 
   return (
     <>
-      <Flex as="header" w="100%" p={4} alignItems="center" justifyContent="space-between">
+      <Flex
+        as="header"
+        w="100%"
+        p={4}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         {isMobile ? (
           <>
             <IconButton
@@ -148,11 +205,20 @@ function Aides() {
               bg={"black"}
               _hover={{ bg: "white", color: "black" }}
             />
-            <Drawer as={motion.div} isOpen={isDrawerOpen} placement="right" onClose={onDrawerClose}>
+            <Drawer
+              as={motion.div}
+              isOpen={isDrawerOpen}
+              placement="right"
+              onClose={onDrawerClose}
+            >
               <DrawerOverlay />
               <DrawerContent backgroundColor="white">
                 <DrawerCloseButton />
-                <DrawerHeader textAlign={"center"} fontSize={"2rem"} fontWeight={"700"}>
+                <DrawerHeader
+                  textAlign={"center"}
+                  fontSize={"2rem"}
+                  fontWeight={"700"}
+                >
                   Menu
                 </DrawerHeader>
                 <DrawerBody
@@ -171,6 +237,7 @@ function Aides() {
                     { label: "Sorties", href: "./Sorties" },
                     { label: "Nous Connaître", href: "./nous-connaître" },
                     { label: "Nous Soutenir", href: "./soutien" },
+                    { label: "Pris En Contes", href: "./pris-en-contes " },
                   ].map((item, index) => (
                     <MotionLink
                       key={index}
@@ -209,7 +276,13 @@ function Aides() {
           </Header>
         )}
       </Flex>
-      <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center">
+      <Box
+        w="100%"
+        height="100%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
         <Grid
           templateColumns={{
             base: "1fr",
@@ -226,61 +299,57 @@ function Aides() {
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-         as={motion.div}
+              as={motion.div}
               width={{
-              lg: "97%",
-             
+                lg: "97%",
+
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
-                base: "87%",
+                base: "93%",
               }}
-        
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                base: "65vh",
+                base: "70vh",
               }}
-               background="white"
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
-              padding={'10px'}
+              padding={"10px"}
             >
               <Heading
-       fontSize={{ lg: "3.5rem",  base: "2.5rem",sm:"3.2rem" }}
-                  textTransform="uppercase"
+                fontSize={{ lg: "3.5rem", base: "2.5rem", sm: "3.2rem" }}
+                textTransform="uppercase"
               >
-                Prestatire
+                Prestataire
               </Heading>
               <Text
-                      fontSize={{
+                fontSize={{
                   sm: "1.6rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-               
+
                   base: "1.5rem",
-                  
                 }}
                 textAlign={"center"}
-               
-                >
-               
-              
-                Vous êtes l'employeur de l'intervenant, et l'organisme prestataire...
+              >
+                Vous êtes l'employeur de l'intervenant, et l'organisme
+                prestataire...
               </Text>
               <Button
-              padding={"30px 60px"}
-              fontSize={"1.3rem"}
+                padding={"30px 60px"}
+                fontSize={"1.3rem"}
                 color="white"
-                backgroundColor="#AB87FF"
+                backgroundColor="#FD0873"
+                _hover={{ bg: "#AE004B" }}
                 onClick={() => {
                   setPrestataireOpen(true);
                 }}
-                _hover={{ bg: "#9260CC" }}
+                
               >
                 Lire plus
               </Button>
@@ -288,131 +357,123 @@ function Aides() {
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-             as={motion.div}
-             
+              as={motion.div}
               width={{
-              lg: "97%",
-             
+                lg: "97%",
+
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
-                base: "87%",
+                base: "93%",
               }}
               textAlign="center"
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                base: "65vh",
+                base: "70vh",
               }}
-               background="white"
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
-              padding={'10px'}
+              padding={"10px"}
             >
               <Heading
                 as="h2"
                 size="lg"
                 textAlign="center"
-              
                 textTransform="uppercase"
-                 fontSize={{ lg: "2.8rem", base: "2.5rem" }}
-      
+                fontSize={{ lg: "2.8rem", base: "2.5rem" }}
               >
-                 mandataire
+                mandataire
               </Heading>
               <Text
-             
                 fontSize={{
                   sm: "1.6rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-               
+
                   base: "1.5rem",
-                  
                 }}
                 padding={"10px"}
               >
                 L'association ou l'entreprise mandataire s'occupe...
               </Text>
               <Button
-               fontSize={"1.3rem"}
-                  padding={"30px 60px"}
+                fontSize={"1.3rem"}
+                padding={"30px 60px"}
                 color="white"
-                backgroundColor="#AB87FF"
+                backgroundColor="#FD0873"
+                _hover={{ bg: "#AE004B" }}
                 onClick={() => {
                   setMandataireOpen(true);
                 }}
-                _hover={{ bg: "#9260CC" }}
+             
               >
                 Lire plus
               </Button>
             </Flex>
           </GridItem>
-          <GridItem  display="flex" justifyContent="center" alignItems="center">
+          <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-         as={motion.div}
+              as={motion.div}
               width={{
-              lg: "97%",
-             
+                lg: "97%",
+
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
-                base: "87%",
+                base: "93%",
               }}
               textAlign="justify"
               height={{
                 lg: "60vh",
                 xl: "65vh",
-                base: "65vh",
+                base: "70vh",
               }}
-               background="white"
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
-              padding={'10px'}
+              padding={"10px"}
             >
               <Heading
                 as="h2"
                 size="lg"
                 textAlign="center"
-            
                 textTransform="uppercase"
-                 fontSize={{ lg: "2.8rem", base: "2.5rem" }}
-                width={{ lg: "90%", base: "80%" }}
+                fontSize={{ lg: "2.8rem", base: "2.5rem" }}
+                
               >
-                 emploi direct
+                emploi direct
               </Heading>
               <Text
-                
                 fontSize={{
                   sm: "1.6rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-               
+
                   base: "1.5rem",
-                  
                 }}
-                padding={'10px'}
-                textAlign={'center'}
+                padding={"10px"}
+                textAlign={"center"}
               >
                 Vous êtes l'employeur direct de votre salarié...
               </Text>
               <Button
-               fontSize={"1.3rem"}
-                  padding={"30px 60px"}
+                fontSize={"1.3rem"}
+                padding={"30px 60px"}
                 color="white"
-                backgroundColor="#AB87FF"
+               
                 onClick={() => {
                   setDirectOpen(true);
                 }}
-                _hover={{ bg: "#9260CC" }}
+                backgroundColor="#FD0873"
+                _hover={{ bg: "#AE004B" }}
               >
                 Lire plus
               </Button>
