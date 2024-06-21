@@ -49,7 +49,9 @@ const customModalStyles = {
     alignSelf: "center",
     textAlign: "center",
     position: "fixed",
-
+    
+    hyphens: "auto",
+    padding:"6px",
     backgroundColor: "#FFF0F5",
   },
   modalHeader: {
@@ -73,16 +75,16 @@ const screenSize = window.innerWidth; // Get the current window width
 if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
   customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.1rem";
+  customModalStyles.modalContent.fontSize = "1.23rem";
   customModalStyles.modalContent.height = "90vh";
 }
 
 if (screenSize > 768) {
   // md screens (Bootstrap md breakpoint)
   customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalHeader.fontSize = "2.5rem";
+  
   customModalStyles.modalContent.fontSize = "1.3rem";
-  customModalStyles.modalContent.height = "90vh";
+  customModalStyles.modalContent.height = "95vh";
 
 }
 
@@ -326,7 +328,8 @@ function PrisEnContes() {
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
+              whileHover={{ scale: 1.05 }}
+              cursor={"pointer"}
               
               padding={"15px"}
             >
@@ -401,6 +404,9 @@ function PrisEnContes() {
                     alignItems="center"
                     justifyContent="space-around"
                     gap="3"
+
+                    whileHover={{ scale: 1.05 }}
+                    cursor={"pointer"}
             >
               <Heading
                 textAlign="center"
@@ -448,7 +454,8 @@ function PrisEnContes() {
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
-             
+              whileHover={{ scale: 1.05 }}
+              cursor={"pointer"}
               
            
             

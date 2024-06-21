@@ -131,12 +131,13 @@ function Pch() {
       alignSelf: "center",
       textAlign: "center",
       position: "fixed",
-      height: "95vh",
+  
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
       fontWeight: "bold",
       fontSize: "1.8em",
+   
     },
     modalBody: {
       textAlign: "justify",
@@ -144,6 +145,7 @@ function Pch() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      
     },
   };
 
@@ -158,8 +160,8 @@ function Pch() {
   if (screenSize > 768) {
     // md screens (Bootstrap md breakpoint)
     customModalStyles.modalHeader.fontSize = "2em";
-    customModalStyles.modalBody.fontSize = "1.3rem";
-    customModalStyles.modalContent.height = "90vh";
+    customModalStyles.modalBody.fontSize = "1.25rem";
+    customModalStyles.modalContent.height = "95vh";
   }
 
   const modalTexts = [
@@ -405,8 +407,8 @@ function Pch() {
                 width={"95%"}
                 fontSize={{
                   sm: "2rem",
-                  lg: "1.3rem",
-                  xl: "1.5rem",
+                  lg: "1.7rem",
+                  xl: "1.6rem",
                 
                   base: "1.35rem",
                 }}

@@ -26,15 +26,66 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import "../../styles/navbar.css";
-
+const MotionBox = motion(Box);
 const MotionLink = motion(Link);
 
 const modalTexts = [
   "Comment devenir autonome lorsque la vie bascule dans la dépendance physique ? Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.",
   "Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ? Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible. Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
 ];
+
+const customModalStyles = {
+  modalContent: {
+    borderRadius: "15px",
+    overflow: "none",
+   
+    flexDirection: "column",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    position: "fixed",
+
+    backgroundColor: "#FFF0F5",
+  },
+  modalHeader: {
+    fontWeight: "bold",
+    fontSize: "1.8em",
+  },
+  modalBody: {
+    textAlign: "justify",
+    fontSize: "1.2rem",
+    display: "flex",
+    justifyContent:'space-around',
+    flexDirection: "column" , 
+    fontSize: "1.1rem",
+     wordSpacing: "0em",
+    hyphens: "auto",
+    padding:"6px"
+   
+            
+  },
+};
+
+// Example of adjusting font sizes based on screen size
+const screenSize = window.innerWidth; // Get the current window width
+
+if (screenSize < 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.25rem";
+  customModalStyles.modalContent.height = "90vh";
+}
+
+if (screenSize > 768) {
+  // md screens (Bootstrap md breakpoint)
+  customModalStyles.modalHeader.fontSize = "2em";
+  customModalStyles.modalBody.fontSize = "1.35rem";
+  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.height = "95vh";
+
+}
 
 const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,11 +103,22 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent borderRadius="15px" overflow="hidden" display="flex" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" position="fixed" height="85vh" backgroundColor="#FFF0F5">
-        <ModalHeader fontWeight="bold" fontSize={{ base: "1.8em", md: "2em", lg: "2.2em" }}>{header}</ModalHeader>
+      <ModalContent  style={customModalStyles.modalContent}>
+        <ModalHeader  style={customModalStyles.modalHeader}  >{header}</ModalHeader>
         <ModalCloseButton />
-        <ModalBody textAlign="justify" fontSize={{ base: "1.2rem", md: "1.1rem", lg: "1.5rem" }} w="100%">
-          <Text>{texts[currentIndex]}</Text>
+        <ModalBody  style={customModalStyles.modalBody}>
+        <AnimatePresence mode="wait">
+            <MotionBox
+              key={currentIndex} // Ensure unique key for re-rendering
+              px={4}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Text>{texts[currentIndex]}</Text>
+            </MotionBox>
+          </AnimatePresence>
           <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
         </ModalBody>
         <ModalFooter display={'flex'} gap={"10px"}>
@@ -71,16 +133,14 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
               Suivant
             </Button>
           )}
-          <Button padding={"30px 60px"}  onClick={onClose} color="white" _hover={{ bg: "#AB87FF" }} backgroundColor="#AB87BF">
-              Fermer
-            </Button>
+         
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
 };
 
-function Aides() {
+function Emulation() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isDrawerOpen, onOpen: onDrawerOpen, onClose: onDrawerClose } = useDisclosure();
   const [isMobile, setIsMobile] = useState(false);
@@ -94,7 +154,7 @@ function Aides() {
     window.addEventListener("resize", handleResize);
     handleResize();
         document.getElementById("root").style.fontFamily = "Tahoma";
-    document.getElementById("root").style.backgroundColor = "#FF9CC7";
+    document.getElementById("root").style.backgroundColor = "#E6FC9C";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -236,8 +296,9 @@ function Aides() {
       padding={"35px 60px"}
             fontSize={"1.3rem"}
             color="white"
-            backgroundColor="#AB87FF"
+            backgroundColor="#A8D908"
             onClick={() => setPrestataireOpen(true)}
+            _hover={{bg:"#89B106"}}
           >
             En savoir plus
           </Button>
@@ -253,4 +314,4 @@ function Aides() {
   );
 }
 
-export default Aides;
+export default Emulation;

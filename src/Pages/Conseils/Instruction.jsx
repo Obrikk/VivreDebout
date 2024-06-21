@@ -39,12 +39,8 @@ const modalTexts = [
   "          Personne ne se rebelle : ni l'enfant, trop jeune pour comprendre, ni les parents à qui on a démontré la voie générale dissuasive et qui font le deuil de la scolarité dont on aurait rêvé pour son enfant.En cours préparatoire (CP), vous a-t-on laissé le choix ? La majorité des enfants handicapés sont orientés vers une section ULIS, une classe spécialement aménagée (maximum 12 élèves dans les établissements publics). ",
   " Bien qu'ils partagent certaines activités comme la musique, le sport, et les sciences avec les autres élèves, ils restent souvent 'à l'écart'. Cela permet un suivi adapté à leurs capacités tout en restant dans le milieu scolaire ordinaire.       En section ULIS*, il suffit d'interroger les professeurs des écoles, dont c'est souvent la première affectation pour la plupart une fois diplômés, pour comprendre que l'autonomie de l'enfant est déjà compromise.",
   " En primaire, il y a peu de chances que votre enfant sache lire et écrire car cela relève de la mission impossible lorsqu'il s'agit d'instruire un groupe, 12 élèves en moyenne, composé de troubles différents mais dont le QI* peut être très satisfaisant.    Au sein de l'IME*, on rassure : votre enfant est accueilli dans les meilleures conditions avec pour preuves à l'appui, un projet d'établissement, un projet individualisé... mais il suffit de s'entretenir avec le personnel (Educateur spécialisé, Aide Médico Psychologique...) ",
-  " pour comprendre que l'IME* est en sous-effectif avec un personnel prêt à craquer, financement oblige.          L'enfant devient inévitablement un assisté : il dépend physiquement et subit. Dans un IME*, apprendre à lire, à écrire ? ",
-  " Combien de parents ont-ils entendus Non, votre enfant n'a pas les capacités d'apprendre et combien de parents ont réussi malgré tout à faire en sorte que ce même enfant apprenne à lire, à écrire : les bases de l'autonomie.",
-
-  "  L  'autonomie s'apprend dès le plus jeune âge. Optez pour le bien-être de votre enfant en visant pour lui une évolution à son rythme dans l'apprentissage. Nombreuses sont les familles qui ont découvert les cours par correspondance : le choix est large.   Il faut choisir celui qui permettra à l’enfant de prendre confiance, d’être capable d’appeler par tél ou par mail pour dire stop, je n’ai pas compris ou n’arrive pas à résoudre tel problème... et d’être immédiatement renseigné. ",
-  "      Trop de parents se trompent, pensant qu’ils n’ont pas les connaissances ou même le temps : un bon cours par correspondance ne demande pas au parent d’être un professeur. Souvent, le cours par correspondance dégage du temps pour l’enfant : son rythme est respecté, il peut même s’ouvrir à des activités de loisirs. Il faut se battre pour demander le financement des cours à la MDPH* et si l’enfant a besoin d’un assistant de vie compte tenu d’un très lourd handicap, la demande de la PCH* est possible. ",
-  " Ce n’est pas la MDPH* qui proposera cette alternative il faudra argumenter pour l’obtenir. ",
+  " pour comprendre que l'IME* est en sous-effectif avec un personnel prêt à craquer, financement oblige.          L'enfant devient inévitablement un assisté : il dépend physiquement et subit. Dans un IME*, apprendre à lire, à écrire ? Combien de parents ont-ils entendus Non, votre enfant n'a pas les capacités d'apprendre et combien de parents ont réussi malgré tout à faire en sorte que ce même enfant apprenne à lire, à écrire : les bases de l'autonomie.","  L  'autonomie s'apprend dès le plus jeune âge. Optez pour le bien-être de votre enfant en visant pour lui une évolution à son rythme dans l'apprentissage. Nombreuses sont les familles qui ont découvert les cours par correspondance : le choix est large.   Il faut choisir celui qui permettra à l’enfant de prendre confiance, d’être capable d’appeler par tél ou par mail pour dire stop, je n’ai pas compris ou n’arrive pas à résoudre tel problème... et d’être immédiatement renseigné. ",
+  "      Trop de parents se trompent, pensant qu’ils n’ont pas les connaissances ou même le temps : un bon cours par correspondance ne demande pas au parent d’être un professeur. Souvent, le cours par correspondance dégage du temps pour l’enfant : son rythme est respecté, il peut même s’ouvrir à des activités de loisirs. Il faut se battre pour demander le financement des cours à la MDPH* et si l’enfant a besoin d’un assistant de vie compte tenu d’un très lourd handicap, la demande de la PCH* est possible.  Ce n’est pas la MDPH* qui proposera cette alternative il faudra argumenter pour l’obtenir. ",
 
   "Vivre Debout est disponible pour entendre, comprendre chaque cas et vous conseiller dans la rédaction et dans l'appui du projet de vie de votre enfant présenté à la MDPH*. La prise en charge actuelle ne correspond peut-être plus aux aspirations. Les différentes CHA* peuvent être consultées en fonction des demandes et de l'expertise de chacune (droits, instruction, accessibilité, aides techniques, emploi direct...).",
 ];
@@ -78,15 +74,15 @@ const screenSize = window.innerWidth; // Get the current window width
 if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
   customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.1rem";
+  customModalStyles.modalBody.fontSize = "1.3rem";
   customModalStyles.modalContent.height = "90vh";
 }
 
 if (screenSize > 768) {
   // md screens (Bootstrap md breakpoint)
   customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.4rem";
-  customModalStyles.modalContent.height = "90vh";
+  customModalStyles.modalBody.fontSize = "1.3rem";
+  customModalStyles.modalContent.height = "95vh";
 
 }
 const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
@@ -135,7 +131,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
         </ModalBody>
 
         <ModalFooter display={"flex"} gap={"10px"}>
-          {currentIndex > 0 && (
+        {currentIndex > 0 && (
             <Button
               padding={{ base: "30px 30px", sm: "30px 40px" }}
               onClick={handlePrev}
@@ -147,7 +143,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
             </Button>
           )}
 
-          {currentIndex < 10 && (
+          {currentIndex < texts.length - 1 && (
             <Button
               padding={{ base: "30px 30px", sm: "30px 40px" }}
               onClick={handleNext}
@@ -157,7 +153,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
             >
               Suivant
             </Button>
-          )}
+            )}
           <Button
             padding={{ base: "30px 30px", sm: "30px 40px" }}
             onClick={onClose}
