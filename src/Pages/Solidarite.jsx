@@ -32,7 +32,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import SolidariteImg from "../../public/handshake.png";
+import SolidariteImg from "../..git/public/handshake.png";
 import LienGif from "../../public/info.gif";
 
 import "../styles/navbar.css";
