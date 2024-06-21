@@ -41,7 +41,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const NextArrow = ({ onClick }) => (
   <IconButton
-    icon={<ArrowForwardIcon />}
+    icon={< ArrowForwardIcon />}
     onClick={onClick}
     position="absolute"
     top="110%"

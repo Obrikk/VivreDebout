@@ -54,8 +54,13 @@ function Aides() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
+
     document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#FF87BB";
+
+        document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#ff006e";
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
