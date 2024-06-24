@@ -39,61 +39,56 @@ import "../styles/navbar.css";
 
 const MotionLink = motion(Link);
 
-const customModalStyles = {
-  modalContent: {
-    borderRadius: "15px",
-    overflow: "none",
-   fontFamily:"Tahoma",
-    flexDirection: "column",
-    alignItems: "center",
-    alignSelf: "center",
-    textAlign: "center",
-    position: "fixed",
-    wordSpacing: "0em",
+  const customModalStyles = {
+    modalContent: {
+      borderRadius: "15px",
+      overflow: "none",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      alignSelf: "center",
+      textAlign: "center",
+      position: "fixed",
+      lineHeight: "1.9rem",
+      wordSpacing: "0em",
     hyphens: "auto",
-    padding:"6px",
-    backgroundColor: "#FFF0F5",
-    lineHeight: "2.5rem"
     
-  },
-  modalHeader: {
-    fontWeight: "bold",
-    fontSize: "1.8em",
-       lineHeight: "NORMAL",
-  },
-  modalBody: {
-    textAlign: "justify",
-    fontSize: "1.2rem",
-    display: "flex",
   
-    
-    justifyContent:'space-around',
-    flexDirection: "column" , 
-    fontSize: "1.1rem",
+      backgroundColor: "#FFF0F5",
+    },
+    modalHeader: {
+      fontWeight: "bold",
+      fontSize: "1.8em",
+ 
+    },
+    modalBody: {
+      textAlign: "justify",
+      fontSize: "1.2rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+
+      
+    },
+  };
+
+  const screenSize = window.innerWidth; 
+  if (screenSize < 768) {
+  
+    customModalStyles.modalHeader.fontSize = "2em";
+    customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalContent.height = "90vh";
+    customModalStyles.modalContent.lineHeight = "2.5rem";
+  }
+
+  if (screenSize > 768) {
    
-  },
-};
+customModalStyles.modalBody.fontSize = "1.15rem";
 
-// Example of adjusting font sizes based on screen size
-const screenSize = window.innerWidth; // Get the current window width
-
-if (screenSize < 768) {
-  // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2.3em";
-  customModalStyles.modalBody.fontSize = "1.2rem";
-  customModalStyles.modalContent.fontSize = "1.2rem";
-    customModalStyles.modalHeader.fontSize = "1.8rem";
-  customModalStyles.modalContent.height = "90vh";
-}
-
-if (screenSize > 768) {
-  // md screens (Bootstrap md breakpoint)
-  
-  customModalStyles.modalContent.fontSize = "1.2rem";
-    customModalStyles.modalHeader.fontSize = "1.55rem";
-  customModalStyles.modalContent.height = "95vh";
-
-}
+customModalStyles.modalContent.lineHeight = "2.2rem";
+    customModalStyles.modalHeader.fontSize = "2rem";
+  customModalStyles.modalContent.height = "70vh";
+  }
 
 function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
   const handleRedirect = (url) => {
@@ -127,9 +122,16 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
           {additionalButtons && additionalButtons.map((button, index) => (
             <Button
               fontSize={"1.2rem"}
-              padding={"35px 130px"}
+              padding={"35px 70px"}
               key={index}
-              colorScheme="blue"
+            fontFamily={"Tahoma"}
+              // Les couleurs ne sont pas apliquées
+              backgroundColor={button.label === "Pch" ? "#00D9FF" : button.label === "Instructions" ? "#32C35B" : button.label === "Emulation" ? "#A8D908" : button.label === "Auxiliaire de vie" ? "#FD0873" : button.label === "Stagiaires" ? "#F0E17F" : "initial"}
+              color={button.label === "" ? "black" : "white"}
+              _hover={{
+                backgroundColor: button.label === "Pch" ? "#03A6C2" : button.label === "Instructions" ? "#1D7235" : button.label === "Emulation" ? "#89B106" : button.label === "Auxiliaire de vie" ? "#AE004B" : button.label === "Stagiaires" ? "#E2CD45" : "initial",
+                color: button.label === "" ? "black" : "white",
+              }}
 
               onClick={() => handleRedirect(button.url)}
             >
@@ -187,6 +189,7 @@ function PrisEnContes() {
   // Les contenus des modals
   const modal1Content = {
 
+    // c'est ces boutons que j'aimerais stylisé
     buttons: [
       { label: "Pch", url: "/Pch" },
       { label: "Instructions", url: "Instruction" },
@@ -336,7 +339,7 @@ function PrisEnContes() {
               padding={"15px"}
             >
               <Heading
-                fontSize={{ lg: "2.8rem",xl:"3rem", base: "2.8rem", sm: "3.5rem" }}
+                fontSize={{ lg: "2.8rem", xl: "3rem", base: "2.8rem", sm: "3.5rem" }}
 
                 size="lg"
                 textTransform="uppercase"
@@ -348,14 +351,14 @@ function PrisEnContes() {
                 spacing={7}
                 listStyleType="circle"
                 fontSize={{
-                 sm: "1.7rem",
-                lg: "1.25rem",
-                xl: "1.5rem",
-              
-                base: "1.35rem",
+                  sm: "1.7rem",
+                  lg: "1.25rem",
+                  xl: "1.5rem",
+
+                  base: "1.35rem",
                 }}
                 textAlign="justify"
-               
+
 
               >
                 <ListItem>
@@ -390,7 +393,7 @@ function PrisEnContes() {
                 md: "80%",
                 sm: "90%",
                 xl: "80%",
-                  lg:"90%",
+                lg: "90%",
                 base: "93%",
               }}
               height={{
@@ -406,8 +409,8 @@ function PrisEnContes() {
               flexDirection="column"
               alignItems="center"
               justifyContent="space-around"
-             
-  marginBottom={{lg:"1.5rem",xl:"0"}}
+
+              marginBottom={{ lg: "1.5rem", xl: "0" }}
               whileHover={{ scale: 1.05 }}
               cursor={"pointer"}
             >
@@ -415,7 +418,7 @@ function PrisEnContes() {
                 textAlign="center"
 
                 textTransform="uppercase"
-                fontSize={{ lg: "2.3rem", base: "2.5rem", sm: "3.5rem" }}
+                fontSize={{ lg: "2.3rem", base: "2.5rem", sm: "3.5rem", xl: "2.6rem" }}
 
               >
                 Actions Solidaires
@@ -467,7 +470,7 @@ function PrisEnContes() {
                 textAlign="center"
 
                 textTransform="uppercase"
-                fontSize={{ lg: "2.8rem", base: "2.5rem", sm: "3.5rem",xl:"3rem" }}
+                fontSize={{ lg: "2.8rem", base: "2.5rem", sm: "3.5rem", xl: "3rem" }}
 
               >
                 Liens Utiles
@@ -476,16 +479,16 @@ function PrisEnContes() {
                 spacing={4}
                 listStyleType="circle"
                 fontSize={{
-                sm: "1.7rem",
-                lg: "1.3rem",
-                xl: "1.5rem",
-              
-                base: "1.35rem",
+                  sm: "1.7rem",
+                  lg: "1.3rem",
+                  xl: "1.5rem",
+
+                  base: "1.35rem",
 
                 }}
                 pos={"relative"}
                 bottom={{ base: "3rem" }}
-                
+
               >
                 <ListItem
 

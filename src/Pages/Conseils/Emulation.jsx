@@ -36,56 +36,57 @@ const modalTexts = [
   "Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ? Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible. Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
 ];
 
-const customModalStyles = {
-  modalContent: {
-    borderRadius: "15px",
-    overflow: "none",
-   
-    flexDirection: "column",
-    alignItems: "center",
-    alignSelf: "center",
-    textAlign: "center",
-    position: "fixed",
 
-    backgroundColor: "#FFF0F5",
-  },
-  modalHeader: {
-    fontWeight: "bold",
-    fontSize: "1.8em",
-  },
-  modalBody: {
-    textAlign: "justify",
-    fontSize: "1.2rem",
-    display: "flex",
-    justifyContent:'space-around',
-    flexDirection: "column" , 
-    fontSize: "1.1rem",
-     wordSpacing: "0em",
+
+
+  const customModalStyles = {
+    modalContent: {
+      borderRadius: "15px",
+      overflow: "none",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      alignSelf: "center",
+      textAlign: "center",
+      position: "fixed",
+      lineHeight: "1.9rem",
+      wordSpacing: "0em",
     hyphens: "auto",
-    padding:"6px"
+    
+  
+      backgroundColor: "#FFF0F5",
+    },
+    modalHeader: {
+      fontWeight: "bold",
+      fontSize: "1.8em",
+ 
+    },
+    modalBody: {
+      textAlign: "justify",
+      fontSize: "1.2rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+
+      
+    },
+  };
+
+  const screenSize = window.innerWidth; 
+  if (screenSize < 768) {
+  
+    customModalStyles.modalHeader.fontSize = "2em";
+    customModalStyles.modalBody.fontSize = "1.15rem";
+    customModalStyles.modalContent.height = "90vh";
+  }
+
+  if (screenSize > 768) {
    
-            
-  },
-};
-
-// Example of adjusting font sizes based on screen size
-const screenSize = window.innerWidth; // Get the current window width
-
-if (screenSize < 768) {
-  // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.25rem";
-  customModalStyles.modalContent.height = "90vh";
-}
-
-if (screenSize > 768) {
-  // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.35rem";
-  customModalStyles.modalContent.fontSize = "1.3rem";
+customModalStyles.modalBody.fontSize = "1.15rem";
+customModalStyles.modalBody.lineHeight = "2.3rem";
+    customModalStyles.modalHeader.fontSize = "1.5rem";
   customModalStyles.modalContent.height = "95vh";
-
-}
+  }
 
 const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -109,17 +110,18 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
         <ModalBody  style={customModalStyles.modalBody}>
         <AnimatePresence mode="wait">
             <MotionBox
-              key={currentIndex} // Ensure unique key for re-rendering
-              px={4}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
+            key={currentIndex} // Ensure unique key for re-rendering
+                px={4}
+                mt={{base:"4.5rem",md:"6rem"}}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
             >
               <Text>{texts[currentIndex]}</Text>
             </MotionBox>
           </AnimatePresence>
-          <Text color={"#89B106"} fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
+          <Text borderRadius={"15px"} boxShadow={"2px 2px 6px "} padding={"7px 30px"} border={"1px solid transparent"} color={"#89B106"} fontWeight={"bold"} top={{base:"4.5rem",md:"5.5rem"}} m={"auto"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
         </ModalBody>
         <ModalFooter display={'flex'} gap={"10px"}>
           {currentIndex == 1 && (
@@ -210,13 +212,7 @@ function Emulation() {
                         padding: "8px",
                         transition: "0.4s all ease",
                       }}
-                      whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setTimeout(() => {
-                          window.location.href = item.href;
-                        }, 1500);
-                      }}
+             
                     >
                       {item.label}
                     </MotionLink>

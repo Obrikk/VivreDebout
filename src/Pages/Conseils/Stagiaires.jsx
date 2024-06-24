@@ -111,13 +111,8 @@ function Stagiaire() {
                         padding: "8px",
                         transition: "0.4s all ease",
                       }}
-                      whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setTimeout(() => {
-                          window.location.href = item.href;
-                        }, 1500);
-                      }}
+                     
+                     
                     >
                       {item.label}
                     </MotionLink>

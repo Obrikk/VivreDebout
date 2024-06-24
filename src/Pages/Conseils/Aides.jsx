@@ -74,35 +74,44 @@ function Aides() {
       alignSelf: "center",
       textAlign: "center",
       position: "fixed",
-   
+      lineHeight: "1.9rem",
+      wordSpacing: "0em",
+    hyphens: "auto",
+    
+  
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
       fontWeight: "bold",
       fontSize: "1.8em",
+ 
     },
     modalBody: {
-      fontSize: "1.1rem",
       textAlign: "justify",
-      padding:"7px"
+      fontSize: "1.2rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+
+      
     },
   };
 
-  // Example of adjusting font sizes based on screen size
-const screenSize = window.innerWidth; // Get the current window width
+  const screenSize = window.innerWidth; 
+  if (screenSize < 768) {
+  
+    customModalStyles.modalHeader.fontSize = "2em";
+    customModalStyles.modalBody.fontSize = "1.1rem";
+    customModalStyles.modalContent.height = "98vh";
+  }
 
-  if (screenSize < 768) { // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.1rem";
-  customModalStyles.modalContent.height="90vh"
-}
-
-
-if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.2rem";
-  customModalStyles.modalContent.height="90vh"
-}
+  if (screenSize > 768) {
+   
+customModalStyles.modalBody.fontSize = "1.2rem";
+customModalStyles.modalBody.lineHeight = "2.3rem";
+    customModalStyles.modalHeader.fontSize = "1.5rem";
+  customModalStyles.modalContent.height = "95vh";
+  }
   const MotionBox = motion(Box);
 
   const CustomTextModal = ({ isOpen, onClose, header, contents }) => {
@@ -131,6 +140,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               <MotionBox
                 key={currentIndex} // Ensure unique key for re-rendering
                 px={4}
+                mt={{base:"4.5rem",md:"6rem"}}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -140,7 +150,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               </MotionBox>
             </AnimatePresence>
 
-            <Text color={"#AE004B"} fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${
+            <Text padding={"7px 30px"}   boxShadow={"2px 2px 6px "} borderRadius={"15px"} border={"1px solid transparent"} top={{base:"4.5rem",md:"5.5rem"}} m={"auto"} pos={"absolute"} color={"#AE004B"} fontWeight={"bold"} >{`${
               currentIndex + 1
             } / ${contents.length}`}</Text>
           </ModalBody>
@@ -172,15 +182,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
                 Précédent
               </Button>
             )}
-            <Button
-              padding={"30px 60px"}
-              onClick={onClose}
-              color="white"
-              _hover={{ bg: "#AE004B" }}
-              backgroundColor="#FD0873"
-            >
-              Fermer
-            </Button>
+        
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -493,7 +495,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
             },
             {
               title: "Inconvéniants",
-              text: "Bien que doté d'un agrément qualité, le personnel ne l'est pas pour autant suite à l'expérience des personnes avec handicap (transferts, assistance ventilation respiratoire...).Le changement d’intervenants est fréquent. Et si c'est une obligation qu'il ait suivi une formation de niveau 1 aux premiers secours, il n'est pas autorisé à préparer les médicaments.Proposition d'un planning des interventions qui reste figé : tout projet de dernière minute ou risquant de dépasser les contraintes horaires est irréalisable, à moins de demander une modification suffisamment au préalable afin que la structure puisse organiser l'emploi de son personnel.Les horaires d'intervention oscillent en général entre 8h 00 et 20h 00.C'est le mode le plus onéreux et le Conseil Départemental conseille de l’utiliser...",
+              text: "Bien que le personnel ait un agrément qualité, il n'a pas l'expérience nécessaire pour gérer les personnes handicapées (transferts, assistance respiratoire...). Les intervenants changent fréquemment. Même s'ils ont une formation de premiers secours de niveau 1, ils ne sont pas autorisés à préparer les médicaments. Le planning des interventions est fixe : les projets de dernière minute ou dépassant les horaires sont impossibles, sauf si une modification est demandée à l'avance pour que la structure s'organise. Les horaires d'intervention sont généralement de 8h à 20h. Ce mode est le plus coûteux et le Conseil Départemental le recommande...",
             },
             // Add more pages as needed
           ]}

@@ -28,6 +28,7 @@ import {
   Heading,
   Text,
   Link,
+  position,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -39,87 +40,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const NextArrow = ({ onClick }) => (
-  <IconButton
-    icon={< ArrowForwardIcon />}
-    onClick={onClick}
-    position="absolute"
-    top="110%"
-    right="10px"
-    transform="translateY(-50%)"
-    zIndex="1"
-    backgroundColor="#AB87FF"
-    color="white"
-    _hover={{ bg: "#9260CC" }}
-    borderRadius="50%"
-  />
-);
 
-const PrevArrow = ({ onClick }) => (
-  <IconButton
-    icon={<ArrowBackIcon />}
-    onClick={onClick}
-    position="absolute"
-    top="110%"
-    left="10px"
-    transform="translateY(-50%)"
-    zIndex="1"
-    backgroundColor="#AB87FF"
-    color="white"
-    _hover={{ bg: "#9260CC" }}
-    borderRadius="50%"
-  />
-);
 
-const settings = {
-  dots: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 3000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
 
-const settingsImage = {
-  dots: true,
-  nextArrow: false,
-  prevArrow: false,
-  fade: true,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 3000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
 
-const MotionLink = motion(Link);
-
-function Pch() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    isOpen: isDrawerOpen,
-    onOpen: onDrawerOpen,
-    onClose: onDrawerClose,
-  } = useDisclosure();
-  const [isMobile, setIsMobile] = useState(false);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    document.getElementById("root").style.fontFamily = "Tahoma";
-    document.getElementById("root").style.backgroundColor = "#BAF5FF";
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const customModalStyles = {
     modalContent: {
@@ -149,7 +73,7 @@ function Pch() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-    
+
       
     },
   };
@@ -158,13 +82,14 @@ function Pch() {
   if (screenSize < 768) {
   
     customModalStyles.modalHeader.fontSize = "2em";
-    customModalStyles.modalBody.fontSize = "1.2rem";
+    customModalStyles.modalBody.fontSize = "1.15rem";
     customModalStyles.modalContent.height = "90vh";
   }
 
   if (screenSize > 768) {
    
-  customModalStyles.modalContent.fontSize = "1.2rem";
+customModalStyles.modalBody.fontSize = "1.15rem";
+customModalStyles.modalBody.lineHeight = "2.3rem";
     customModalStyles.modalHeader.fontSize = "1.5rem";
   customModalStyles.modalContent.height = "95vh";
   }
@@ -177,25 +102,45 @@ function Pch() {
     " Vivre Debout rejoint le collectif des Handignés et l'ENIL* au Parlement Européen pour rappeler aux élus les lois en vigueur.",
   ];
 
-  const CustomTextModal = ({
-    isOpen,
-    onClose,
-    header,
-    texts,
-    currentIndex,
-    setCurrentIndex,
-  }) => {
+
+  const MotionLink = motion(Link);
+  const MotionBox = motion(Box);
+
+
+function Pch() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.backgroundColor = "#BAF5FF";
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const handleNext = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
     };
 
     const handlePrev = () => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + texts.length) % texts.length
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? texts.length - 1 : prevIndex - 1
       );
     };
 
-    const MotionBox = motion(Box);
 
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -211,7 +156,7 @@ function Pch() {
               pos={"absolute"}
               color={"#03A6C2"}
             >
-              {currentIndex + 1} / {texts.length}
+             
             </Text>
           </ModalHeader>
           <ModalCloseButton />
@@ -220,7 +165,7 @@ function Pch() {
               <MotionBox
                 key={currentIndex} // Ensure unique key for re-rendering
                 px={4}
-                mt="30px"
+                mt={{base:"4.5rem",md:"6rem"}}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -229,6 +174,8 @@ function Pch() {
                 <Text>{texts[currentIndex]}</Text>
               </MotionBox>
             </AnimatePresence>
+
+            <Text borderRadius={"15px"} border={"1px solid transparent"} boxShadow={"2px 2px 6px "} padding={"7px 30px"} color={"#03A6C2"} fontWeight={"bold"} top={{base:"4.5rem",md:"5.5rem"}} m={"auto"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
           </ModalBody>
           <ModalFooter
             bottom={"0"}
@@ -236,6 +183,7 @@ function Pch() {
             display={"flex"}
             gap={"10px"}
           >
+              {currentIndex > 0 && (
             <Button
               onClick={handlePrev}
               color="white"
@@ -245,7 +193,9 @@ function Pch() {
             >
               Précédent
             </Button>
+                 )}
         
+        {currentIndex < 4 && (
             <Button
               onClick={handleNext}
               color="white"
@@ -255,7 +205,7 @@ function Pch() {
             >
               Suivant
             </Button>
-  
+      )}
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -436,8 +386,7 @@ function Pch() {
                 onClose={onClose}
                 header="PCH/Convention"
                 texts={modalTexts}
-                currentIndex={currentTextIndex}
-                setCurrentIndex={setCurrentTextIndex}
+               
               />
             </Flex>
           </GridItem>
