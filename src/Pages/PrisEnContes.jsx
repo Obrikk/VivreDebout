@@ -42,7 +42,7 @@ const customModalStyles = {
   modalContent: {
     borderRadius: "15px",
     overflow: "none",
-   
+   fontFamily:"Tahoma",
     flexDirection: "column",
     alignItems: "center",
     alignSelf: "center",
@@ -52,15 +52,20 @@ const customModalStyles = {
     hyphens: "auto",
     padding:"6px",
     backgroundColor: "#FFF0F5",
+    lineHeight: "2.5rem"
+    
   },
   modalHeader: {
     fontWeight: "bold",
     fontSize: "1.8em",
+       lineHeight: "NORMAL",
   },
   modalBody: {
     textAlign: "justify",
     fontSize: "1.2rem",
     display: "flex",
+  
+    
     justifyContent:'space-around',
     flexDirection: "column" , 
     fontSize: "1.1rem",
@@ -75,15 +80,16 @@ if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
   customModalStyles.modalHeader.fontSize = "2.3em";
   customModalStyles.modalBody.fontSize = "1.2rem";
-  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.55rem";
   customModalStyles.modalContent.height = "90vh";
 }
 
 if (screenSize > 768) {
   // md screens (Bootstrap md breakpoint)
   
-  customModalStyles.modalHeader.fontSize = "2.5rem";
-  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.55rem";
   customModalStyles.modalContent.height = "95vh";
 
 }
@@ -234,12 +240,8 @@ function PrisEnContes() {
                         transition: "0.4s all ease",
                       }}
                       whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setTimeout(() => {
-                          window.location.href = item.href;
-                        }, 1500);
-                      }}
+                     
+                    
                     >
                       {item.label}
                     </MotionLink>
@@ -289,7 +291,7 @@ function PrisEnContes() {
                      }}
                      textAlign="justify"
                      height={{
-                       lg: "65vh",
+                       lg: "55vh",
                        xl: "65vh",
                        base: "70vh",
                      }}
@@ -305,7 +307,7 @@ function PrisEnContes() {
                      padding={"15px"}
             >
               <Heading
-                    fontSize={{ lg: "2.8rem",  base: "2.8rem",sm:"3.5rem" }}
+                    fontSize={{ lg: "2.8rem",xl:"3rem",  base: "2.8rem",sm:"3.5rem" }}
                 
                     size="lg"
                    textTransform="uppercase"
@@ -348,10 +350,11 @@ function PrisEnContes() {
                  md: "80%",
                  sm: "90%",
                  xl: "80%",
+                 lg:"90%",
                  base: "93%",
                }}
                height={{
-              lg: "40vh",
+              lg: "35vh",
                  xl: "45vh",
                  md: "350px",
                  sm: "350px",
@@ -363,7 +366,7 @@ function PrisEnContes() {
                flexDirection="column"
                alignItems="center"
                justifyContent="space-around"
-               gap="3"
+             marginBottom={{lg:"1.5rem",xl:"0"}}
                whileHover={{ scale: 1.05 }}
                cursor={"pointer"}
             >
@@ -371,7 +374,7 @@ function PrisEnContes() {
                 textAlign="center"
                 
                 textTransform="uppercase"
-          fontSize={{ lg: "2.4rem",  base: "2.5rem",sm:"3.5rem" }}
+          fontSize={{ lg: "2.4rem", xl:"2.8rem",  base: "2.5rem",sm:"3.5rem" }}
                 
               >
                 Debout
@@ -380,24 +383,24 @@ function PrisEnContes() {
             
              listStyleType="circle"
              fontSize={{
-              sm: "1.7rem",
-              lg: "1.3rem",
-              xl:"1.4rem",
-            
-            
-              base: "1.4rem",
+               sm: "1.7rem",
+                lg: "1.3rem",
+                xl: "1.5rem",
+              
+                base: "1.35rem",
             }}
             textAlign="center"
+            padding={"5px"}
              
               >
                 Être en mouvement dans l’audace et la créativité, c’est possible !
               </Text>
               <Button onClick={onOpen}      
-               padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
+               padding={{lg:"30px 30px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
               fontSize={"1.3rem"}
                 color="white"
                   backgroundColor="#FA0871"
-                      _hover={{ bg: "#9260CC" }}>
+                      _hover={{ bg: "#AB004A" }}>
                 Rejoignez-nous !
               </Button>
             </Flex>
@@ -415,7 +418,7 @@ function PrisEnContes() {
                      }}
                      textAlign="justify"
                      height={{
-                       lg: "65vh",
+                       lg: "55vh",
                        xl: "65vh",
                        base: "70vh",
                      }}
@@ -427,11 +430,11 @@ function PrisEnContes() {
                      justifyContent={"space-around"}
                      whileHover={{ scale: 1.05 }}
                      cursor={"pointer"}
-                     
+                     marginBottom={{base:"3rem",lg:"0"}}
                      padding={"15px"}
             >
               <Heading
-                    fontSize={{ lg: "2.8rem",  base: "2.8rem",sm:"3.5rem" }}
+                    fontSize={{ lg: "2.2rem", xl:"2.7rem",  base: "2.5rem",sm:"3.5rem" }}
                 
                     size="lg"
                    textTransform="uppercase"
@@ -517,7 +520,7 @@ N'hésitez plus rejoingnez nous
          
           <ModalFooter display={"flex"} justifyContent={"center"} overflow="visible">
             <Button padding={"30px 60px"}   backgroundColor="#FA0871"
-                      _hover={{ bg: "#9260CC" }} color={'white'}  onClick={onClose}>
+                      _hover={{ bg: "#AB004A" }} color={'white'}  onClick={onClose}>
               Fermer
             </Button>
           </ModalFooter>

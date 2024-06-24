@@ -131,13 +131,17 @@ function Pch() {
       alignSelf: "center",
       textAlign: "center",
       position: "fixed",
+      lineHeight: "1.9rem",
+      wordSpacing: "0em",
+    hyphens: "auto",
+    
   
       backgroundColor: "#FFF0F5",
     },
     modalHeader: {
       fontWeight: "bold",
       fontSize: "1.8em",
-   
+ 
     },
     modalBody: {
       textAlign: "justify",
@@ -145,23 +149,24 @@ function Pch() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+    
       
     },
   };
 
-  const screenSize = window.innerWidth; // Get the current window width
+  const screenSize = window.innerWidth; 
   if (screenSize < 768) {
-    // md screens (Bootstrap md breakpoint)
+  
     customModalStyles.modalHeader.fontSize = "2em";
     customModalStyles.modalBody.fontSize = "1.2rem";
     customModalStyles.modalContent.height = "90vh";
   }
 
   if (screenSize > 768) {
-    // md screens (Bootstrap md breakpoint)
-    customModalStyles.modalHeader.fontSize = "2em";
-    customModalStyles.modalBody.fontSize = "1.25rem";
-    customModalStyles.modalContent.height = "95vh";
+   
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.5rem";
+  customModalStyles.modalContent.height = "95vh";
   }
 
   const modalTexts = [
@@ -201,9 +206,10 @@ function Pch() {
             <Text
               fontSize={"1.3rem"}
               fontWeight={"bold"}
-              top={"6"}
-              left={"1"}
+              top={"5"}
+              left={"3.5"}
               pos={"absolute"}
+              color={"#03A6C2"}
             >
               {currentIndex + 1} / {texts.length}
             </Text>
@@ -249,15 +255,7 @@ function Pch() {
             >
               Suivant
             </Button>
-            <Button
-              padding={{base:"30px 30px",sm:"30px 40px"}}
-              onClick={onClose}
-              color="white"
-              _hover={{ bg: "#03A6C2" }}
-              backgroundColor="#00D9FF"
-            >
-              Fermer
-            </Button>
+  
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -339,7 +337,7 @@ function Pch() {
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onDrawerClose}>
+                  <Button variant="outline" m={"auto"} onClick={onDrawerClose}>
                     Fermer
                   </Button>
                 </DrawerFooter>
@@ -376,9 +374,10 @@ function Pch() {
         >
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-              as={motion.div}
+                  as={motion.div}
               width={{
                 lg: "97%",
+                "2xl": "80%",
                 md: "80%",
                 sm: "90%",
                 xl: "90%",
@@ -386,7 +385,7 @@ function Pch() {
               }}
               textAlign="justify"
               height={{
-                lg: "60vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
@@ -396,22 +395,26 @@ function Pch() {
               flexDirection="column"
               alignItems="center"
               justifyContent={"space-around"}
+              whileHover={{ scale: 1.05 }}
+              cursor={"pointer"}
+
               padding={"10px"}
             >
               <Heading
-                fontSize={{ lg: "3.5rem", base: "2.3rem", sm: "3.2rem" }}
+                fontSize={{ lg: "3.5rem", base: "2.5rem", sm: "3.2rem" }}
               >
                 PCH/Convention
               </Heading>
               <Text
                 width={"95%"}
                 fontSize={{
-                  sm: "2rem",
+                  sm: "1.5rem",
                   lg: "1.7rem",
                   xl: "1.6rem",
                 
                   base: "1.35rem",
                 }}
+                lineHeight={"1.7"}
                 textAlign="justify"
               >
                 La Prestation de Compensation du Handicap (PCH) est une aide
@@ -423,7 +426,7 @@ function Pch() {
                 fontSize={"1.3rem"}
                 color="white"
                 backgroundColor="#13D3F5"
-                _hover={{ bg: "#9260CC" }}
+                _hover={{ bg: "#00A5C2" }}
                 onClick={onOpen}
               >
                 En savoir plus

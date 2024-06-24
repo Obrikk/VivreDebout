@@ -140,7 +140,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               </MotionBox>
             </AnimatePresence>
 
-            <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${
+            <Text color={"#AE004B"} fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${
               currentIndex + 1
             } / ${contents.length}`}</Text>
           </ModalBody>
@@ -256,19 +256,14 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
                         transition: "0.4s all ease",
                       }}
                       whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setTimeout(() => {
-                          window.location.href = item.href;
-                        }, 1500);
-                      }}
+                    
                     >
                       {item.label}
                     </MotionLink>
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onDrawerClose}>
+                  <Button variant="outline" m={"auto"} padding={"30px 45px"} onClick={onDrawerClose}>
                     Fermer
                   </Button>
                 </DrawerFooter>
@@ -314,7 +309,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
                 base: "93%",
               }}
               height={{
-                lg: "60vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
@@ -327,17 +322,17 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               padding={"10px"}
             >
               <Heading
-                fontSize={{ lg: "3.5rem", base: "2.5rem", sm: "3.2rem" }}
+                fontSize={{ lg: "2.5rem", xl:"2.8rem", base: "2.5rem",sm:"2.9rem" }}
                 textTransform="uppercase"
               >
                 Prestataire
               </Heading>
               <Text
                 fontSize={{
-                  sm: "1.6rem",
-                  lg: "1.7rem",
+                  sm: "2rem",
+                  lg: "1.6rem",
                   xl: "1.8rem",
-
+  
                   base: "1.5rem",
                 }}
                 textAlign={"center"}
@@ -373,7 +368,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               }}
               textAlign="center"
               height={{
-                lg: "60vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
@@ -390,16 +385,16 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
                 size="lg"
                 textAlign="center"
                 textTransform="uppercase"
-                fontSize={{ lg: "2.8rem", base: "2.5rem" }}
+                   fontSize={{ lg: "2.5rem", xl:"2.8rem", base: "2.5rem",sm:"2.9rem" }}
               >
                 mandataire
               </Heading>
               <Text
                 fontSize={{
-                  sm: "1.6rem",
+                  sm: "2rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-
+                    
                   base: "1.5rem",
                 }}
                 padding={"10px"}
@@ -434,7 +429,7 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
               }}
               textAlign="justify"
               height={{
-                lg: "60vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
@@ -451,17 +446,17 @@ if (screenSize > 768) { // md screens (Bootstrap md breakpoint)
                 size="lg"
                 textAlign="center"
                 textTransform="uppercase"
-                fontSize={{ lg: "2.8rem", base: "2.5rem" }}
+            fontSize={{ lg: "2.5rem", xl:"2.8rem", base: "2.5rem",sm:"2.9rem" }}
                 
               >
                 emploi direct
               </Heading>
               <Text
                 fontSize={{
-                  sm: "1.6rem",
+                  sm: "2rem",
                   lg: "1.7rem",
                   xl: "1.8rem",
-
+  
                   base: "1.5rem",
                 }}
                 padding={"10px"}

@@ -119,17 +119,17 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
               <Text>{texts[currentIndex]}</Text>
             </MotionBox>
           </AnimatePresence>
-          <Text fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
+          <Text color={"#89B106"} fontWeight={"bold"} top={"7"} left={"5"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
         </ModalBody>
         <ModalFooter display={'flex'} gap={"10px"}>
           {currentIndex == 1 && (
-            <Button padding={"30px 60px"} onClick={handlePrev} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }} >
+            <Button padding={"30px 60px"} onClick={handlePrev} color="white" backgroundColor="#A8D908" _hover={{ bg: "#89B106" }} >
               Précédent
             </Button>
           )}
 
 {currentIndex == 0 && (
-            <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#AB87FF" _hover={{ bg: "#9260CC" }}>
+            <Button padding={"30px 60px"} onClick={handleNext} color="white" backgroundColor="#A8D908" _hover={{ bg: "#89B106" }}>
               Suivant
             </Button>
           )}
@@ -223,7 +223,8 @@ function Emulation() {
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onDrawerClose}>
+                  <Button variant="outline" m
+                  ={"auto"} padding={"30px 45px"} onClick={onDrawerClose}>
                     Fermer
                   </Button>
                 </DrawerFooter>
@@ -265,7 +266,7 @@ function Emulation() {
           flexDirection="column"
           alignItems="center"
           justifyContent={"space-around"}
-          padding={'10px'}
+          
         >
           <Heading
             fontSize={{
@@ -287,8 +288,8 @@ function Emulation() {
               xl: "2rem",
               base: "1.5rem",
             }}
-            textAlign={"justify"}
-            padding={"5px"}
+            textAlign={"center"}
+            
           >
             Comment devenir autonome lorsque la vie bascule dans la dépendance physique ?
           </Text>

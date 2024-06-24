@@ -43,25 +43,30 @@ const customModalStyles = {
   modalContent: {
     borderRadius: "15px",
     overflow: "none",
-   
+   fontFamily:"Tahoma",
     flexDirection: "column",
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
     position: "fixed",
-    
+    wordSpacing: "0em",
     hyphens: "auto",
     padding:"6px",
     backgroundColor: "#FFF0F5",
+    lineHeight: "2.5rem"
+    
   },
   modalHeader: {
     fontWeight: "bold",
     fontSize: "1.8em",
+       lineHeight: "NORMAL",
   },
   modalBody: {
     textAlign: "justify",
     fontSize: "1.2rem",
     display: "flex",
+  
+    
     justifyContent:'space-around',
     flexDirection: "column" , 
     fontSize: "1.1rem",
@@ -74,16 +79,18 @@ const screenSize = window.innerWidth; // Get the current window width
 
 if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalContent.fontSize = "1.23rem";
+  customModalStyles.modalHeader.fontSize = "2.3em";
+  customModalStyles.modalBody.fontSize = "1.2rem";
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.8rem";
   customModalStyles.modalContent.height = "90vh";
 }
 
 if (screenSize > 768) {
   // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
   
-  customModalStyles.modalContent.fontSize = "1.3rem";
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.55rem";
   customModalStyles.modalContent.height = "95vh";
 
 }
@@ -97,10 +104,10 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent
- style={customModalStyles.modalContent}
+        style={customModalStyles.modalContent}
       >
         <ModalHeader
-  style={customModalStyles.modalHeader}
+          style={customModalStyles.modalHeader}
         >
           {header}
         </ModalHeader>
@@ -114,16 +121,16 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
         >
           {body}
         </Text>
-        <ModalBody    
-        style={customModalStyles.modalBody}
-            >
+        <ModalBody
+          style={customModalStyles.modalBody}
+        >
           {additionalButtons && additionalButtons.map((button, index) => (
             <Button
-            fontSize={"1.2rem"}
-            padding={"35px 130px"}
+              fontSize={"1.2rem"}
+              padding={"35px 130px"}
               key={index}
               colorScheme="blue"
-             
+
               onClick={() => handleRedirect(button.url)}
             >
               {button.label}
@@ -131,11 +138,11 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
           ))}
         </ModalBody>
         <ModalFooter overflow="visible">
-          <Button fontSize={"1.2rem"} padding={"30px 45px"}  
-          backgroundColor="#F3C90C"  onClick={onClose}
-          color={"white"}
-          fontWeight={"bold"}
-          _hover={{bg:"#DAB200"}}
+          <Button fontSize={"1.2rem"} padding={"30px 45px"}
+            backgroundColor="#F3C90C" onClick={onClose}
+            color={"white"}
+            fontWeight={"bold"}
+            _hover={{ bg: "#DAB200" }}
           >
             Fermer
           </Button>
@@ -170,16 +177,16 @@ function PrisEnContes() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
-        document.getElementById("root").style.fontFamily = "Tahoma";
+    document.getElementById("root").style.fontFamily = "Tahoma";
     document.getElementById("root").style.backgroundColor = "#FCEFB4";
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- 
+
 
   // Les contenus des modals
   const modal1Content = {
-    
+
     buttons: [
       { label: "Pch", url: "/Pch" },
       { label: "Instructions", url: "Instruction" },
@@ -190,9 +197,9 @@ function PrisEnContes() {
   };
 
   const modal2Content = {
-    
+
     header: "Actions Solidaires",
-    body: "Les actions solidaires de Vivre Debout sont très variées : apporter une aide ponctuelle ou régulière à domicile non prise en charge par les auxiliaires de vie, offrir un complément financier permettant de diminuer le reste à charge, trier des papiers, faire une avance de frais, aider au déplacement, chaque situation est unique et nous  nous adaptons au maximum à chaque besoin, sans jamais décider pour nos bénéficiaires qui restent maîtres de leurs choix.", 
+    body: "Les actions solidaires de Vivre Debout sont très variées : apporter une aide ponctuelle ou régulière à domicile non prise en charge par les auxiliaires de vie, offrir un complément financier permettant de diminuer le reste à charge, trier des papiers, faire une avance de frais, aider au déplacement, chaque situation est unique et nous  nous adaptons au maximum à chaque besoin, sans jamais décider pour nos bénéficiaires qui restent maîtres de leurs choix.",
   };
 
   return (
@@ -262,14 +269,14 @@ function PrisEnContes() {
                         transition: "0.4s all ease",
                       }}
                       whileTap={{ animation: "fillAnimation 1.5s forwards" }}
-                     
+
                     >
                       {item.label}
                     </MotionLink>
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
-                  <Button padding={"30px 60px"}  variant="outline" mr={3} onClick={onDrawerClose}>
+                  <Button padding={"30px 60px"} variant="outline" m={"auto"} onClick={onDrawerClose}>
                     Fermer
                   </Button>
                 </DrawerFooter>
@@ -281,31 +288,26 @@ function PrisEnContes() {
         )}
       </Flex>
       <Box
-  w="100%" height="100%" display="flex" flexDirection="column" alignItems="center"
-  
+        w="100%" height="100%" display="flex" flexDirection="column" alignItems="center"
+      >
+        <Img src={SolidariteImg} w="10rem" pos="relative" top={{ xl: "5em", base: "3em" }} />
 
-
-
-  
-      > 
-    <Img src={SolidariteImg} w="10rem" pos="relative" top={{ xl: "5em", base: "3em" }} />
-        
         <Grid
-        
+
           templateColumns={{
-                   base: "1fr",
+            base: "1fr",
             sm: "1fr",
             md: "1fr",
             lg: "1fr 1fr 1fr",
             xl: "1fr 1fr 1fr",
           }}
-         height="100%"
+          height="100%"
           templateRows="auto"
           pos="relative"
           top={{ base: "10rem", sm: "10rem", lg: "-2rem" }}
           rowGap="3rem"
         >
-          <GridItem    as={motion.div} display="flex" justifyContent="center" alignItems="center">
+          <GridItem as={motion.div} display="flex" justifyContent="center" alignItems="center">
             <Flex
               as={motion.div}
               width={{
@@ -318,11 +320,11 @@ function PrisEnContes() {
               }}
               textAlign="justify"
               height={{
-                lg: "65vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
-               background="white"
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
@@ -330,101 +332,102 @@ function PrisEnContes() {
               justifyContent={"space-around"}
               whileHover={{ scale: 1.05 }}
               cursor={"pointer"}
-              
+
               padding={"15px"}
             >
               <Heading
-              fontSize={{ lg: "3rem",  base: "2.8rem",sm:"3.5rem" }}
-                
-                   size="lg"
-                  textTransform="uppercase"
-                      textAlign="center"
+                fontSize={{ lg: "2.8rem",xl:"3rem", base: "2.8rem", sm: "3.5rem" }}
+
+                size="lg"
+                textTransform="uppercase"
+                textAlign="center"
               >
                 Conseils
               </Heading>
               <UnorderedList
                 spacing={7}
                 listStyleType="circle"
-                         fontSize={{
-                  sm: "1.7rem",
-                  lg: "1.3rem",
-                  xl:"1.4rem",
-                
-                
-                  base: "1.4rem",
+                fontSize={{
+                 sm: "1.7rem",
+                lg: "1.25rem",
+                xl: "1.5rem",
+              
+                base: "1.35rem",
                 }}
                 textAlign="justify"
-                
+               
+
               >
                 <ListItem>
                   Nous conseillons sur le respect de l'éthique citoyenne.
                 </ListItem>
                 <ListItem>
-                 Nous sommes amenés parfois dénoncer et critiquer les
+                  Nous sommes amenés parfois dénoncer et critiquer les
                   violations de la convention de l'ONU.
                 </ListItem>
               </UnorderedList>
               <Flex justifyContent="center">
                 <Button
-                
+
                   onClick={onModal1Open}
-               padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
-              fontSize={"1.3rem"}
-                color="white"
+                  padding={{ lg: "30px 35px", xl: "35px 45px", md: "35px 45px", sm: "35px 45px", base: "35px 45px    " }}
+                  fontSize={"1.3rem"}
+                  color="white"
                   backgroundColor="#F3C90C"
-                  _hover={{bg:"#DAB200"}}
+                  _hover={{ bg: "#DAB200" }}
                 >
                   Accéder aux conseils
                 </Button>
               </Flex>
             </Flex>
           </GridItem>
-          <GridItem  display="flex" justifyContent="center" alignItems="flex-end">
+          <GridItem display="flex" justifyContent="center" alignItems="flex-end">
             <Flex
-                    as={motion.div}
-                    width={{
-                    
-                      
-                      md: "80%",
-                      sm: "90%",
-                      xl: "80%",
-                      base: "93%",
-                    }}
-                    height={{
-                   lg: "40vh",
-                      xl: "45vh",
-                      md: "350px",
-                      sm: "350px",
-                      base: "45vh",
-                    }}
-                    background="white"
-                    borderRadius="20px"
-                    boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="space-around"
-                    gap="3"
+              as={motion.div}
+              width={{
 
-                    whileHover={{ scale: 1.05 }}
-                    cursor={"pointer"}
+
+                md: "80%",
+                sm: "90%",
+                xl: "80%",
+                  lg:"90%",
+                base: "93%",
+              }}
+              height={{
+                lg: "35vh",
+                xl: "45vh",
+                md: "350px",
+                sm: "350px",
+                base: "45vh",
+              }}
+              background="white"
+              borderRadius="20px"
+              boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="space-around"
+             
+  marginBottom={{lg:"1.5rem",xl:"0"}}
+              whileHover={{ scale: 1.05 }}
+              cursor={"pointer"}
             >
               <Heading
                 textAlign="center"
-                
+
                 textTransform="uppercase"
-          fontSize={{ lg: "2.4rem",  base: "2.5rem",sm:"3.5rem" }}
-                
+                fontSize={{ lg: "2.3rem", base: "2.5rem", sm: "3.5rem" }}
+
               >
                 Actions Solidaires
               </Heading>
               {/* Text removed here */}
               <Button
                 onClick={onModal2Open}
-                padding={{lg:"30px 35px",xl:"35px 45px",md:"35px 45px",sm:"35px 45px",base:"35px 45px    "}}
-              fontSize={"1.3rem"}
+                padding={{ lg: "30px 35px", xl: "35px 45px", md: "35px 45px", sm: "35px 45px", base: "35px 45px    " }}
+                fontSize={"1.3rem"}
                 color="white"
                 backgroundColor="#F3C90C"
-                _hover={{bg:"#DAB200"}}
+                _hover={{ bg: "#DAB200" }}
               >
                 En savoir plus
               </Button>
@@ -432,7 +435,7 @@ function PrisEnContes() {
           </GridItem>
           <GridItem display="flex" justifyContent="center" alignItems="center">
             <Flex
-           as={motion.div}
+              as={motion.div}
               width={{
                 lg: "97%",
                 "2xl": "80%",
@@ -443,12 +446,12 @@ function PrisEnContes() {
               }}
               textAlign="justify"
               height={{
-                lg: "65vh",
+                lg: "55vh",
                 xl: "65vh",
                 base: "70vh",
               }}
-              marginBottom={{base:"3rem",sm:"0"}}
-               background="white"
+              marginBottom={{ base: "3rem", sm: "0" }}
+              background="white"
               borderRadius="20px"
               boxShadow="1px 1px 15px rgba(0, 0, 0, 0.2)"
               flexDirection="column"
@@ -456,40 +459,40 @@ function PrisEnContes() {
               justifyContent={"space-around"}
               whileHover={{ scale: 1.05 }}
               cursor={"pointer"}
-              
-           
-            
+
+
+
             >
               <Heading
-                  textAlign="center"
-                
+                textAlign="center"
+
                 textTransform="uppercase"
-                     fontSize={{ lg: "3rem", base: "2.5rem",sm:"3.5rem" }}
-                
+                fontSize={{ lg: "2.8rem", base: "2.5rem", sm: "3.5rem",xl:"3rem" }}
+
               >
                 Liens Utiles
               </Heading>
               <UnorderedList
-                spacing={3}
+                spacing={4}
                 listStyleType="circle"
                 fontSize={{
-                  sm: "2.1rem",
-                  lg: "1.3rem",
-                  xl: "1.7rem",
-                 
-                  base: "1.7rem",
-                  
+                sm: "1.7rem",
+                lg: "1.3rem",
+                xl: "1.5rem",
+              
+                base: "1.35rem",
+
                 }}
                 pos={"relative"}
-                bottom={{base:"3rem"}}
-                textAlign="justify"
+                bottom={{ base: "3rem" }}
+                
               >
                 <ListItem
-                
+
                 >
                   <Link
-                  
-                  isExternal href="https://mdphenligne.cnsa.fr/">
+
+                    isExternal href="https://mdphenligne.cnsa.fr/">
                     MPDH en ligne
                   </Link>
                 </ListItem>

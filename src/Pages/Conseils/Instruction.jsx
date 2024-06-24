@@ -48,23 +48,34 @@ const customModalStyles = {
   modalContent: {
     borderRadius: "15px",
     overflow: "none",
-    display: "flex",
+   fontFamily:"Tahoma",
     flexDirection: "column",
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
     position: "fixed",
-
+    wordSpacing: "0em",
+    hyphens: "auto",
+    padding:"6px",
     backgroundColor: "#FFF0F5",
+    lineHeight: "2.5rem"
+    
   },
   modalHeader: {
     fontWeight: "bold",
     fontSize: "1.8em",
+       lineHeight: "NORMAL",
   },
   modalBody: {
-    fontSize: "1.1rem",
     textAlign: "justify",
-    padding: "7px",
+    fontSize: "1.2rem",
+    display: "flex",
+  
+    
+    justifyContent:'space-around',
+    flexDirection: "column" , 
+    fontSize: "1.1rem",
+   
   },
 };
 
@@ -73,15 +84,18 @@ const screenSize = window.innerWidth; // Get the current window width
 
 if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.3rem";
+  customModalStyles.modalHeader.fontSize = "2.3em";
+  customModalStyles.modalBody.fontSize = "1.2rem";
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "1.8rem";
   customModalStyles.modalContent.height = "90vh";
 }
 
 if (screenSize > 768) {
   // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "2em";
-  customModalStyles.modalBody.fontSize = "1.3rem";
+  
+  customModalStyles.modalContent.fontSize = "1.2rem";
+    customModalStyles.modalHeader.fontSize = "2rem";
   customModalStyles.modalContent.height = "95vh";
 
 }
@@ -154,15 +168,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
               Suivant
             </Button>
             )}
-          <Button
-            padding={{ base: "30px 30px", sm: "30px 40px" }}
-            onClick={onClose}
-            color="white"
-            _hover={{ bg: "#1D7235" }}
-            backgroundColor="#32C35B"
-          >
-            Fermer
-          </Button>
+  
         </ModalFooter>
       </ModalContent>
     </Modal>
@@ -272,7 +278,7 @@ function Instruction() {
                   ))}
                 </DrawerBody>
                 <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onDrawerClose}>
+                  <Button variant="outline"m={"auto"} padding={"30px 40px"} onClick={onDrawerClose}>
                     Fermer
                   </Button>
                 </DrawerFooter>
@@ -331,13 +337,14 @@ function Instruction() {
 
           <UnorderedList
             fontSize={{
-              sm: "1.6rem",
-              lg: "1.8rem",
-
+              sm: "1.4rem",
+              lg: "1.7rem",
+              xl:"1.8rem",
               base: "1.25rem",
             }}
             textAlign={"justify"}
             spacing={4}
+            padding={"10px"}
           >
             <ListItem>
               SEGPA* : Section d'Enseignement Général et Professionnel Adapté
