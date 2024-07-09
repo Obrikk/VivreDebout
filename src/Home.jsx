@@ -253,6 +253,21 @@ function Home() {
         )}
       </Flex>
       <Box w="100%" height="100%" display="flex" flexDirection="column" alignItems="center" >
+
+      <Box pos={"absolute"} border={"1px solid red"}   width={"10vw"}>
+  <Slider {...settings}>
+    <Box >
+      <img src="/yvelinesLogo.png" alt="Image 1" width={"100%"} />
+    </Box>
+    <Box >
+      <img src="/sqyTerre.png" alt="Image 2" width={"100%"} />
+    </Box>
+    <Box >
+      <img src="/pch-logo.jpg" alt="Image 3"  width={"100%"} />
+    </Box>
+  </Slider>
+</Box>
+
         <Grid
           templateColumns={{
             base: "1fr",
@@ -385,7 +400,10 @@ function Home() {
                 
               />
             </Flex>
+            
           </GridItem>
+
+          
         </Grid>
       </Box>
       

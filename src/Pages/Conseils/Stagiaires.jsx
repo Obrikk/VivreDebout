@@ -196,30 +196,34 @@ function Stagiaire() {
               textAlign="justify"
              display="flex" justifyContent="center" alignItems="center"
               height={{ base: "60vh", sm: "50vh", md: "50vh", lg: "50vh", xl: "65vh" }}
-              boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
-              borderRadius="0.75rem"
+            boxShadow={"0 0 21px 3px rgba (0,0,0,0.5), 0 15px 54px 10px rgba(0,0,0,0.3)"}
+              borderRadius="12px"
               padding="1rem"
               whileHover={{ scale: 1.05 }}
               initial={{ x: "20rem" }}
               animate={{ x: "0rem" }}
               cursor="pointer"
-            bg={'black'}
+            bg={'#d4d7dd'}
+            border={"55px solid #fff"}
               marginBottom={{base:"3em",sm:"3em",md:"0",lg:"0",xl:"0"}}>
 
          <Box padding={"10px"} width={{ base: "90vw",sm:"65vw",md:"65vw",lg:"60vw",xl:"40vw"}} display="flex" justifyContent="center">
+          
       <Slider style={{ width: "100%" }} {...settings}>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img  src="../public/Image1.png" alt="Image 1" style={{ width: "100%",position:"relative" }} />
-        </Box>
-        <Box display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Image2.png" alt="Image 2" style={{ width: "100%" }} />
-        </Box>
-        <Box   display="flex" justifyContent="center" alignItems="center">
-          <img src="../public/Image3.png" alt="Image 3" style={{ width: "100%" }} />
-        </Box>
+      
+          <img  src="../public/Image1.png" alt="Image 1"  />
+       
+    
+          <img src="../public/Image2.png" alt="Image 2"  />
+        
+      
+          <img src="../public/Image3.png" alt="Image 3"  />
+        
         
       </Slider>
     </Box>
+
+
             </Flex>
           </GridItem>
         </Grid>

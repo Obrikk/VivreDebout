@@ -43,11 +43,9 @@ const MotionLink = motion(Link);
     modalContent: {
       borderRadius: "15px",
       overflow: "none",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      alignSelf: "center",
-      textAlign: "center",
+     
+    
+     
       position: "fixed",
       lineHeight: "1.9rem",
       wordSpacing: "0em",
@@ -59,17 +57,19 @@ const MotionLink = motion(Link);
     modalHeader: {
       fontWeight: "bold",
       fontSize: "1.8em",
- 
+      textAlign:"center"
     },
     modalBody: {
       textAlign: "justify",
       fontSize: "1.2rem",
       display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+      justifyContent:"space-between",
+      flexDirection:"column",
+   
 
       
     },
+
   };
 
   const screenSize = window.innerWidth; 
@@ -87,7 +87,7 @@ customModalStyles.modalBody.fontSize = "1.15rem";
 
 customModalStyles.modalContent.lineHeight = "2.2rem";
     customModalStyles.modalHeader.fontSize = "2rem";
-  customModalStyles.modalContent.height = "70vh";
+  customModalStyles.modalContent.height = "85vh";
   }
 
 function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
@@ -119,17 +119,17 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
         <ModalBody
           style={customModalStyles.modalBody}
         >
-          {additionalButtons && additionalButtons.map((button, index) => (
+          {additionalButtons && additionalButtons.map((button ) => (
             <Button
               fontSize={"1.2rem"}
-              padding={"35px 70px"}
-              key={index}
+              padding={"30px 40px"}
+           
             fontFamily={"Tahoma"}
               // Les couleurs ne sont pas apliquées
-              backgroundColor={button.label === "Pch" ? "#00D9FF" : button.label === "Instructions" ? "#32C35B" : button.label === "Emulation" ? "#A8D908" : button.label === "Auxiliaire de vie" ? "#FD0873" : button.label === "Stagiaires" ? "#F0E17F" : "initial"}
+              backgroundColor={button.label === "PCH" ? "#00D9FF" : button.label === "Instructions" ? "#32C35B" : button.label === "Emulation" ? "#A8D908" : button.label === "Auxiliaire de vie" ? "#FD0873" : button.label === "Stagiaires" ? "#F0E17F" : "initial"}
               color={button.label === "" ? "black" : "white"}
               _hover={{
-                backgroundColor: button.label === "Pch" ? "#03A6C2" : button.label === "Instructions" ? "#1D7235" : button.label === "Emulation" ? "#89B106" : button.label === "Auxiliaire de vie" ? "#AE004B" : button.label === "Stagiaires" ? "#E2CD45" : "initial",
+                backgroundColor: button.label === "PCH" ? "#03A6C2" : button.label === "Instructions" ? "#1D7235" : button.label === "Emulation" ? "#89B106" : button.label === "Auxiliaire de vie" ? "#AE004B" : button.label === "Stagiaires" ? "#E2CD45" : "initial",
                 color: button.label === "" ? "black" : "white",
               }}
 
@@ -145,6 +145,7 @@ function CustomModal({ isOpen, onClose, header, body, additionalButtons }) {
             color={"white"}
             fontWeight={"bold"}
             _hover={{ bg: "#DAB200" }}
+            m={"auto"}
           >
             Fermer
           </Button>
@@ -191,7 +192,7 @@ function PrisEnContes() {
 
     // c'est ces boutons que j'aimerais stylisé
     buttons: [
-      { label: "Pch", url: "/Pch" },
+      { label: "PCH", url: "/Pch" },
       { label: "Instructions", url: "Instruction" },
       { label: "Emulation", url: "Emulation" },
       { label: "Auxiliaire de vie", url: "Aides" },
@@ -352,8 +353,8 @@ function PrisEnContes() {
                 listStyleType="circle"
                 fontSize={{
                   sm: "1.7rem",
-                  lg: "1.25rem",
-                  xl: "1.5rem",
+                  lg: "1.2rem",
+                  xl: "1.45rem",
 
                   base: "1.35rem",
                 }}

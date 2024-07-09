@@ -76,42 +76,64 @@ function Aides() {
       position: "fixed",
       lineHeight: "1.9rem",
       wordSpacing: "0em",
-    hyphens: "auto",
-    
-  
+      hyphens: "auto",
       backgroundColor: "#FFF0F5",
+      width: "95%", // Ajout de la largeur
+      maxWidth: "50vw", // Optionnel : Limite maximale de largeur
+     
     },
     modalHeader: {
       fontWeight: "bold",
       fontSize: "1.8em",
- 
+      marginTop:"15px",
     },
     modalBody: {
       textAlign: "justify",
+      
       fontSize: "1.2rem",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-
-      
     },
   };
-
-  const screenSize = window.innerWidth; 
-  if (screenSize < 768) {
   
-    customModalStyles.modalHeader.fontSize = "2em";
-    customModalStyles.modalBody.fontSize = "1.1rem";
-    customModalStyles.modalContent.height = "98vh";
-  }
-
-  if (screenSize > 768) {
+  
+    const screenSize = window.innerWidth; 
+    if (screenSize < 768) {
+    
+      customModalStyles.modalHeader.fontSize = "2.2rem";
+      customModalStyles.modalBody.fontSize = "1.3rem";
+      customModalStyles.modalContent.height = "95vh";
+      customModalStyles.modalBody.lineHeight = "2.4rem";
+      customModalStyles.modalContent.maxWidth = "95%";
+    }
+  
+    if (screenSize < 500) {
+    
+      customModalStyles.modalHeader.fontSize = "2em";
+      customModalStyles.modalBody.fontSize = "1.1rem";
+      customModalStyles.modalContent.height = "95vh";
+      customModalStyles.modalBody.lineHeight = "2rem";
+      customModalStyles.modalContent.maxWidth = "95%";
+    }
+    if (screenSize > 768) {
+     
+  customModalStyles.modalBody.fontSize = "1.3rem";
+  customModalStyles.modalBody.lineHeight = "2.7rem";
+      customModalStyles.modalHeader.fontSize = "1.9rem";
+    customModalStyles.modalContent.height = "95vh";
+    customModalStyles.modalContent.maxWidth = "75%";
    
-customModalStyles.modalBody.fontSize = "1.2rem";
-customModalStyles.modalBody.lineHeight = "2.3rem";
-    customModalStyles.modalHeader.fontSize = "1.5rem";
-  customModalStyles.modalContent.height = "95vh";
-  }
+    }
+  
+    if (screenSize > 1008) {
+     
+      customModalStyles.modalBody.fontSize = "1.6rem";
+          customModalStyles.modalHeader.fontSize = "2.5rem";
+    
+       
+        }
+  
   const MotionBox = motion(Box);
 
   const CustomTextModal = ({ isOpen, onClose, header, contents }) => {
@@ -140,7 +162,7 @@ customModalStyles.modalBody.lineHeight = "2.3rem";
               <MotionBox
                 key={currentIndex} // Ensure unique key for re-rendering
                 px={4}
-                mt={{base:"4.5rem",md:"6rem"}}
+                mt={{base:"8rem",md:"10rem",lg:"12rem",sm:"8rem"}}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -150,7 +172,7 @@ customModalStyles.modalBody.lineHeight = "2.3rem";
               </MotionBox>
             </AnimatePresence>
 
-            <Text padding={"7px 30px"}   boxShadow={"2px 2px 6px "} borderRadius={"15px"} border={"1px solid transparent"} top={{base:"4.5rem",md:"5.5rem"}} m={"auto"} pos={"absolute"} color={"#AE004B"} fontWeight={"bold"} >{`${
+            <Text padding={"7px 30px"}   boxShadow={"2px 2px 6px "} borderRadius={"15px"} border={"1px solid transparent"}  top={{base:"7rem",md:"8rem",sm:"7rem"}}  m={"auto"} pos={"absolute"} color={"#AE004B"} fontWeight={"bold"} >{`${
               currentIndex + 1
             } / ${contents.length}`}</Text>
           </ModalBody>
@@ -332,15 +354,14 @@ customModalStyles.modalBody.lineHeight = "2.3rem";
               <Text
                 fontSize={{
                   sm: "2rem",
-                  lg: "1.6rem",
-                  xl: "1.8rem",
+                  lg: "1.4rem",
+                
   
                   base: "1.5rem",
                 }}
                 textAlign={"center"}
               >
-                Vous êtes l'employeur de l'intervenant, et l'organisme
-                prestataire...
+              L'employeur est l'agence prestataire qui missionne les auxiliaires de vie chez leurs clients en situation de handicap
               </Text>
               <Button
                 padding={"30px 60px"}
@@ -394,14 +415,14 @@ customModalStyles.modalBody.lineHeight = "2.3rem";
               <Text
                 fontSize={{
                   sm: "2rem",
-                  lg: "1.7rem",
-                  xl: "1.8rem",
+                  lg: "1.4rem",
+                
                     
                   base: "1.5rem",
                 }}
                 padding={"10px"}
               >
-                L'association ou l'entreprise mandataire s'occupe...
+                L'employeur est la personne en situation de handicap mais toutes les formalités administratives sont faites par une agence mandataire (recrutement, vacances, congés etc)
               </Text>
               <Button
                 fontSize={"1.3rem"}
@@ -456,15 +477,15 @@ customModalStyles.modalBody.lineHeight = "2.3rem";
               <Text
                 fontSize={{
                   sm: "2rem",
-                  lg: "1.7rem",
-                  xl: "1.8rem",
+                  lg: "1.5rem",
+               
   
                   base: "1.5rem",
                 }}
                 padding={"10px"}
                 textAlign={"center"}
               >
-                Vous êtes l'employeur direct de votre salarié...
+       L'employeur est la personne en situation de handicap et elle doit s'occuper de toutes les formalités administratives.
               </Text>
               <Button
                 fontSize={"1.3rem"}

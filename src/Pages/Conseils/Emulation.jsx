@@ -32,61 +32,79 @@ const MotionBox = motion(Box);
 const MotionLink = motion(Link);
 
 const modalTexts = [
-  "Comment devenir autonome lorsque la vie bascule dans la dépendance physique ? Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.",
+  " Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.",
   "Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ? Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible. Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
 ];
 
-
-
-
-  const customModalStyles = {
-    modalContent: {
-      borderRadius: "15px",
-      overflow: "none",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      alignSelf: "center",
-      textAlign: "center",
-      position: "fixed",
-      lineHeight: "1.9rem",
-      wordSpacing: "0em",
+const customModalStyles = {
+  modalContent: {
+    borderRadius: "15px",
+    overflow: "none",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    position: "fixed",
+    lineHeight: "1.9rem",
+    wordSpacing: "0em",
     hyphens: "auto",
+    backgroundColor: "#FFF0F5",
+    width: "95%", // Ajout de la largeur
+    maxWidth: "50vw", // Optionnel : Limite maximale de largeur
+   
+  },
+  modalHeader: {
+    fontWeight: "bold",
+    fontSize: "1.8em",
+    marginTop:"15px",
+  },
+  modalBody: {
+    textAlign: "justify",
     
-  
-      backgroundColor: "#FFF0F5",
-    },
-    modalHeader: {
-      fontWeight: "bold",
-      fontSize: "1.8em",
- 
-    },
-    modalBody: {
-      textAlign: "justify",
-      fontSize: "1.2rem",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+    fontSize: "1.2rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+};
 
-      
-    },
-  };
 
   const screenSize = window.innerWidth; 
   if (screenSize < 768) {
   
-    customModalStyles.modalHeader.fontSize = "2em";
-    customModalStyles.modalBody.fontSize = "1.15rem";
-    customModalStyles.modalContent.height = "90vh";
+    customModalStyles.modalHeader.fontSize = "2.2rem";
+    customModalStyles.modalBody.fontSize = "1.3rem";
+    customModalStyles.modalContent.height = "95vh";
+    customModalStyles.modalBody.lineHeight = "2.4rem";
+    customModalStyles.modalContent.maxWidth = "95%";
   }
 
+  if (screenSize < 500) {
+  
+    customModalStyles.modalHeader.fontSize = "2em";
+    customModalStyles.modalBody.fontSize = "1.1rem";
+    customModalStyles.modalContent.height = "95vh";
+    customModalStyles.modalBody.lineHeight = "2rem";
+    customModalStyles.modalContent.maxWidth = "95%";
+  }
   if (screenSize > 768) {
    
-customModalStyles.modalBody.fontSize = "1.15rem";
-customModalStyles.modalBody.lineHeight = "2.3rem";
-    customModalStyles.modalHeader.fontSize = "1.5rem";
+customModalStyles.modalBody.fontSize = "1.3rem";
+customModalStyles.modalBody.lineHeight = "2.7rem";
+    customModalStyles.modalHeader.fontSize = "1.9rem";
   customModalStyles.modalContent.height = "95vh";
+  customModalStyles.modalContent.maxWidth = "75%";
+ 
   }
+
+  if (screenSize > 1008) {
+   
+    customModalStyles.modalBody.fontSize = "1.6rem";
+        customModalStyles.modalHeader.fontSize = "2.5rem";
+  
+     
+      }
 
 const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -112,7 +130,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
             <MotionBox
             key={currentIndex} // Ensure unique key for re-rendering
                 px={4}
-                mt={{base:"4.5rem",md:"6rem"}}
+                mt={{base:"8rem",md:"10rem",lg:"12rem",sm:"8rem"}}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
@@ -121,7 +139,7 @@ const CustomTextModal = ({ isOpen, onClose, header, texts }) => {
               <Text>{texts[currentIndex]}</Text>
             </MotionBox>
           </AnimatePresence>
-          <Text borderRadius={"15px"} boxShadow={"2px 2px 6px "} padding={"7px 30px"} border={"1px solid transparent"} color={"#89B106"} fontWeight={"bold"} top={{base:"4.5rem",md:"5.5rem"}} m={"auto"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
+          <Text borderRadius={"15px"} boxShadow={"2px 2px 6px "} padding={"7px 30px"} border={"1px solid transparent"} color={"#89B106"} fontWeight={"bold"}    top={{base:"7rem",md:"8rem",sm:"7rem"}}  m={"auto"} pos={"absolute"}>{`${currentIndex + 1} / ${texts.length}`}</Text>
         </ModalBody>
         <ModalFooter display={'flex'} gap={"10px"}>
           {currentIndex == 1 && (
@@ -248,13 +266,13 @@ function Emulation() {
             lg: "97%",
             md: "80%",
             sm: "90%",
-            xl: "90%",
-            base: "87%",
+            xl: "95%",
+            base: "100%",
           }}
           height={{
             lg: "60vh",
-            xl: "65vh",
-            base: "65vh",
+            xl: "70vh",
+            base: "75vh",
           }}
           background="white"
           borderRadius="20px"
@@ -262,6 +280,7 @@ function Emulation() {
           flexDirection="column"
           alignItems="center"
           justifyContent={"space-around"}
+          padding={"15px"}
           
         >
           <Heading
@@ -279,17 +298,19 @@ function Emulation() {
 
           <Text
             fontSize={{
-              sm: "1.6rem",
-              lg: "1.9rem",
-              xl: "2rem",
-              base: "1.5rem",
+              sm: "1.2rem",
+              lg: "1.4rem",
+             xl:"1.5rem",
+              base: "1rem",
             }}
-            textAlign={"center"}
+            textAlign={"justify"}
+            
             
           >
-            Comment devenir autonome lorsque la vie bascule dans la dépendance physique ?
+              Sur le long cours, des bénévoles en situation de handicap accompagnent leurs pairs afin qu'ils puissent échanger leur expérience, et permettre chez l'autre, de développer une confiance en soi et se déterminer par soi-même. Cet accompagnement s'appelle la Pair-émulation.
+              "Combien d'accidentés graves ou de personnes soudainement envahies par la maladie sombrent dans une dépression ? Combien sont-ils à refuser toute aide car ils pensent que personne ne peut se mettre à leur place et les comprendre ? Une personne qui a vécu ce basculement et qui s'en sort peut s'avérer être le seul contact possible. Le bénévole, avant de devenir Pair émulateur, suit une formation spécifique dispensée par le Groupement Français des Personnes Handicapées, qui fait partie comme Vivre Debout de la Coordination Handicap Autonomie."
           </Text>
-          <Button
+          {/* <Button
       padding={"35px 60px"}
             fontSize={"1.3rem"}
             color="white"
@@ -298,7 +319,7 @@ function Emulation() {
             _hover={{bg:"#89B106"}}
           >
             En savoir plus
-          </Button>
+          </Button> */}
         </Flex>
       </Box>
       <CustomTextModal
