@@ -1,0 +1,24 @@
+/* Dans votre fichier home.css ou navbar.css */
+body, html {
+  overflow-y: hidden;
+}
+
+/* Si nécessaire, appliquez également à d'autres conteneurs */
+.container {
+  overflow-y: hidden;
+}
+
+
+@media (max-width:1330px) {
+  .pen{
+    position: absolute;
+  left: 26rem;
+  bottom: 0.5rem;
+  height: 2ch;
+  }
+}
+@media (max-width:1150px) {
+  .pen{
+    height: 2ch;
+  }
+}

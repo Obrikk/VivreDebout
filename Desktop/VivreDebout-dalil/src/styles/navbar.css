@@ -1,0 +1,141 @@
+#root {
+  overflow-x: hidden;
+}
+
+.header {
+  margin: auto;
+  height: 12vh;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  justify-content: space-around;
+  position: relative;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px); 
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  gap: 120px; /* Ajout de l'écart initial */
+}
+
+@media (min-width: 48em) {
+  .header {
+    width: 95vw;
+  }
+
+  nav ul {
+   
+    gap: 40px;
+  }
+
+  nav ul, button {
+    white-space: nowrap;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+@media (width<971px) 
+{
+  nav ul,button{
+    font-size: 1.1rem;
+  }
+}
+
+@media (width<901px) 
+{
+  nav ul,button{
+    font-size: 1.1rem;
+    gap: 30px;
+  }
+}
+
+@media (width<835px) 
+{
+  nav ul,button{
+    font-size: 1rem;
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 62em) {
+  .header {
+    width: 97vw;
+  }
+
+  nav ul {
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  nav ul, button {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .header {
+    width: 96vw;
+  }
+
+  nav ul {
+    gap: 90px;
+  }
+
+  nav ul, button {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 96em) {
+  .header {
+    width: 93vw;
+  }
+
+  nav ul, button {
+    font-size: 1.2rem;
+    gap: 120px;
+    font-weight: 600;
+  }
+}
+
+@keyframes fillBackground {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.fill-background {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.fill-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: black;
+  z-index: -1;
+  transition: width 1.5s ease-in-out;
+}
+
+@media (width<1083px) {
+  .box1
+  {
+     
+  }
+}

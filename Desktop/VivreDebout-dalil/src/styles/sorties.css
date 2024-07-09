@@ -1,0 +1,42 @@
+
+
+
+
+
+
+.sorties {
+    overflow-y: scroll;
+    background-color: #B4E1FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sorties * {
+    overflow: visible;
+}
+
+.sorties-container{
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    overflow: visible;
+    padding: 20px;
+}
+
+.sorties-container ul {
+    list-style-type: none;
+}
+
+.sorties-container li {
+    border: solid black 2px;
+    overflow:visible;
+    list-style-type: none;
+    height: 20rem;
+    border-radius: 20px;
+    margin:20px;
+    padding: 10px;
+    background-color: #ffff;
+    
+}
