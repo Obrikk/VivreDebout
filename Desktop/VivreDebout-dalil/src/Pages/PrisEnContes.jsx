@@ -79,7 +79,7 @@ const screenSize = window.innerWidth; // Get the current window width
 
 if (screenSize < 768) {
   // md screens (Bootstrap md breakpoint)
-  customModalStyles.modalHeader.fontSize = "1.3em";
+  customModalStyles.modalHeader.fontSize = "1.2em";
   customModalStyles.modalBody.fontSize = "1.2rem";
   customModalStyles.modalContent.fontSize = "1.2rem";
 
