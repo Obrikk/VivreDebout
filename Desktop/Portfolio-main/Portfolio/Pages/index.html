@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/Portfolio/Style/index.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  </style>
+   
+
+
+
+</head>
+
+<body>
+  <nav>
+    <ul class="menuContent">
+      <li><a href="Work.html">Work</a></li>
+      <li><a href="About.html">About me</a></li>
+      <li>
+        <button class="navButton" onclick="location.href='mailto:bousseirid@gmail.com'">Contact</button>
+      </li>
+    </ul>
+    <ion-icon class="menuIcon" name="menu-outline"></ion-icon>
+    <div class="menuSlider">
+      <ul>
+        <li><a href="About.html">About me</a></li>
+        <button  onclick="location.href='mailto:bousseirid@gmail.com'">Contact</button>
+        <li><a href="Work.html">Work</a></li>
+        <ion-icon class="closeMenuButton" name="close-circle-outline"></ion-icon>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Premier grid -->
+    <div class="div1" style="grid-area: div1;">
+      <h1>
+        Hi, I am <br> Dalil Bousseiri
+      </h1>
+      <p>Full stack developer</p>
+      <p>I am a passionate developer with a constant desire to grow.<br> My goal is to consolidate my knowledge, <br> learn more, and gain experience.</p>
+
+      <div class="divLog">
+        <a href="https://www.linkedin.com/in/dalil-bousseiri-139024256/">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="https://github.com/Dalil03">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <!-- ici -->
+        <a href="/Portfolio/Images/cv-img.png" download="cv-img.png">
+          <button class="download">Download my resume</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Deuxieme grid -->
+    <img class="div2" src="/Portfolio/Images/me.png" alt="" style="grid-area: div2;">
+  </main>
+
+  <!-- Modale pour afficher le CV -->
+  
+      
+      
+    
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuIcon = document.querySelector('.menuIcon');
+      const menuSlider = document.querySelector('.menuSlider');
+      const closeMenuButton = document.querySelector('.closeMenuButton')
+
+      menuIcon.addEventListener('click', () => {
+        menuSlider.classList.add('showMenuSlider');
+      });
+      closeMenuButton.addEventListener('click', () => {
+        menuSlider.classList.remove('showMenuSlider');
+      });
+    });
+
+ 
+  </script>
+</body>
+
+</html>

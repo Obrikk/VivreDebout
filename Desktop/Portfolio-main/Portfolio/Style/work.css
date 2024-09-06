@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+  color: white;
+}
+
+body {
+  background-color: #242424;
+}
+
+nav {
+  font-weight: 700;
+  margin: 2rem;
+  border-radius: 15px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  list-style-type: none;
+  font-size: 1.3rem;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav Button {
+  font-weight: 700;
+font-size: 1.3rem;
+  padding: 15px;
+  background-color: black;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+margin-top: 5rem;
+ 
+  
+}
+
+h1 {
+  font-size: 5rem;
+  position: relative;
+  bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  width: 80%;
+  justify-items: center;
+  
+}
+
+
+
+.grid-container img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 10px;
+}
+
+.box:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all .3s ease;
+}
+
+ion-icon {
+  margin-top: 1.8rem;
+  font-size: 2.5rem;
+}
+
+.divLog {
+  display: flex;
+  gap: 1rem;
+}
+.menuIcon {
+cursor: pointer;
+display: none;
+margin: 6rem auto 0 auto;
+color: white;
+font-size: 4rem;
+}
+
+.closeMenuButton {
+position: absolute;
+left: 4rem;
+top: 2rem;
+cursor: pointer;
+}
+
+.menuSlider {
+height: 0;
+overflow: hidden;
+z-index: 1;
+left: 0;
+width: 100%;
+position: absolute;
+top: 0;
+background-color: #242424;
+transition: height 0.3s ease-in-out;
+}
+
+.menuSlider.showMenuSlider {
+height: 200px;
+}
+
+.menuSlider ul {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1.5rem;
+font-size: 1.5rem;
+position: relative;
+}
+
+@media (max-width: 750px) {
+nav ul {
+gap: 1.5rem;
+}
+}
+
+@media (max-width: 548px) {
+nav ul {
+display: none;
+}
+
+.menuIcon {
+display: block;
+}
+
+.menuSlider{
+margin-top: 2rem;
+}
+
+main{
+margin-top: 7rem;
+}
+
+} 
+@media (max-width: 768px) {
+  h1 {
+      font-size: 3rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  h1 {
+      font-size: 2rem;
+  }
+
+  .grid-container {
+      width: 100%;
+  }
+
+  .box {
+      height: 150px;
+  }
+}

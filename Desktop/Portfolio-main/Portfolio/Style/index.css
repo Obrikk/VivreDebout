@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  color: white;
+  
+}
+
+body {
+  background-color: #242424;
+}
+
+nav {
+  font-weight: 700;
+  margin: 2rem;
+  border-radius: 15px;
+  position: relative;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  list-style-type: none;
+  font-size: 1.3rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav button {
+  font-size: 1.3rem;
+  padding: 15px;
+  background-color: #242424;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.menuIcon {
+  cursor: pointer;
+  display: none;
+  margin: 6rem auto 0 auto;
+  color: white;
+  font-size: 4rem;
+}
+
+.closeMenuButton {
+  position: absolute;
+  left: 0;
+  top: 2rem;
+  cursor: pointer;
+}
+
+.menuSlider {
+  height: 0;
+  overflow: hidden;
+  z-index: 1;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: #242424;
+  transition: height 0.3s ease-in-out;
+}
+
+.menuSlider.showMenuSlider {
+  height: 200px;
+}
+
+.menuSlider ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+@media (max-width: 750px) {
+  nav ul {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 548px) {
+  nav ul {
+    display: none;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+
+  img {
+    margin-top: 4rem;
+  }
+}
+
+
+
+main {
+display: grid;
+grid-template-columns: 1fr;
+grid-template-areas:
+"div2"
+"div1";
+justify-items: center;
+align-items: center;
+justify-content: center;
+
+margin-top: 5rem;
+padding: 2rem;
+gap: 2rem;
+}
+
+
+
+@media(min-width: 1068px) {
+main {
+grid-template-columns: 1fr 1fr;
+grid-template-areas: "div1 div2";
+justify-items: center;
+align-items: center;
+}
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+.div1 p:first-of-type {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.div1 p:last-child {
+  text-align: justify;
+}
+
+ion-icon {
+  margin-top: 1.8rem;
+  font-size: 2.5rem;
+}
+
+img {
+  width: 100%;
+  max-width: 500px;
+}
+
+.divLog {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.b {
+  position: relative;
+  top: 1rem;
+  background-color: #242424;
+  left: 2rem;
+  padding: 10px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.navButton ,.menuSlider button {
+  font-weight: 700;
+  font-size: 1.3rem;
+        padding: 15px;
+        background-color: black;
+        border-radius: 15px;
+}
+
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 35%;
+  top: 0;
+
+  height: 100%;
+  overflow: auto;
+  
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+
+  margin: auto;
+  padding: 20px;
+  width: 90%;
+  position: relative;
+  max-width: 1200px;
+  background-color: #242424;
+  border-radius: 15px;
+}
+
+
+
+
+
+.modal-content embed {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+}
+
+.download {
+  margin-top: 15px;
+  padding: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
+
+@media (max-width: 440px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+
+}

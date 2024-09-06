@@ -1,0 +1,626 @@
+
+    * {
+      color: hsl(210, 10%, 33%);
+      font-family: Poppins;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    h1 {
+      font-size: 2.7em;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 1.4em;
+    }
+
+
+    p,
+    a {
+      opacity: 0.5;
+    }
+
+    a:hover {
+      cursor: pointer;
+      color: rgb(6, 156, 6);
+    }
+
+    .socials img:hover {
+      transition: all 1s ease;
+      transform: translatey(-5px);
+
+    }
+
+    .button :first-child {
+      background-color: hsl(171, 66%, 44%);
+    }
+
+    .button :last-child {
+      background-color: hsl(233, 100%, 69%);
+    }
+
+    .headerImage {
+      width: 100%;
+      background-image: url(/Portfolio/ClipBoard/design/images/bg-header-desktop.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 45vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phoneTablet {
+      background-image: url(/Portfolio/ClipBoard/design/images/image-devices.png);
+      background-size: contain;
+      width: 50vw;
+      background-repeat: no-repeat;
+      height: 70vh;
+      position: relative;
+      margin-bottom: 10%;
+
+    }
+
+    .computer {
+      background-image: url(/Portfolio/ClipBoard/design/images/image-computer.png);
+      background-size: contain;
+      width: 50vw;
+      background-repeat: no-repeat;
+      height: 70vh;
+      position: relative;
+      margin-bottom: 15%;
+    }
+
+    .logo {
+      min-width: 15px;
+      height: fit-content;
+      background-size: contain;
+
+
+    }
+
+    .firstSection,
+    .secondSection {
+      text-align: center;
+      margin: auto;
+
+    }
+
+    .firstSection p {
+      line-height: 1.6;
+      margin-bottom: 3%;
+
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 8%;
+
+    }
+
+
+
+
+    .firstSection,
+    .secondSection,
+    .thirdSection,
+    .fourthSection,
+    .fifthSection,
+    .sixthSection,
+    .seventhSection {
+      text-align: center;
+    }
+
+    /* Boutons */
+    .button {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 8%;
+    }
+
+    button {
+      padding: 18px 80px;
+      border-radius: 15px;
+      border: none;
+      transition: 1s all ease;
+      cursor: pointer;
+      color: #ffffffff;
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    button:hover {
+      box-shadow: 3px 3px 6px black;
+    }
+
+    .computer,
+    .phoneTablet {
+      background-size: contain;
+      width: 50vw;
+      background-repeat: no-repeat;
+      height: 70vh;
+      position: relative;
+    }
+
+    .socials {
+      text-wrap: nowrap;
+    }
+
+
+    .computerParagraph {
+      justify-content: center;
+      height: 85vh;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .thirdSection {
+      margin-top: 9%;
+      display: flex;
+      gap: 6%;
+      align-items: center;
+    }
+
+    .thirdSection p {
+      margin-bottom: 15%;
+    }
+
+    .fourthSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5%;
+    }
+
+    .fourthSection p {
+      width: 50%;
+      margin-bottom: 7%;
+    }
+
+
+    .sixthSection {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 5%;
+      margin-bottom: 10%;
+    }
+
+    .seventhSection {
+      margin-bottom: 8%;
+    }
+
+    .sixthSection p {
+      line-height: 1.6;
+      padding: 15px;
+    }
+
+    .sixthSection img {
+      margin-bottom: 30px;
+    }
+
+    footer {
+      height: 22vh;
+      background-color: hsla(210, 10%, 33%, 6%);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10%;
+
+    }
+
+    footer .logo {
+      height: 9vh;
+      background-size: contain;
+      width: fit-content;
+      position: relative;
+      left: 25em;
+      top: 4em;
+
+    }
+
+    footer a {
+      font-size: 1.2em;
+    }
+
+    .fpi,
+    .cp {
+      display: flex;
+      cursor: pointer;
+      gap: 10em;
+    }
+
+
+    .combi {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      bottom: 2em;
+      position: relative;
+      gap: 15px;
+      text-align: center;
+      margin-left: 20em;
+    }
+
+    .cp {
+      position: relative;
+      right: 164px;
+      gap: 6.5em;
+    }
+
+
+
+    .combi a {
+      text-wrap: nowrap;
+    }
+
+    .socials {
+      word-spacing: 1em;
+      position: relative;
+      left: 30em;
+      bottom: 5em;
+      cursor: pointer;
+
+    }
+
+
+    /* MediaQuerries */
+
+    @media (max-width: 1670px) {
+
+
+      footer .logo {
+        left: 10em;
+      }
+
+      .thirdSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .phoneTablet {
+        margin-bottom: -5%;
+      }
+
+      .thirdSection h3 {
+        text-align: center;
+      }
+
+      .computer {
+        margin-bottom: 5%;
+      }
+
+      .computerParagraph {
+        text-align: center;
+        margin-bottom: -12%;
+      }
+
+      .thirdSection p {
+        width: 97%;
+      }
+    }
+
+    .sixthSection {
+      margin-top: 8%;
+    }
+
+    .seventhSection {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 7%;
+    }
+
+    .seventhSection p {
+      margin-bottom: 2%;
+      margin-top: 10px;
+    }
+
+
+
+
+
+
+    /* Media Queries */
+    @media (max-width: 835px) {
+      .combi {
+        position: relative;
+        margin-right: 70px;
+      }
+
+      footer .logo {
+        position: relative;
+        margin-left: -60px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .fpi {
+        gap: 6em;
+      }
+
+      .socials {
+        position: relative;
+        margin-right: 120px;
+
+      }
+
+      .combi {
+        position: relative;
+        margin-left: 370px;
+      }
+    }
+
+    @media (max-width: 1280px) {
+
+      .computer,
+      .phoneTablet {
+        width: 65vw;
+      }
+
+      .phoneTablet {
+        margin-bottom: -8%;
+      }
+
+      .sixthSection {
+        margin-top: 10%;
+        flex-direction: column;
+      }
+
+      .sixthSection p {
+        margin-bottom: 12%;
+      }
+    }
+
+    @media (max-width: 1430px) {
+      .socials {
+        position: relative;
+
+        left: 15em;
+        bottom: 1px;
+
+      }
+    }
+
+    @media (max-width: 1060px) {
+      footer .logo {
+        position: relative;
+        left: 5em;
+      }
+
+
+
+      .combi {
+        right: 5em;
+      }
+
+      .computer,
+      .phoneTablet {
+        width: 75vw;
+      }
+    }
+
+    @media (max-width: 923px) {
+
+      .computer,
+      .phoneTablet {
+        width: 80vw;
+      }
+
+      .computer {
+        margin-bottom: 5%;
+      }
+
+      footer .logo {
+        position: relative;
+        right: 3em;
+      }
+
+      .combi {
+        right: 4em;
+      }
+    }
+
+    @media (max-width: 874px) {
+      .computer {
+        width: 85vw;
+        margin-bottom: -5%;
+      }
+
+      footer .logo {
+        height: 6.5vh;
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .combi {
+
+        right: 165px;
+      }
+
+      .seventhSection {
+        margin-bottom: 30%;
+      }
+
+      .socials {
+        position: absolute;
+        top: 18em;
+        left: -20px;
+        word-spacing: 2em;
+      }
+
+      footer {
+        height: 65vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .press {
+        position: relative;
+        left: 13px;
+      }
+
+      footer .logo {
+        top: -20px;
+        left: 17px;
+
+        position: relative;
+      }
+
+      .contact {
+        position: relative;
+        left: 15px;
+      }
+
+      .fpi,
+      .cp {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+        cursor: pointer;
+      }
+
+      .cp {
+        right: 20px;
+        padding-top: 7px;
+      }
+
+      .button {
+        display: flex;
+        flex-direction: column;
+        margin: 10% 0;
+        align-items: center;
+      }
+
+      .computer,
+      .phoneTablet {
+        margin-bottom: -19%;
+      }
+    }
+
+    @media (max-width: 591px) {
+      .firstSection p {
+        width: 68vw;
+        margin: auto;
+      }
+
+      .fourthSection p {
+        width: 80%;
+      }
+
+      .fourthSection h2 {
+        margin-top: 9%;
+      }
+
+      .computer,
+      .phoneTablet {
+        width: 90vw;
+        margin-bottom: -30%;
+      }
+    }
+
+    @media (max-width: 580px) {
+
+      .computer,
+      .phoneTablet {
+        margin-bottom: -30%;
+      }
+    }
+
+    @media (max-width: 491px) {
+
+      footer .logo {
+        height: 7.5vh;
+      }
+
+      h1 {
+        font-size: 1.9em;
+
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.2em;
+      }
+
+      .firstSection {
+        margin-bottom: 30%;
+      }
+
+      .firstSection P {
+        width: 90%;
+        text-align: center;
+      }
+
+      .computer {
+        margin-bottom: -45%;
+        width: 98vw;
+      }
+.computerParagraph{
+  margin-bottom: -55%;
+}
+ 
+      .phoneTablet {
+        margin-bottom: -60%;
+      }
+
+      .secondSection {
+        margin-bottom: 20%;
+      }
+
+      .fourthSection {
+        margin-top: 20%;
+      }
+
+      .fourthSection P {
+        width: 90%;
+        margin-bottom: 15%;
+      }
+
+      .sixthSection {
+        margin-top: 20%;
+      }
+    }
+
+
+    .bottomLogos {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      gap: 8%;
+    }
+
+    .bottomLogos img {
+      background-size: cover;
+      margin-top: 7%;
+      width: max-content;
+      margin-bottom: 10%;
+    }
+  

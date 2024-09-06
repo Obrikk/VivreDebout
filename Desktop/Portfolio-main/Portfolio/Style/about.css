@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  color: white;
+}
+
+body {
+  background-color: #242424;
+  position: relative;
+}
+
+nav {
+  font-weight: 700;
+  margin: 2rem;
+  border-radius: 15px;
+  position: relative;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5rem;
+  list-style-type: none;
+  font-size: 1.3rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+
+
+nav button,
+.menuSlider button {
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 15px;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.paragraph p {
+  text-align: justify;
+  margin: 2rem auto; 
+  width: 90%; 
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center; 
+}
+
+h2 {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+main {
+  
+  height: 70vh;
+  margin-top: 6.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.containerLanguage {
+ 
+  margin: 2rem auto;
+  width: 90%; 
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.languages img {
+  height: 6vh;
+}
+
+@media (max-width: 768px) {
+
+
+
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    width: 95%; 
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    font-size: 0.8rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+ 
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    width: 100%; 
+    margin: 1rem;
+  }
+
+  .languages img{
+    height: 4vh;
+  }
+}
+
+.menuIcon {
+  cursor: pointer;
+  display: none;
+  margin: 6rem auto 0 auto;
+  color: white;
+  font-size: 4rem;
+}
+
+
+.closeMenuButton {
+  position: absolute;
+  left: 2rem;
+  top: 4.5rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.menuSlider {
+  height: 0;
+  overflow: hidden;
+  z-index: 2;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2rem;
+  background-color: #242424;
+  transition: height 0.3s ease-in-out;
+}
+
+.menuSlider.showMenuSlider {
+  height: 200px;
+}
+
+.menuSlider ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+@media (max-width: 750px) {
+  nav ul {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 548px) {
+  nav ul {
+    display: none;
+  }
+
+  .menuIcon {
+    display: block;
+  }
+}
